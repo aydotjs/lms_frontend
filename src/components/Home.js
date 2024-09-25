@@ -1,23 +1,115 @@
-
-function Home() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container-fluid">
-      <a className="navbar-brand" href="#">Navbar</a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
-          <a className="nav-link" href="#">Features</a>
-          <a className="nav-link" href="#">Pricing</a>
-          <a className="nav-link disabled">Disabled</a>
+function Home(){
+    return (
+      <div className="container mt-4">
+        {/* Latest Course */}
+        <h3 className="pb-1 mb-4">Latest Courses</h3>
+        <div className="row">
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
         </div>
+        {/* End of latest course */}
+         {/* Popular Courses */}
+         <h3 className="pb-1 mb-4">Popular Courses</h3>
+        <div className="row">
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <a href="#">
+                <img src="logo512.png" className="card-img-top" alt="..." />
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <a href="#">Course title</a>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End of latest course */}
       </div>
-    </div>
-  </nav>
-  );
-}
-
-export default Home;
+    );
+  }
+  
+  export default Home;
+  
