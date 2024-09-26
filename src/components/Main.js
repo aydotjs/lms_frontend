@@ -10,6 +10,7 @@ import Dashboard from "./User/DashBoard";
 import MyCourses from "./User/MyCourses";
 import RecommendedCourses from "./User/RecommendedCourses";
 import FavouriteCourses from "./User/FavouriteCourses";
+import ProfileSetting from "./User/ProfileSetting";
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
         <Route path="/my-courses" element={<MyCourses/>} />
         <Route path="/favorite-courses" element={<FavouriteCourses/>} />
         <Route path="/recommended-courses" element={<RecommendedCourses/>} />
+        <Route path="/profile-setting" element={<ProfileSetting/>} />
       </Switch>
 
       <Footer />
