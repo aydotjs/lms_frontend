@@ -8,7 +8,9 @@ function Dashboard() {
         <aside className="col-md-3">
           <Sidebar />
         </aside>
-        <section className="col-md-9"></section>
+        <section className="col-md-9">
+          <h3>Welcome, User</h3>
+        </section>
       </div>
     </div>
   );
