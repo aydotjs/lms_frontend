@@ -7,6 +7,7 @@ import CourseDetail from "./CourseDetail";
 import Login from "./User/Login";
 import Register from "./User/Register";
 import Dashboard from "./User/DashBoard";
+import MyCourses from "./User/MyCourses";
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
         <Route path="/user-login" element={<Login/>} />
         <Route path="/user-register" element={<Register/>} />
         <Route path="/user-dashboard" element={<Dashboard/>} />
+        <Route path="/my-courses" element={<MyCourses/>} />
       </Switch>
 
       <Footer />
