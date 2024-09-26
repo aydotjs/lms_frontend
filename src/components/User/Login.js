@@ -11,17 +11,9 @@ function Login() {
               <form>
                 <div className="mb-3">
                   <label for="exampleInputEmail1" className="form-label">
-                    Email address
+                    Username
                   </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
-                  <div id="emailHelp" className="form-text">
-                    We'll never share your email with anyone else.
-                  </div>
+                  <input type="email" className="form-control" />
                 </div>
 
                 <div className="mb-3">
@@ -42,12 +34,12 @@ function Login() {
                     id="exampleCheck1"
                   />
                   <label className="form-check-label" for="exampleCheck1">
-                    Check me out
+                    Remember me
                   </label>
                 </div>
 
                 <button type="submit" className="btn btn-primary">
-                  Submit
+                  Login
                 </button>
               </form>
             </div>

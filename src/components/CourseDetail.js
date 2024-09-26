@@ -32,36 +32,37 @@ function CourseDetail() {
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             Introduction
-            <button className="btn btn-sm btn-secondary float-end btn-danger">
-              <i className="bi-youtube"></i>
-            </button>
+            <span className="float-end">
+              <span className="me-5">1 Hour 30 Minutes</span>
+              <button className="btn btn-sm btn-danger">
+                <i className="bi-youtube"></i>
+              </button>
+            </span>
           </li>
           <li className="list-group-item">
             Introduction
-            <button className="btn btn-sm btn-secondary float-end btn-danger">
-              <i className="bi-youtube"></i>
-            </button>
+            <span className="float-end">
+              <span className="me-5">1 Hour 30 Minutes</span>
+              <button className="btn btn-sm btn-danger">
+                <i className="bi-youtube"></i>
+              </button>
+            </span>
           </li>
           <li className="list-group-item">
             Introduction
-            <button className="btn btn-sm btn-secondary float-end btn-danger">
-              <i className="bi-youtube"></i>
-            </button>
+            <span className="float-end">
+              <span className="me-5">1 Hour 30 Minutes</span>
+              <button className="btn btn-sm btn-danger">
+                <i className="bi-youtube"></i>
+              </button>
+            </span>
           </li>
-          <li className="list-group-item">
-            Introduction
-            <button className="btn btn-sm btn-secondary float-end btn-danger">
-              <i className="bi-youtube"></i>
-            </button>
-          </li>
-          <li className="list-group-item">Setup Project</li>
-          <li className="list-group-item">Start with functional components</li>
+
+       
+          
         </ul>
       </div>
-      <h5 className="pb-1 mb-4 mt-5">
-        Related Courses{" "}
-        
-      </h5>
+      <h5 className="pb-1 mb-4 mt-5">Related Courses </h5>
       <div className="row mb-4">
         <div className="col-md-3">
           <div className="card">
