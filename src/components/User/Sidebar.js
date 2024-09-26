@@ -22,7 +22,7 @@ function Sidebar() {
         <Link to='/change-password' className='list-group-item list-group-item-action'>
           Change Password
         </Link>
-        <Link to='/logout' className='list-group-item list-group-item-action text-danger'>
+        <Link to='/user-login' className='list-group-item list-group-item-action text-danger'>
           Logout
         </Link>
       </div>

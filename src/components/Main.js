@@ -11,6 +11,7 @@ import MyCourses from "./User/MyCourses";
 import RecommendedCourses from "./User/RecommendedCourses";
 import FavouriteCourses from "./User/FavouriteCourses";
 import ProfileSetting from "./User/ProfileSetting";
+import ChangePassword from "./User/ChangePassword";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
         <Route path="/favorite-courses" element={<FavouriteCourses/>} />
         <Route path="/recommended-courses" element={<RecommendedCourses/>} />
         <Route path="/profile-setting" element={<ProfileSetting/>} />
+        <Route path='/change-password' element={<ChangePassword/>} />
       </Switch>
 
       <Footer />
