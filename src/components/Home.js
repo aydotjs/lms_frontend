@@ -1,4 +1,5 @@
-import CourseDetail from "./CourseDetail";
+import { Link } from "react-router-dom";
+
 function Home() {
   return (
     <div className="container mt-4">
@@ -9,15 +10,15 @@ function Home() {
           See All
         </a>
       </h3>
-      <div className="row">
+      <div className="row mb-4">
         <div className="col-md-3">
           <div className="card">
-            <a href="#">
+            <Link to="/detail/1">
               <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
+            </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <Link to="/detail/1">Course title</Link>
               </h5>
             </div>
           </div>
