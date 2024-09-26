@@ -1,3 +1,4 @@
+
 function Home() {
   return (
     <div className="container mt-4">
@@ -177,7 +178,10 @@ function Home() {
       {/* End of Featured Teachers course */}
       {/* Student Testimonials*/}
       <h3 className="pb-1 mb-4 mt-5">Student Testimonials</h3>
-      <div id="carouselExampleIndicators" className="carousel slide bg-dark text-white py-5">
+      <div
+        id="carouselExampleIndicators"
+        className="carousel slide bg-dark text-white py-5"
+      >
         <div className="carousel-indicators">
           <button
             type="button"
