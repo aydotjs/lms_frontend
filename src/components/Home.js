@@ -1,4 +1,4 @@
-
+import CourseDetail from "./CourseDetail";
 function Home() {
   return (
     <div className="container mt-4">
