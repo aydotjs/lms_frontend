@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import { Route, Routes as Switch } from "react-router-dom";
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
+import Login from "./User/Login";
+import Register from "./User/Register";
 function App() {
   return (
     <div className="App">
@@ -11,8 +13,9 @@ function App() {
       <Switch>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUsPage/>} />
-        <Route path="/about" element={<AboutUsPage/>} />
         <Route path="/detail/:course_id" element={<CourseDetail/>} />
+        <Route path="/user-login" element={<Login/>} />
+        <Route path="/user-register" element={<Register/>} />
       </Switch>
 
       <Footer />
