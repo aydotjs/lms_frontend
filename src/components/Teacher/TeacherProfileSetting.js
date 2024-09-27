@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import Sidebar from "./TeacherSidebar";
 
-function ProfileSetting() {
+function TeacherProfileSetting() {
   return (
     <div className="container mt-4">
       <div className="row">
@@ -100,4 +100,4 @@ function ProfileSetting() {
   );
 }
 
-export default ProfileSetting;
+export default TeacherProfileSetting;

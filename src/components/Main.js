@@ -12,6 +12,10 @@ import RecommendedCourses from "./User/RecommendedCourses";
 import FavouriteCourses from "./User/FavouriteCourses";
 import ProfileSetting from "./User/ProfileSetting";
 import ChangePassword from "./User/ChangePassword";
+// =============Teacher Panels
+import TeacherLogin from "./Teacher/TeacherLogin";
+import TeacherRegister from "./Teacher/TeacherRegister"
+import TeacherDashboard from "./Teacher/TeacherDashBoard";
 function App() {
   return (
     <div className="App">
@@ -28,6 +32,11 @@ function App() {
         <Route path="/recommended-courses" element={<RecommendedCourses/>} />
         <Route path="/profile-setting" element={<ProfileSetting/>} />
         <Route path='/change-password' element={<ChangePassword/>} />
+        {/* ==========Teacher Panels =====================*/}
+        <Route path="/teacher-login" element={<TeacherLogin/>} />
+        <Route path="/teacher-register" element={<TeacherRegister/>} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard/>} />
+
       </Switch>
 
       <Footer />
