@@ -19,6 +19,7 @@ import TeacherDashboard from "./Teacher/TeacherDashBoard";
 import AddCourse from "./Teacher/AddCourse";
 import TeacherProfileSetting from "./Teacher/TeacherProfileSetting";
 import TeacherChangePassword from "./Teacher/TeacherChangePassword"
+import TeacherCourses from "./Teacher/TeacherCourses";
 function App() {
   return (
     <div className="App">
@@ -42,6 +43,7 @@ function App() {
         <Route path="/add-course" element={<AddCourse/>} />
         <Route path="/teacher-profile-setting" element={<TeacherProfileSetting/>} />
         <Route path="/teacher-change-password" element={<TeacherChangePassword/>} />
+        <Route path="/teacher-courses" element={<TeacherCourses/>} />
         
 
       </Switch>

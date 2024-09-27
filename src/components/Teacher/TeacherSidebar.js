@@ -11,18 +11,19 @@ function Sidebar() {
           Dashboard
         </Link>
         <Link
-          to="/my-courses"
+          to="/teacher-courses"
           className="list-group-item list-group-item-action"
         >
           My Courses
         </Link>
+       
         <Link
           to="/add-course"
           className="list-group-item list-group-item-action"
         >
           Add Course
         </Link>
-        <Link to="/my-users" className="list-group-item list-group-item-action">
+        <Link to="/my-students" className="list-group-item list-group-item-action">
           My Students
         </Link>
         <Link
