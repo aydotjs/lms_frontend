@@ -17,7 +17,7 @@ function Sidebar() {
           My Courses
         </Link>
         <Link
-          to="/my-courses"
+          to="/add-course"
           className="list-group-item list-group-item-action"
         >
           Add Course
@@ -26,13 +26,13 @@ function Sidebar() {
           My Students
         </Link>
         <Link
-          to="/profile-setting"
+          to="/teacher-profile-setting"
           className="list-group-item list-group-item-action"
         >
           Profile Setting
         </Link>
         <Link
-          to="/change-password"
+          to="/teacher-change-password"
           className="list-group-item list-group-item-action"
         >
           Change Password

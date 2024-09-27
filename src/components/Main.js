@@ -16,6 +16,9 @@ import ChangePassword from "./User/ChangePassword";
 import TeacherLogin from "./Teacher/TeacherLogin";
 import TeacherRegister from "./Teacher/TeacherRegister"
 import TeacherDashboard from "./Teacher/TeacherDashBoard";
+import AddCourse from "./Teacher/AddCourse";
+import TeacherProfileSetting from "./Teacher/TeacherProfileSetting";
+import TeacherChangePassword from "./Teacher/TeacherChangePassword"
 function App() {
   return (
     <div className="App">
@@ -36,6 +39,10 @@ function App() {
         <Route path="/teacher-login" element={<TeacherLogin/>} />
         <Route path="/teacher-register" element={<TeacherRegister/>} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard/>} />
+        <Route path="/add-course" element={<AddCourse/>} />
+        <Route path="/teacher-profile-setting" element={<TeacherProfileSetting/>} />
+        <Route path="/teacher-change-password" element={<TeacherChangePassword/>} />
+        
 
       </Switch>
 
