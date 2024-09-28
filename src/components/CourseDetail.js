@@ -19,7 +19,7 @@ function CourseDetail() {
             adjustments may be needed depending on your card content.
           </p>
           <p className="fw-bold">
-            Course By: <a href="#">Teacher 1</a>
+            Course By: <Link to="/teacher-detail/1">Teacher 1</Link>
           </p>
           <p className="fw-bold">Duration: 3 Hours 30 Minutes</p>
           <p className="fw-bold">Total Enrolled: 456 Students</p>

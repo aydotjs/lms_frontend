@@ -12,7 +12,7 @@ import RecommendedCourses from "./User/RecommendedCourses";
 import FavouriteCourses from "./User/FavouriteCourses";
 import ProfileSetting from "./User/ProfileSetting";
 import ChangePassword from "./User/ChangePassword";
-// =============Teacher Panels
+// =============Teacher Panels=======---
 import TeacherLogin from "./Teacher/TeacherLogin";
 import TeacherRegister from "./Teacher/TeacherRegister"
 import TeacherDashboard from "./Teacher/TeacherDashBoard";
@@ -20,6 +20,7 @@ import AddCourse from "./Teacher/AddCourse";
 import TeacherProfileSetting from "./Teacher/TeacherProfileSetting";
 import TeacherChangePassword from "./Teacher/TeacherChangePassword"
 import TeacherCourses from "./Teacher/TeacherCourses";
+import TeacherDetail from "./TeacherDetail";
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUsPage/>} />
         <Route path="/detail/:course_id" element={<CourseDetail/>} />
+        <Route path="/teacher-detail/:teacher_id" element={<TeacherDetail/>} />
+
+        {/* ==========Student Panels =====================*/}
         <Route path="/user-login" element={<Login/>} />
         <Route path="/user-register" element={<Register/>} />
         <Route path="/user-dashboard" element={<Dashboard/>} />
