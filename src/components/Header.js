@@ -3,9 +3,10 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand khula-extrabold fs-3" to="/">
           Language4all
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
