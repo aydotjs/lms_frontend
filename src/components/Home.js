@@ -64,9 +64,9 @@ function Home() {
       {/* Popular Courses */}
       <h3 className="pb-1 mb-4 mt-5">
         Popular Courses{" "}
-        <a href="#" className="float-end">
+        <Link to="all-popular-courses" className="float-end">
           See All
-        </a>
+        </Link>
       </h3>
       <div className="row">
         <div className="col-md-3">
