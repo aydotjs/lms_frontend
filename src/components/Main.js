@@ -24,6 +24,7 @@ import TeacherDetail from "./TeacherDetail";
 import AllCourses from "./AllCourses";
 import AllPopularCourses from "./AllPopularCourses";
 import AllTeachers from "./AllTeachers";
+import CategoryCourses from "./CategoryCourses.js";
 function App() {
   return (
     <div className="App">
@@ -33,6 +34,7 @@ function App() {
         <Route path="/about" element={<AboutUsPage/>} />
         <Route path="/detail/:course_id" element={<CourseDetail/>} />
         <Route path="/teacher-detail/:teacher_id" element={<TeacherDetail/>} />
+        <Route path="/category/:category_slug" element={<CategoryCourses/>} />
 
         {/* ==========Student Panels =====================*/}
         <Route path="/user-login" element={<Login/>} />

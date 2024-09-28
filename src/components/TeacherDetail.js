@@ -18,12 +18,12 @@ export default function TeacherDetail() {
             adjustments may be needed depending on your card content.
           </p>
           <p className="fw-bold">
-            Languages: <Link to="/teacher-detail/1">English</Link>,{" "}
-            <Link to="/teacher-detail/1">Arabic</Link>
+            Languages: <Link to="/category/beginner-friendly">English</Link> {", "}
+            <Link to="/category/beginner-friendly">Spanish</Link>
           </p>
           <p className="fw-bold">
             Recent Course:
-            <Link to="/teacher-detail/1">Arabic</Link>
+            <Link to="/category/beginner-friendly">Spanish</Link>
           </p>
 
           <p className="fw-bold">Rating: 4.5/5</p>
