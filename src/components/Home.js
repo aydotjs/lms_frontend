@@ -14,11 +14,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <Link to="/detail/1">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/english-language.png"
+                className="card-img-top"
+                alt="..."
+              />
             </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <Link to="/detail/1">Course title</Link>
+                <Link to="/detail/1">English Language</Link>
               </h5>
             </div>
           </div>
@@ -26,11 +30,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/german-flag.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">German Language</a>
               </h5>
             </div>
           </div>
@@ -38,11 +46,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/italy-flag.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Italian Language</a>
               </h5>
             </div>
           </div>
@@ -50,11 +62,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/spanish-language.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Spanish Language</a>
               </h5>
             </div>
           </div>
@@ -72,11 +88,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/chinese-flag.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Chinese Language</a>
               </h5>
               <div className="card-footer">
                 <div className="title">
@@ -90,11 +110,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/hindi.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Hindi Languge</a>
               </h5>
               <div className="card-footer">
                 <div className="title">
@@ -108,11 +132,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/portugal.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Portuguese Language</a>
               </h5>
               <div className="card-footer">
                 <div className="title">
@@ -126,11 +154,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/language-icons/russia-flag.png"
+                className="card-img-top"
+                alt="..."
+              />
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Russia Language</a>
               </h5>
             </div>
             <div className="card-footer">
@@ -145,7 +177,7 @@ function Home() {
       {/* End of Popular course */}
       {/* Featured Teachers */}
       <h3 className="pb-1 mb-4 mt-5">
-        Featured Teachers
+        Our Teachers
         <Link to="/all-teachers" href="#" className="float-end">
           See All
         </Link>
@@ -154,11 +186,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <Link to="/teacher-detail/1" href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/teacher-assets/teacher-with-laptop.png"
+                className="card-img-top"
+                alt="..."
+              />
             </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <Link to="/teacher-detail/1">Teacher Name</Link>
+                <Link to="/teacher-detail/1">Ciroma Adekunle</Link>
               </h5>
             </div>
             <div className="card-footer">
@@ -171,11 +207,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <Link to="/teacher-detail/1" href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/teacher-assets/teacher-with-laptop.png"
+                className="card-img-top"
+                alt="..."
+              />
             </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <Link to="/teacher-detail/1">Teacher Name</Link>
+                <Link to="/teacher-detail/1">Teacher 1</Link>
               </h5>
             </div>
             <div className="card-footer">
@@ -188,11 +228,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <Link to="/teacher-detail/1" href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/teacher-assets/teacher-with-laptop.png"
+                className="card-img-top"
+                alt="..."
+              />
             </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <Link to="/teacher-detail/1">Teacher Name</Link>
+                <Link to="/teacher-detail/1">Teacher 2</Link>
               </h5>
             </div>
             <div className="card-footer">
@@ -205,11 +249,15 @@ function Home() {
         <div className="col-md-3">
           <div className="card">
             <Link to="/teacher-detail/1" href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
+              <img
+                src="/teacher-assets/teacher-with-laptop.png"
+                className="card-img-top"
+                alt="..."
+              />
             </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <Link to="/teacher-detail/1">Teacher Name</Link>
+                <Link to="/teacher-detail/1">Teacher 3</Link>
               </h5>
             </div>
             <div className="card-footer">
@@ -219,10 +267,6 @@ function Home() {
             </div>
           </div>
         </div>
-   
-      
-    
-      
       </div>
       {/* End of Featured Teachers course */}
       {/* Student Testimonials*/}
@@ -257,30 +301,28 @@ function Home() {
           <div className="carousel-item active">
             <figure class="text-center">
               <blockquote class="blockquote">
-                <p>A well-known quote, contained in a blockquote element.</p>
+                <p>
+                  This app made learning Spanish easy and fun! The interactive
+                  lessons on Language4All helped me gain confidence quickly, and
+                  now I can hold basic conversations. Highly recommend it to
+                  anyone wanting to learn a new language!"
+                </p>
               </blockquote>
-              <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
-              </figcaption>
+              <figcaption class="blockquote-footer">Dumebi A.</figcaption>
             </figure>
           </div>
+
           <div className="carousel-item">
             <figure class="text-center">
               <blockquote class="blockquote">
-                <p>A well-known quote, contained in a blockquote element.</p>
+                <p>
+                  Language4All is fantastic! I've been learning French, and the
+                  lessons are both engaging and effective. I love how easy it is
+                  to fit learning into my busy schedule. Highly recommend!
+                </p>
               </blockquote>
               <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="carousel-item">
-            <figure class="text-center">
-              <blockquote class="blockquote">
-                <p>A well-known quote, contained in a blockquote element.</p>
-              </blockquote>
-              <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
+              Sarah K.
               </figcaption>
             </figure>
           </div>

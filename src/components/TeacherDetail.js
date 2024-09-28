@@ -9,7 +9,7 @@ export default function TeacherDetail() {
           <img src="/logo512.png" className="img-thumbnail" alt="..." />
         </div>
         <div className="col-8">
-          <h3>Ayobami Owoeye</h3>
+          <h3>Ciroma Adekunle</h3>
           <p>
             Using a combination of grid and utility classes, cards can be made
             horizontal in a mobile-friendly and responsive way. In the example
