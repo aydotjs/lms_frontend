@@ -78,6 +78,48 @@ function Home() {
               <h5 className="card-title">
                 <a href="#">Course title</a>
               </h5>
+              <div className="card-footer">
+                <div className="title">
+                  <span>Rating: 4.5/5</span>
+                  <span className="float-end">Views: 78945</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="card">
+            <a href="#">
+              <img src="logo512.png" className="card-img-top" alt="..." />
+            </a>
+            <div className="card-body">
+              <h5 className="card-title">
+                <a href="#">Course title</a>
+              </h5>
+              <div className="card-footer">
+                <div className="title">
+                  <span>Rating: 4.5/5</span>
+                  <span className="float-end">Views: 78945</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="card">
+            <a href="#">
+              <img src="logo512.png" className="card-img-top" alt="..." />
+            </a>
+            <div className="card-body">
+              <h5 className="card-title">
+                <a href="#">Course title</a>
+              </h5>
+              <div className="card-footer">
+                <div className="title">
+                  <span>Rating: 4.5/5</span>
+                  <span className="float-end">Views: 78945</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -91,29 +133,11 @@ function Home() {
                 <a href="#">Course title</a>
               </h5>
             </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card">
-            <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <a href="#">Course title</a>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card">
-            <a href="#">
-              <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <a href="#">Course title</a>
-              </h5>
+            <div className="card-footer">
+              <div className="title">
+                <span>Rating: 4.5/5</span>
+                <span className="float-end">Views: 78945</span>
+              </div>
             </div>
           </div>
         </div>
@@ -129,52 +153,76 @@ function Home() {
       <div className="row">
         <div className="col-md-3">
           <div className="card">
-            <a href="#">
+            <Link to="/teacher-detail/1" href="#">
               <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
+            </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Teacher Name</a>
+                <Link to="/teacher-detail/1">Teacher Name</Link>
               </h5>
+            </div>
+            <div className="card-footer">
+              <div className="title">
+                <span>Rating: 4.5/5</span>
+              </div>
             </div>
           </div>
         </div>
         <div className="col-md-3">
           <div className="card">
-            <a href="#">
+            <Link to="/teacher-detail/1" href="#">
               <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
+            </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Teacher Name</a>
+                <Link to="/teacher-detail/1">Teacher Name</Link>
               </h5>
+            </div>
+            <div className="card-footer">
+              <div className="title">
+                <span>Rating: 4.5/5</span>
+              </div>
             </div>
           </div>
         </div>
         <div className="col-md-3">
           <div className="card">
-            <a href="#">
+            <Link to="/teacher-detail/1" href="#">
               <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
+            </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Teacher Name</a>
+                <Link to="/teacher-detail/1">Teacher Name</Link>
               </h5>
+            </div>
+            <div className="card-footer">
+              <div className="title">
+                <span>Rating: 4.5/5</span>
+              </div>
             </div>
           </div>
         </div>
         <div className="col-md-3">
           <div className="card">
-            <a href="#">
+            <Link to="/teacher-detail/1" href="#">
               <img src="logo512.png" className="card-img-top" alt="..." />
-            </a>
+            </Link>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Teacher Name</a>
+                <Link to="/teacher-detail/1">Teacher Name</Link>
               </h5>
+            </div>
+            <div className="card-footer">
+              <div className="title">
+                <span>Rating: 4.5/5</span>
+              </div>
             </div>
           </div>
         </div>
+   
+      
+    
+      
       </div>
       {/* End of Featured Teachers course */}
       {/* Student Testimonials*/}
