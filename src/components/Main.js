@@ -23,6 +23,7 @@ import TeacherCourses from "./Teacher/TeacherCourses";
 import TeacherDetail from "./TeacherDetail";
 import AllCourses from "./AllCourses";
 import AllPopularCourses from "./AllPopularCourses";
+import AllTeachers from "./AllTeachers";
 function App() {
   return (
     <div className="App">
@@ -52,6 +53,7 @@ function App() {
         <Route path="/teacher-courses" element={<TeacherCourses/>} />
         <Route path="/all-courses" element={<AllCourses/>} />
         <Route path="/all-popular-courses" element={<AllPopularCourses/>} />
+        <Route path="/all-teachers" element={<AllTeachers/>} />
         
       
       </Switch>

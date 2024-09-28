@@ -64,7 +64,7 @@ function Home() {
       {/* Popular Courses */}
       <h3 className="pb-1 mb-4 mt-5">
         Popular Courses{" "}
-        <Link to="all-popular-courses" className="float-end">
+        <Link to="/all-popular-courses" className="float-end">
           See All
         </Link>
       </h3>
@@ -122,9 +122,9 @@ function Home() {
       {/* Featured Teachers */}
       <h3 className="pb-1 mb-4 mt-5">
         Featured Teachers
-        <a href="#" className="float-end">
+        <Link to="/all-teachers" href="#" className="float-end">
           See All
-        </a>
+        </Link>
       </h3>
       <div className="row">
         <div className="col-md-3">
@@ -134,7 +134,7 @@ function Home() {
             </a>
             <div className="card-body">
               <h5 className="card-title">
-                <a href="#">Course title</a>
+                <a href="#">Teacher Name</a>
               </h5>
             </div>
           </div>
