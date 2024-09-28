@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-
+import AllCourses from "./AllCourses";
 function Home() {
   return (
     <div className="container mt-4">
       {/* Latest Course */}
       <h3 className="pb-1 mb-4">
         Latest Courses{" "}
-        <a href="#" className="float-end">
+        <Link to="all-courses" className="float-end">
           See All
-        </a>
+        </Link>
       </h3>
       <div className="row mb-4">
         <div className="col-md-3">
