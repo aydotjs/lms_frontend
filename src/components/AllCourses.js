@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 export default function AllCourses() {
+  useEffect(() => {
+    document.title = "Teacher Register";
+  });
   return (
+
     <div className="container mt-3">
       {/* Latest Course */}
-      <h3 className="pb-1 mb-4">Latest Courses </h3>
+      <h3 className="pb-1 mb-4">All Courses </h3>
       <div className="row mb-4">
         <div className="col-md-3">
           <div className="card">

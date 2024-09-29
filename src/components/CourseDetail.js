@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 function CourseDetail() {
   let { course_id } = useParams();
 
