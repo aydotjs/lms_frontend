@@ -17,7 +17,7 @@ function Register() {
                   <label for="exampleInputEmail1" className="form-label">
                     Full Name
                   </label>
-                  <input type="email" className="form-control" />
+                  <input type="text" className="form-control" />
                 </div>
                 <div className="mb-3">
                   <label for="exampleInputEmail1" className="form-label">
@@ -25,13 +25,6 @@ function Register() {
                   </label>
                   <input type="email" className="form-control" />
                 </div>
-                <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
-                    Username
-                  </label>
-                  <input type="email" className="form-control" />
-                </div>
-
                 <div className="mb-3">
                   <label for="exampleInputPassword1" className="form-label">
                     Password
@@ -41,6 +34,19 @@ function Register() {
                     className="form-control"
                     id="exampleInputPassword1"
                   />
+                </div>
+                <div className="mb-3">
+                  <label for="exampleInputEmail1" className="form-label">
+                    Qualifications
+                  </label>
+                  <input type="text" className="form-control" />
+                </div>
+
+                <div className="mb-3">
+                  <label for="exampleInputEmail1" className="form-label">
+                    Mobile Number
+                  </label>
+                  <input type="number" className="form-control" />
                 </div>
                 <div className="mb-3">
                   <label for="exampleInputEmail1" className="form-label">
