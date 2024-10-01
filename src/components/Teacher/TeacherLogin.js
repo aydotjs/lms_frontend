@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
-
+const baseUrl = "http://127.0.0.1:8000/api/";
 function TeacherLogin() {
+  const [teacherLoginData, setTeacherLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    setTeacherLoginData({
+      ...teacherLoginData,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div className="container mt-4">
       <div className="row">
@@ -11,9 +22,9 @@ function TeacherLogin() {
               <form>
                 <div className="mb-3">
                   <label for="exampleInputEmail1" className="form-label">
-                    Username
+                    Email
                   </label>
-                  <input type="email" className="form-control" />
+                  <input type="email" value={teacherLoginData.enail} onChange={handleChange} className="form-control" />
                 </div>
 
                 <div className="mb-3">
@@ -24,6 +35,8 @@ function TeacherLogin() {
                     type="password"
                     className="form-control"
                     id="exampleInputPassword1"
+                    value={teacherLoginData.password}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -38,7 +51,7 @@ function TeacherLogin() {
                   </label>
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button onClick={handleSubmitForm} type="submit" className="btn btn-primary">
                   Login
                 </button>
               </form>
