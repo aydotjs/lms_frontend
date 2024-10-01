@@ -1,10 +1,34 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Register() {
+  const [teacherData, setTeacherData] = useState({
+    full_name: "",
+    email: "",
+    password: "",
+    qualification: "",
+    mobile_no: "",
+    skills: "",
+    status: "",
+  });
+
+  // Change Element value
+  const handleChange = (event) => {
+    setTeacherData({
+      ...teacherData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = () =>{
+
+  }
+
   useEffect(() => {
     document.title = "Teacher Register";
   });
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -14,51 +38,81 @@ function Register() {
             <div className="card-body">
               <form>
                 <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
                     Full Name
                   </label>
-                  <input type="text" className="form-control" />
+                  <input
+                    onChange={handleChange}
+                    name="full_name"
+                    type="text"
+                    className="form-control"
+                  />
                 </div>
+
                 <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
-                    Email Address
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    Email
                   </label>
-                  <input type="email" className="form-control" />
+                  <input
+                    onChange={handleChange}
+                    name="email"
+                    type="email"
+                    className="form-control"
+                  />
                 </div>
+
                 <div className="mb-3">
-                  <label for="exampleInputPassword1" className="form-label">
+                  <label htmlFor="exampleInputPassword1" className="form-label">
                     Password
                   </label>
                   <input
+                    onChange={handleChange}
+                    name="password"
                     type="password"
                     className="form-control"
                     id="exampleInputPassword1"
                   />
                 </div>
+
                 <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
-                    Qualifications
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    Qualification
                   </label>
-                  <input type="text" className="form-control" />
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    name="qualification"
+                    className="form-control"
+                  />
                 </div>
 
                 <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
                     Mobile Number
                   </label>
-                  <input type="number" className="form-control" />
+                  <input
+                    onChange={handleChange}
+                    type="number"
+                    name="mobile_no"
+                    className="form-control"
+                  />
                 </div>
+
                 <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
-                    Languages
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    Skills
                   </label>
-                  <textarea className="form-control"></textarea>
+                  <textarea
+                    onChange={handleChange}
+                    name="skills"
+                    className="form-control"
+                  ></textarea>
                   <div id="emailHelp" className="form-text">
-                    Spanish, English, Polish etc.
+                    Php, Python, Javascript, etc
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button onClick={handleSubmit} type="submit" className="btn btn-primary">
                   Register
                 </button>
               </form>
