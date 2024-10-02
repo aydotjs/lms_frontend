@@ -28,11 +28,6 @@ function TeacherLogin() {
       console.log(error);
     }
   };
-// first commit
-// second commit 
-// third commit 
-//fourth commit
-// first commit
 
 
   return (
