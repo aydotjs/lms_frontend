@@ -33,13 +33,6 @@ function TeacherLogin() {
 // third commit 
 //fourth commit
 // first commit
-// second commit 
-// third commit 
-//fourth commit
-// first commit
-// second commit 
-// third commit 
-//fourth commit
 
 
   return (
