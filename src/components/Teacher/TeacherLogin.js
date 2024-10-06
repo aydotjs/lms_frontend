@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-const baseUrl = "http://127.0.0.1:8000/api/";
+const baseUrl = "http://127.0.0.1:8000/api";
+
 
 function TeacherLogin() {
   const [teacherLoginData, setTeacherLoginData] = useState({
@@ -15,7 +16,8 @@ function TeacherLogin() {
     });
   };
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
     const teacherFormData = new FormData();
     teacherFormData.append("email", teacherLoginData.email);
     teacherFormData.append("password", teacherLoginData.password);
@@ -23,6 +25,7 @@ function TeacherLogin() {
     try {
       axios.post(baseUrl + "/teacher-login", teacherFormData).then((res) => {
         console.log(res.data);
+        console.log("logged in");
       });
     } catch (error) {
       console.log(error);
@@ -76,7 +79,7 @@ function TeacherLogin() {
                   </label>
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" onClick={handleSubmitForm} className="btn btn-primary">
                   Login
                 </button>
               </form>
