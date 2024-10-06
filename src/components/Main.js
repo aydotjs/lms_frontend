@@ -14,6 +14,7 @@ import ProfileSetting from "./User/ProfileSetting";
 import ChangePassword from "./User/ChangePassword";
 // =============Teacher Panels=======---
 import TeacherLogin from "./Teacher/TeacherLogin";
+import TeacherLogout from "./Teacher/TeacherLogOut.js";
 import TeacherRegister from "./Teacher/TeacherRegister"
 import TeacherDashboard from "./Teacher/TeacherDashBoard";
 import AddCourse from "./Teacher/AddCourse";

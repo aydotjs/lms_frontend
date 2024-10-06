@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 const baseUrl = "http://127.0.0.1:8000/api";
 
-
 function TeacherLogin() {
   const [teacherLoginData, setTeacherLoginData] = useState({
     email: "",
@@ -24,14 +23,19 @@ function TeacherLogin() {
 
     try {
       axios.post(baseUrl + "/teacher-login", teacherFormData).then((res) => {
-        console.log(res.data);
-        console.log("logged in");
+        if (res.data.bool == true) {
+          localStorage.setItem("teacherLoginStatus", true);
+          window.location.href = "/teacher-dashboard";
+        }
       });
     } catch (error) {
       console.log(error);
     }
   };
-
+  const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
+  if (teacherLoginStatus == "true") {
+    window.location.href = "/teacher-dashboard";
+  }
 
   return (
     <div className="container mt-4">
@@ -79,7 +83,11 @@ function TeacherLogin() {
                   </label>
                 </div>
 
-                <button type="submit" onClick={handleSubmitForm} className="btn btn-primary">
+                <button
+                  type="submit"
+                  onClick={handleSubmitForm}
+                  className="btn btn-primary"
+                >
                   Login
                 </button>
               </form>
