@@ -48,6 +48,7 @@ function App() {
         <Route path='/change-password' element={<ChangePassword/>} />
         {/* ==========Teacher Panels =====================*/}
         <Route path="/teacher-login" element={<TeacherLogin/>} />
+        <Route path="/teacher-logout" element={<TeacherLogout/>} />
         <Route path="/teacher-register" element={<TeacherRegister/>} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard/>} />
         <Route path="/add-course" element={<AddCourse/>} />
