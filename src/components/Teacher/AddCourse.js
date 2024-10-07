@@ -1,6 +1,64 @@
 import React from "react";
 import TeacherSidebar from "./TeacherSidebar";
+import { useState, useEffect } from "react";
+import axios from "axios";
+const baseUrl = "http://127.0.0.1:8000/api";
 export default function AddCourse() {
+  const [cats, setCats] = useState([]);
+  const [courseData, setCourseData] = useState({
+    category: "",
+    title: "",
+    description: "",
+    languages: "",
+  });
+
+  useEffect(() => {
+    try {
+      axios.get(baseUrl + "/category").then((res) => {
+        setCats(res.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  const handleChange = (event) => {
+    setCourseData({
+      ...courseData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleFileChange = (event) => {
+    setCourseData({
+      ...courseData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const formSubmit = () => {
+    const formData = new FormData();
+    formData.append("category", courseData.category);
+    formData.append("teacher", 1);
+    formData.append("title", courseData.title);
+    formData.append("description", courseData.description);
+    formData.append("featured_img", courseData.f_img, courseData.f_img.name);
+    formData.append("languages", courseData.languages);
+
+    try {
+      axios
+        .post(baseUrl + "/course/", formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -12,27 +70,86 @@ export default function AddCourse() {
             <h5 className="card-header">Upload a course</h5>
             <div className="card-body">
               <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label fw-bold">
+                <label
+                  htmlFor="exampleInputEmail1"
+                  className="form-label fw-bold"
+                >
+                  Categories
+                </label>
+                <select
+                  onChange={handleChange}
+                  name="category"
+                  className="form-control"
+                >
+                  {cats.map((category, index) => (
+                    <option key={index}>{category.title}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-3">
+                <label
+                  htmlFor="exampleInputEmail1"
+                  className="form-label fw-bold"
+                >
                   Language
                 </label>
-                <input type="email" className="form-control" />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  name="title"
+                  id="title"
+                  className="form-control"
+                />
               </div>
               <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label fw-bold">
+                <label
+                  htmlFor="exampleInputEmail1"
+                  className="form-label fw-bold"
+                >
                   Description
                 </label>
-                <textarea className="form-control"></textarea>
+                <textarea
+                  onChange={handleChange}
+                  id="description"
+                  name="description"
+                  className="form-control"
+                ></textarea>
               </div>
 
               <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label fw-bold">
+                <label
+                  htmlFor="exampleInputEmail1"
+                  className="form-label fw-bold"
+                >
                   Course Video
                 </label>
-                <input type="file" className="form-control" />
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  id="video"
+                  name="f_img"
+                  className="form-control"
+                />
               </div>
 
-              <hr />
-              <button className="btn btn-primary">Upload</button>
+              <div className="mb-3">
+                <label
+                  htmlFor="exampleInputEmail1"
+                  className="form-label fw-bold"
+                >
+                  Description
+                </label>
+                <textarea
+                  onChange={handleChange}
+                  id="languages"
+                  name="languages"
+                  className="form-control"
+                  placeholder="Yoruba, Pidgin, Hausa"
+                ></textarea>
+              </div>
+              <button className="btn btn-primary" onClick={formSubmit}>
+                Upload
+              </button>
             </div>
           </div>
         </section>
