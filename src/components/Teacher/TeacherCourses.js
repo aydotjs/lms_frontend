@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
-
+import { useState, useEffect } from "react";
+const baseUrl = "http://127.0.0.1:8000/api";
+import axios from "axios";
 export default function TeacherCourses() {
+  const [courseData, setCourseData] = useState([])
+  useEffect(()=>{
+    axios.get()
+  })
   return (
     <div className="container mt-4">
       <div className="row">

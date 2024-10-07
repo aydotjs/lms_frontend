@@ -42,7 +42,7 @@ export default function AddCourse() {
     formData.append("teacher", 1);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-    formData.append("featured_img", courseData.featured_img); // No need for courseData.f_img.name
+    formData.append("featured_img", courseData.featured_img, courseData.featured_img.name); // No need for courseData.f_img.name
     formData.append("languages", courseData.languages);
 
     try {
