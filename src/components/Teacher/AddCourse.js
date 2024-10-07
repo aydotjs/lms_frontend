@@ -10,6 +10,7 @@ export default function AddCourse() {
     title: "",
     description: "",
     languages: "",
+    featured_img: "",
   });
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function AddCourse() {
   const handleFileChange = (event) => {
     setCourseData({
       ...courseData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.files[0], // Store the file object
     });
   };
 
@@ -41,7 +42,7 @@ export default function AddCourse() {
     formData.append("teacher", 1);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-    formData.append("featured_img", courseData.f_img, courseData.f_img.name);
+    formData.append("featured_img", courseData.featured_img); // No need for courseData.f_img.name
     formData.append("languages", courseData.languages);
 
     try {
@@ -82,7 +83,7 @@ export default function AddCourse() {
                   className="form-control"
                 >
                   {cats.map((category, index) => (
-                    <option key={index}>{category.title}</option>
+                    <option key={index} value={category.id}>{category.title}</option>
                   ))}
                 </select>
               </div>
@@ -127,26 +128,11 @@ export default function AddCourse() {
                   type="file"
                   onChange={handleFileChange}
                   id="video"
-                  name="f_img"
+                  name="featured_img"
                   className="form-control"
                 />
               </div>
 
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleInputEmail1"
-                  className="form-label fw-bold"
-                >
-                  Description
-                </label>
-                <textarea
-                  onChange={handleChange}
-                  id="languages"
-                  name="languages"
-                  className="form-control"
-                  placeholder="Yoruba, Pidgin, Hausa"
-                ></textarea>
-              </div>
               <button className="btn btn-primary" onClick={formSubmit}>
                 Upload
               </button>
