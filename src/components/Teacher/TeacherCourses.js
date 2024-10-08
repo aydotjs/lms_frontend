@@ -10,7 +10,7 @@ export default function TeacherCourses() {
   // fetch courses when page load
   useEffect(() => {
     try {
-      axios.get(baseUrl + "/course").then((res) => {
+      axios.get(baseUrl + "/teacher-courses/1").then((res) => {
         setCourseData(res.data);
       });
     } catch (error) {
