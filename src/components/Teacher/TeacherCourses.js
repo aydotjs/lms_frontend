@@ -34,7 +34,7 @@ export default function TeacherCourses() {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Name</th>
+                    <th>Image</th>
                     <th>Total Enrolled</th>
                     <th>Action</th>
                   </tr>
@@ -44,6 +44,7 @@ export default function TeacherCourses() {
                     return (
                       <tr>
                         <td>{course.title}</td>
+                        <td><img src={course.featured_img} width="80px" className="rounded" alt={course.title}/></td>
                         <td>
                           <Link to="/">10</Link>
                         </td>
