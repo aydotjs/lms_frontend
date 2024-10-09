@@ -7,17 +7,19 @@ const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function TeacherCourses() {
   const [courseData, setCourseData] = useState([]);
+  const teacherId = localStorage.getItem("teacherId");
+ 
   // fetch courses when page load
   useEffect(() => {
     try {
-      axios.get(baseUrl + "/teacher-courses/1").then((res) => {
+      axios.get(baseUrl + "/teacher-courses/" + teacherId).then((res) => {
         setCourseData(res.data);
       });
     } catch (error) {
       console.log(error);
     }
   }, []);
-  console.log(courseData);
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -31,6 +33,7 @@ export default function TeacherCourses() {
               <table className="table table-bordered">
                 <thead>
                   <tr>
+                    <th>Name</th>
                     <th>Name</th>
                     <th>Total Enrolled</th>
                     <th>Action</th>
@@ -48,7 +51,12 @@ export default function TeacherCourses() {
                           <button className="btn btn-primary btn-danger">
                             Delete
                           </button>
-                          <Link className="btn btn-success btn-sm ms-2" to="/add-chapter/2">Add Chapter</Link>
+                          <Link
+                            className="btn btn-success btn-sm ms-2"
+                            to="/add-chapter/2"
+                          >
+                            Add Chapter
+                          </Link>
                         </td>
                       </tr>
                     );
