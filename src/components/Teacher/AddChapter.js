@@ -1,34 +1,27 @@
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
+import { useState } from "react";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function AddChapter(){
  
   const [chapterData, setChapterData] = useState({
-    category: "",
+   
     title: "",
     description: "",
-    languages: "",
-    featured_img: "",
+    video: "",
+    remarks: "",
   });
 
-  useEffect(() => {
-    try {
-      axios.get(baseUrl + "/category").then((res) => {
-        setChapterData(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+
   const handleChange = (event) => {
-    setCourseData({
+    setChapterData({
       ...chapterData,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleFileChange = (event) => {
-    setCourseData({
+    setChapterData({
       ...chapterData,
       [event.target.name]: event.target.files[0], // Store the file object
     });
@@ -40,7 +33,7 @@ export default function AddChapter(){
     formData.append("teacher", 1);
     formData.append("title", chapterData.title);
     formData.append("description", chapterData.description);
-    formData.append("featured_img", chapterData.featured_img, courseData.featured_img.name); // No need for courseData.f_img.name
+    formData.append("featured_img", chapterData.featured_img, chapterData.featured_img.name); // No need for courseData.f_img.name
     formData.append("languages", chapterData.languages);
 
     try {
@@ -70,21 +63,21 @@ export default function AddChapter(){
                 <form>
                   <div className="mb-3">
                     <label for="title" className="form-label">Title</label>
-                    <input type="text" id="title" className="form-control" />
+                    <input type="text" id="title" className="form-control" onChange={handleChange} />
                   </div>
                   <div className="mb-3">
                     <label for="description" className="form-label">Description</label>
-                    <textarea id="description" className="form-control"></textarea>
+                    <textarea id="description" className="form-control" onChange={handleChange}></textarea>
                   </div>
                   <div className="mb-3">
                     <label for="video" className="form-label">Video</label>
-                    <input type="file" id="video" className="form-control" />
+                    <input type="file" id="video" onChange={handleFileChange} className="form-control" />
                   </div>
                   <div className="mb-3">
                     <label for="techs" className="form-label">Remarks</label>
                     <input type="text" id="techs" className="form-control" placeholder="This video is focused on basic introduction..." />
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="button" className="btn btn-primary">Submit</button>
                 </form>
               </div>
             </div>

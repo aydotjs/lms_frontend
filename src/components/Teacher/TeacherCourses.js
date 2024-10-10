@@ -54,7 +54,7 @@ export default function TeacherCourses() {
                           </button>
                           <Link
                             className="btn btn-success btn-sm ms-2"
-                            to="/add-chapter/"
+                            to={"/add-chapter/" + course.id}
                           >
                             Add Chapter
                           </Link>
