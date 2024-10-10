@@ -26,6 +26,7 @@ import AllCourses from "./AllCourses";
 import AllPopularCourses from "./AllPopularCourses";
 import AllTeachers from "./AllTeachers";
 import CategoryCourses from "./CategoryCourses.js";
+import AddChapter from "./Teacher/AddChapter.js";
 function App() {
   return (
     <div className="App">
@@ -51,8 +52,8 @@ function App() {
         <Route path="/teacher-logout" element={<TeacherLogout/>} />
         <Route path="/teacher-register" element={<TeacherRegister/>} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard/>} />
-        <Route path="/add-course" element={<AddCourse/>} />
         <Route path="/teacher-profile-setting" element={<TeacherProfileSetting/>} />
+        <Route path="/add-chapter" element={<AddChapter/>} />
         <Route path="/teacher-change-password" element={<TeacherChangePassword/>} />
         <Route path="/teacher-courses" element={<TeacherCourses/>} />
         <Route path="/all-courses" element={<AllCourses/>} />
