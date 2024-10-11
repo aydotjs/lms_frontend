@@ -53,12 +53,13 @@ function App() {
         <Route path="/teacher-register" element={<TeacherRegister/>} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard/>} />
         <Route path="/teacher-profile-setting" element={<TeacherProfileSetting/>} />
-        <Route path="/add-chapter" element={<AddChapter/>} />
+        <Route path="/add-chapter/:courseId" element={<AddChapter/>} />
         <Route path="/teacher-change-password" element={<TeacherChangePassword/>} />
         <Route path="/teacher-courses" element={<TeacherCourses/>} />
         <Route path="/all-courses" element={<AllCourses/>} />
         <Route path="/all-popular-courses" element={<AllPopularCourses/>} />
         <Route path="/all-teachers" element={<AllTeachers/>} />
+        <Route path="/add-course" element={<AddCourse/>} />
         
       
       </Switch>
