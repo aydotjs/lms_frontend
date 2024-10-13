@@ -7,6 +7,7 @@ function TeacherLogin() {
     email: "",
     password: "",
   });
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (event) => {
     setTeacherLoginData({
@@ -15,26 +16,30 @@ function TeacherLogin() {
     });
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     const teacherFormData = new FormData();
     teacherFormData.append("email", teacherLoginData.email);
     teacherFormData.append("password", teacherLoginData.password);
 
     try {
-      axios.post(baseUrl + "/teacher-login", teacherFormData).then((res) => {
-        if (res.data.bool == true) {
-          localStorage.setItem("teacherLoginStatus", true);
-          localStorage.setItem("teacherId", res.data.teacher_id);
-          window.location.href = "/teacher-dashboard";
-        }
-      });
+      const res = await axios.post(baseUrl + "/teacher-login", teacherFormData);
+      if (res.data.bool === true) {
+        localStorage.setItem("teacherLoginStatus", true);
+        localStorage.setItem("teacherId", res.data.teacher_id);
+        window.location.href = "/teacher-dashboard";
+      } else {
+        setErrorMsg("Oops!🙇 It looks like your email or password is incorrect. Please try again.");
+  
+      }
     } catch (error) {
-      console.log(error);
+      setErrorMsg("Oops! It looks like your email or password is incorrect. Please try again.");
+     
     }
   };
+
   const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
-  if (teacherLoginStatus == "true") {
+  if (teacherLoginStatus === "true") {
     window.location.href = "/teacher-dashboard";
   }
 
@@ -45,6 +50,7 @@ function TeacherLogin() {
           <div className="card">
             <h5 className="card-header">Teacher Login</h5>
             <div className="card-body">
+              {errorMsg && <p className="text-danger">{errorMsg}</p>}
               <form onSubmit={handleSubmitForm}>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
@@ -52,10 +58,11 @@ function TeacherLogin() {
                   </label>
                   <input
                     type="email"
-                    name="email" // Added name attribute for state management
-                    value={teacherLoginData.email} // Fixed typo: changed 'enail' to 'email'
+                    name="email"
+                    value={teacherLoginData.email}
                     onChange={handleChange}
                     className="form-control"
+                    required
                   />
                 </div>
 
@@ -67,9 +74,10 @@ function TeacherLogin() {
                     type="password"
                     className="form-control"
                     id="exampleInputPassword1"
-                    name="password" // Added name attribute for state management
+                    name="password"
                     value={teacherLoginData.password}
                     onChange={handleChange}
+                    required
                   />
                 </div>
 
@@ -86,7 +94,6 @@ function TeacherLogin() {
 
                 <button
                   type="submit"
-                  onClick={handleSubmitForm}
                   className="btn btn-primary"
                 >
                   Login

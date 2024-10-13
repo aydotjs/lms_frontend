@@ -1,6 +1,7 @@
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function AddChapter() {
   const [chapterData, setChapterData] = useState({
@@ -23,9 +24,11 @@ export default function AddChapter() {
       [event.target.name]: event.target.files[0], // Store the file object
     });
   };
+  const {course_id} =  useParams()
   const formSubmit = () => {
     const _formData = new FormData();
-    _formData.append("course", 1);
+  
+    _formData.append("course", course_id);
     _formData.append("title", chapterData.title);
     _formData.append("description", chapterData.description);
     _formData.append("video", chapterData.video, chapterData.video.name);

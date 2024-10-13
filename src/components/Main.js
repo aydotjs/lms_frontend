@@ -53,7 +53,7 @@ function App() {
         <Route path="/teacher-register" element={<TeacherRegister/>} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard/>} />
         <Route path="/teacher-profile-setting" element={<TeacherProfileSetting/>} />
-        <Route path="/add-chapter/:courseId" element={<AddChapter/>} />
+        <Route path="/add-chapter/:course_id" element={<AddChapter/>} />
         <Route path="/teacher-change-password" element={<TeacherChangePassword/>} />
         <Route path="/teacher-courses" element={<TeacherCourses/>} />
         <Route path="/all-courses" element={<AllCourses/>} />
