@@ -24,10 +24,10 @@ export default function AddChapter() {
       [event.target.name]: event.target.files[0], // Store the file object
     });
   };
-  const {course_id} =  useParams()
+  const { course_id } = useParams();
   const formSubmit = () => {
     const _formData = new FormData();
-  
+
     _formData.append("course", course_id);
     _formData.append("title", chapterData.title);
     _formData.append("description", chapterData.description);
@@ -101,11 +101,11 @@ export default function AddChapter() {
                     Remarks
                   </label>
                   <textarea
-                    type="text"
                     id="remarks"
                     name="remarks"
                     className="form-control"
                     placeholder="This video is focused on basic introduction..."
+                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <button
