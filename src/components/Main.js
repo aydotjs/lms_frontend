@@ -27,7 +27,9 @@ import AllPopularCourses from "./AllPopularCourses";
 import AllTeachers from "./AllTeachers";
 import CategoryCourses from "./CategoryCourses.js";
 import AddChapter from "./Teacher/AddChapter.js";
+import EditChapter from "./Teacher/EditChapter.js";
 import CourseChapters from "./Teacher/CourseChapters.js";
+
 
 function App() {
   return (
@@ -63,9 +65,8 @@ function App() {
         <Route path="/all-popular-courses" element={<AllPopularCourses />} />
         <Route path="/all-teachers" element={<AllTeachers />} />
         <Route path="/add-course" element={<AddCourse />} />
-
-        {/* Add the missing route */}
         <Route path="/course-chapters/:course_id" element={<CourseChapters />} />
+        <Route path="/edit-chapter/:chapter_id" element={<EditChapter />} />
       </Routes>
       <Footer />
     </div>
