@@ -8,7 +8,7 @@ const baseUrl = "http://127.0.0.1:8000/api";
 export default function TeacherCourses() {
   const [courseData, setCourseData] = useState([]);
   const teacherId = localStorage.getItem("teacherId");
- 
+
   // fetch courses when page load
   useEffect(() => {
     try {
@@ -43,8 +43,20 @@ export default function TeacherCourses() {
                   {courseData.map((course, index) => {
                     return (
                       <tr>
-                        <td>{course.title}</td>
-                        <td><img src={course.featured_img} width="80px" className="rounded" alt={course.title}/></td>
+                        <td>
+                          <Link to={`/course-chapters/${course.id}`}>
+                            {course.title}
+                          </Link>
+                        </td>
+
+                        <td>
+                          <img
+                            src={course.featured_img}
+                            width="80px"
+                            className="rounded"
+                            alt={course.title}
+                          />
+                        </td>
                         <td>
                           <Link to="/">10</Link>
                         </td>
