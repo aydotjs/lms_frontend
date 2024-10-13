@@ -7,6 +7,7 @@ const baseUrl = "http://127.0.0.1:8000/api"; // Ensure this matches your backend
 
 export default function CourseChapters() {
   const [chapterData, setChapterData] = useState([]);
+  const [totalResult, setTotalResult] = useState(0);
   const { course_id } = useParams();
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -26,6 +27,7 @@ export default function CourseChapters() {
         console.log('Response Data:', res.data);
         if (res.data && res.data.length > 0) {
           setChapterData(res.data);
+          setTotalResult(res.data.length);
         } else {
           setErrorMsg("No chapters found for this course.");
         }
@@ -59,7 +61,7 @@ export default function CourseChapters() {
         </aside>
         <section className="col-md-9">
           <div className="card">
-            <h5 className="card-header">All Chapters</h5>
+            <h5 className="card-header">All Chapters ({totalResult})</h5>
             <div className="card-body">
               {errorMsg && <p className="text-danger">{errorMsg}</p>}
               {chapterData.length > 0 ? (
