@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function EditChapter() {
@@ -35,23 +35,37 @@ export default function EditChapter() {
     _formData.append("course", chapterData.course);
     _formData.append("title", chapterData.title);
     _formData.append("description", chapterData.description);
-    if (chapterData.video !=="") {
+    if (chapterData.video !== "") {
       _formData.append("video", chapterData.video, chapterData.video.name);
     }
     _formData.append("remarks", chapterData.remarks);
-
+  
     try {
       const res = await axios.put(`${baseUrl}/chapter/${chapter_id}/`, _formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+  
+      // Display success toast notification here
+      if (res.status === 200) {
+        Swal.fire({
+          title: 'Data has been updated',
+          icon: 'success',
+          toast: true,
+          timer: 3000,
+          position: 'top-right',
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+      }
+  
       console.log(res);
-      // Optionally redirect or notify the user about the successful update
     } catch (error) {
       console.error("Error updating chapter:", error.response ? error.response.data : error.message);
     }
   };
+  
 
   useEffect(() => {
     const fetchChapterData = async () => {
