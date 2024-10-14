@@ -1,17 +1,20 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
 
 const baseUrl = "http://127.0.0.1:8000/api";
+
 export default function EditChapter() {
   const [chapterData, setChapterData] = useState({
+    course: "",
     title: "",
     description: "",
+    prev_video: "",
     video: "",
     remarks: "",
   });
+  const { chapter_id } = useParams();
 
   const handleChange = (event) => {
     setChapterData({
@@ -19,46 +22,50 @@ export default function EditChapter() {
       [event.target.name]: event.target.value,
     });
   };
+
   const handleFileChange = (event) => {
     setChapterData({
       ...chapterData,
       [event.target.name]: event.target.files[0], // Store the file object
     });
   };
-  const { chapter_id } = useParams();
-  const formSubmit = () => {
-    const _formData = new FormData();
 
-    _formData.append("course", chapter_id);
+  const formSubmit = async () => {
+    const _formData = new FormData();
+    _formData.append("course", chapterData.course);
     _formData.append("title", chapterData.title);
     _formData.append("description", chapterData.description);
-    _formData.append("video", chapterData.video, chapterData.video.name);
+    if (chapterData.video instanceof File) {
+      _formData.append("video", chapterData.video, chapterData.video.name);
+    }
     _formData.append("remarks", chapterData.remarks);
 
     try {
-      axios
-        .post(baseUrl + "/chapter/", _formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          // console.log(res.data);
-          window.location.href = "/add-chapter/1";
-        });
+      const res = await axios.put(`${baseUrl}/chapter/${chapter_id}/`, _formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res);
+      // Optionally redirect or notify the user about the successful update
     } catch (error) {
-      console.log(error);
+      console.error("Error updating chapter:", error.response ? error.response.data : error.message);
     }
   };
+
   useEffect(() => {
-    try {
-      axios.get(baseUrl + "/chapter/" + chapter_id).then((res) => {
+    const fetchChapterData = async () => {
+      try {
+        const res = await axios.get(`${baseUrl}/chapter/${chapter_id}/`);
         setChapterData(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error fetching chapter data:", error.response ? error.response.data : error.message);
+      }
+    };
+
+    fetchChapterData();
+  }, [chapter_id]);
 
   return (
     <div className="container mt-4">
@@ -70,36 +77,30 @@ export default function EditChapter() {
           <div className="card">
             <h5 className="card-header">Update Chapter</h5>
             <div className="card-body">
-              <form>
+              <form onSubmit={(e) => { e.preventDefault(); formSubmit(); }}>
                 <div className="mb-3">
-                  <label for="title" className="form-label">
-                    Title
-                  </label>
+                  <label htmlFor="title" className="form-label">Title</label>
                   <input
                     type="text"
                     id="title"
                     name="title"
                     className="form-control"
-                    value={chapterData.value}
+                    value={chapterData.title}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="description" className="form-label">
-                    Description
-                  </label>
+                  <label htmlFor="description" className="form-label">Description</label>
                   <textarea
                     id="description"
-                    value={chapterData.description}
                     name="description"
                     className="form-control"
+                    value={chapterData.description}
                     onChange={handleChange}
                   ></textarea>
                 </div>
                 <div className="mb-3">
-                  <label for="video" className="form-label">
-                    Video
-                  </label>
+                  <label htmlFor="video" className="form-label">Video</label>
                   <input
                     type="file"
                     id="video"
@@ -107,31 +108,26 @@ export default function EditChapter() {
                     onChange={handleFileChange}
                     className="form-control"
                   />
-                  <video controls width="250">
-                    <source src="{chapter.video.url}" type="video/webm" />
-                    <source src="{chapter.video.url}" type="video/mp4" />
-                    Sorry, your browser doesn't support embedded videos.
-                  </video>
+                  {chapterData.video && (
+                    <video controls width="100%" className="mt-2">
+                      <source src={chapterData.video} type="video/webm" />
+                      <source src={chapterData.video} type="video/mp4" />
+                      Sorry, your browser doesn't support embedded videos.
+                    </video>
+                  )}
                 </div>
                 <div className="mb-3">
-                  <label for="techs" className="form-label">
-                    Remarks
-                  </label>
+                  <label htmlFor="remarks" className="form-label">Remarks</label>
                   <textarea
                     id="remarks"
                     name="remarks"
                     className="form-control"
+                    value={chapterData.remarks}
                     placeholder="This video is focused on basic introduction..."
                     onChange={handleChange}
                   ></textarea>
                 </div>
-                <button
-                  type="button"
-                  onClick={formSubmit}
-                  className="btn btn-primary"
-                >
-                  Submit
-                </button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </form>
             </div>
           </div>
