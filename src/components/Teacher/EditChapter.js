@@ -39,33 +39,42 @@ export default function EditChapter() {
       _formData.append("video", chapterData.video, chapterData.video.name);
     }
     _formData.append("remarks", chapterData.remarks);
-  
+    for (let pair of _formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
+    
     try {
-      const res = await axios.put(`${baseUrl}/chapter/${chapter_id}/`, _formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-  
+      const res = await axios.put(
+        `${baseUrl}/chapter/${chapter_id}/`,
+        _formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       // Display success toast notification here
       if (res.status === 200) {
         Swal.fire({
-          title: 'Data has been updated',
-          icon: 'success',
+          title: "Data has been updated",
+          icon: "success",
           toast: true,
           timer: 3000,
-          position: 'top-right',
+          position: "top-right",
           timerProgressBar: true,
           showConfirmButton: false,
         });
       }
-  
-      console.log(res);
+
+      // console.log(res);
     } catch (error) {
-      console.error("Error updating chapter:", error.response ? error.response.data : error.message);
+      console.error(
+        "Error updating chapter:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
-  
 
   useEffect(() => {
     const fetchChapterData = async () => {
@@ -77,12 +86,15 @@ export default function EditChapter() {
           description: res.data.description,
           prev_video: res.data.video,
           remarks: res.data.remarks,
-          video: ''
-      });
-      
-        console.log(res.data);
+          video: "",
+        });
+
+        // console.log(res.data);
       } catch (error) {
-        console.error("Error fetching chapter data:", error.response ? error.response.data : error.message);
+        console.error(
+          "Error fetching chapter data:",
+          error.response ? error.response.data : error.message
+        );
       }
     };
 
@@ -99,9 +111,16 @@ export default function EditChapter() {
           <div className="card">
             <h5 className="card-header">Update Chapter</h5>
             <div className="card-body">
-              <form onSubmit={(e) => { e.preventDefault(); formSubmit(); }}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  formSubmit();
+                }}
+              >
                 <div className="mb-3">
-                  <label htmlFor="title" className="form-label">Title</label>
+                  <label htmlFor="title" className="form-label">
+                    Title
+                  </label>
                   <input
                     type="text"
                     id="title"
@@ -112,7 +131,9 @@ export default function EditChapter() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="description" className="form-label">Description</label>
+                  <label htmlFor="description" className="form-label">
+                    Description
+                  </label>
                   <textarea
                     id="description"
                     name="description"
@@ -122,7 +143,9 @@ export default function EditChapter() {
                   ></textarea>
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="video" className="form-label">Video</label>
+                  <label htmlFor="video" className="form-label">
+                    Video
+                  </label>
                   <input
                     type="file"
                     id="video"
@@ -139,7 +162,9 @@ export default function EditChapter() {
                   )}
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="remarks" className="form-label">Remarks</label>
+                  <label htmlFor="remarks" className="form-label">
+                    Remarks
+                  </label>
                   <textarea
                     id="remarks"
                     name="remarks"
@@ -149,7 +174,9 @@ export default function EditChapter() {
                     onChange={handleChange}
                   ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
               </form>
             </div>
           </div>
