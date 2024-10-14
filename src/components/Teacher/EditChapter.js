@@ -35,7 +35,7 @@ export default function EditChapter() {
     _formData.append("course", chapterData.course);
     _formData.append("title", chapterData.title);
     _formData.append("description", chapterData.description);
-    if (chapterData.video instanceof File) {
+    if (chapterData.video !=="") {
       _formData.append("video", chapterData.video, chapterData.video.name);
     }
     _formData.append("remarks", chapterData.remarks);
@@ -57,7 +57,15 @@ export default function EditChapter() {
     const fetchChapterData = async () => {
       try {
         const res = await axios.get(`${baseUrl}/chapter/${chapter_id}/`);
-        setChapterData(res.data);
+        setChapterData({
+          course: res.data.course,
+          title: res.data.title,
+          description: res.data.description,
+          prev_video: res.data.video,
+          remarks: res.data.remarks,
+          video: ''
+      });
+      
         console.log(res.data);
       } catch (error) {
         console.error("Error fetching chapter data:", error.response ? error.response.data : error.message);
@@ -110,8 +118,8 @@ export default function EditChapter() {
                   />
                   {chapterData.video && (
                     <video controls width="100%" className="mt-2">
-                      <source src={chapterData.video} type="video/webm" />
-                      <source src={chapterData.video} type="video/mp4" />
+                      <source src={chapterData.prev_video} type="video/webm" />
+                      <source src={chapterData.prev_video} type="video/mp4" />
                       Sorry, your browser doesn't support embedded videos.
                     </video>
                   )}

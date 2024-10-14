@@ -119,13 +119,13 @@ export default function CourseChapters() {
                           >
                             <i className="bi bi-pencil-square"></i>
                           </Link>
-                          <bttom onClick={handleDeleteClick}
+                          <button onClick={handleDeleteClick}
                             to={"/delete-chapter/" + chapter.id}
                             className="btn btn-danger ms-1"
                           >
                             <i className="bi bi-trash"></i>
 
-                          </bttom>
+                          </button>
                          
                         </td>
                       </tr>
