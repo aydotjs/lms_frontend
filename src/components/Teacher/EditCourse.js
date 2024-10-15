@@ -20,6 +20,7 @@ export default function EditCourse() {
     try {
       axios.get(baseUrl + "/category").then((res) => {
         setCats(res.data);
+        console.log(res.data);
       });
     } catch (error) {
       console.log(error);
@@ -182,7 +183,7 @@ export default function EditCourse() {
                   id="video"
                   name="featured_img"
                   className="form-control"
-                  value={courseData.featured_img}
+                
                 />
               </div>
 
