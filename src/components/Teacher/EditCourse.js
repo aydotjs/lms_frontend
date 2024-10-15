@@ -69,19 +69,21 @@ export default function EditCourse() {
     formData.append("teacher", 1);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-    if (courseData.featured_img != "") {
+  
+    // Check if featured_img is a file before appending
+    if (courseData.featured_img && typeof courseData.featured_img === 'object') {
       formData.append(
         "featured_img",
         courseData.featured_img,
         courseData.featured_img.name
       );
     }
-
+  
     formData.append("languages", courseData.languages);
-
+  
     try {
       axios
-        .post(baseUrl + "/teacher-course-detail/" + course_id, formData, {
+        .put(baseUrl + "/teacher-course-detail/" + course_id + "/", formData, {
           headers: {
             "content-type": "multipart/form-data",
           },
@@ -103,6 +105,7 @@ export default function EditCourse() {
       console.log(error);
     }
   };
+  
 
   return (
     <div className="container mt-4">
@@ -144,7 +147,7 @@ export default function EditCourse() {
                 <input
                   type="text"
                   onChange={handleChange}
-                  name="title"
+                  name="languages"
                   id="title"
                   className="form-control"
                   value={courseData.languages}
