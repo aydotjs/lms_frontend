@@ -28,6 +28,7 @@ import AllTeachers from "./AllTeachers";
 import CategoryCourses from "./CategoryCourses.js";
 import AddChapter from "./Teacher/AddChapter.js";
 import EditChapter from "./Teacher/EditChapter.js";
+import EditCourse from "./Teacher/EditCourse.js";
 import CourseChapters from "./Teacher/CourseChapters.js";
 
 
@@ -65,6 +66,7 @@ function App() {
         <Route path="/all-popular-courses" element={<AllPopularCourses />} />
         <Route path="/all-teachers" element={<AllTeachers />} />
         <Route path="/add-course" element={<AddCourse />} />
+        <Route path="/edit-course/:course_id" element={<EditCourse />} />
         <Route path="/course-chapters/:course_id" element={<CourseChapters />} />
         <Route path="/edit-chapter/:chapter_id" element={<EditChapter />} />
       </Routes>
