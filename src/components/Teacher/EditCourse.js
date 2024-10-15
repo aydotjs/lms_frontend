@@ -3,6 +3,7 @@ import TeacherSidebar from "./TeacherSidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function EditCourse() {
   const [cats, setCats] = useState([]);
@@ -11,9 +12,10 @@ export default function EditCourse() {
     title: "",
     description: "",
     languages: "",
+    prev_image: "",
     featured_img: "",
   });
-const {course_id} = useParams()
+  const { course_id } = useParams();
   useEffect(() => {
     try {
       axios.get(baseUrl + "/category").then((res) => {
@@ -22,28 +24,30 @@ const {course_id} = useParams()
     } catch (error) {
       console.log(error);
     }
-    const fetchChapterData = async () => {
-        try {
-          const res = await axios.get(`${baseUrl}/teacher-course-detail/${course_id}/`);
-          setCourseData({
-            course: res.data.course,
-            title: res.data.title,
-            description: res.data.description,
-            prev_video: res.data.video,
-            remarks: res.data.remarks,
-            video: "",
-          });
-  
-          // console.log(res.data);
-        } catch (error) {
-          console.error(
-            "Error fetching chapter data:",
-            error.response ? error.response.data : error.message
-          );
-        }
-      };
-  
-      fetchChapterData();
+    const fetchCourseData = async () => {
+      try {
+        const res = await axios.get(
+          `${baseUrl}/teacher-course-detail/${course_id}/`
+        );
+        setCourseData({
+          category: res.data.category,
+          title: res.data.title,
+          description: res.data.description,
+          featured_image: "",
+          prev_image: res.data.featured_image,
+          languages: res.data.languages,
+        });
+
+        // console.log(res.data);
+      } catch (error) {
+        console.error(
+          "Error fetching chapter data:",
+          error.response ? error.response.data : error.message
+        );
+      }
+    };
+
+    fetchCourseData();
   }, []);
   const handleChange = (event) => {
     setCourseData({
@@ -65,18 +69,35 @@ const {course_id} = useParams()
     formData.append("teacher", 1);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-    formData.append("featured_img", courseData.featured_img, courseData.featured_img.name); // No need for courseData.f_img.name
+    if (courseData.featured_img != "") {
+      formData.append(
+        "featured_img",
+        courseData.featured_img,
+        courseData.featured_img.name
+      );
+    }
+
     formData.append("languages", courseData.languages);
 
     try {
       axios
-        .post(baseUrl + "/course/", formData, {
+        .post(baseUrl + "/teacher-course-detail/" + course_id, formData, {
           headers: {
             "content-type": "multipart/form-data",
           },
         })
         .then((res) => {
-          window.location.href = "/add-course";
+          if (res.status === 200) {
+            Swal.fire({
+              title: "Data has been updated",
+              icon: "success",
+              toast: true,
+              timer: 3000,
+              position: "top-right",
+              timerProgressBar: true,
+              showConfirmButton: false,
+            });
+          }
         });
     } catch (error) {
       console.log(error);
@@ -104,9 +125,12 @@ const {course_id} = useParams()
                   onChange={handleChange}
                   name="category"
                   className="form-control"
+                  value={courseData.category}
                 >
                   {cats.map((category, index) => (
-                    <option key={index} value={category.id}>{category.title}</option>
+                    <option key={index} value={category.id}>
+                      {category.title}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -123,6 +147,7 @@ const {course_id} = useParams()
                   name="title"
                   id="title"
                   className="form-control"
+                  value={courseData.languages}
                 />
               </div>
               <div className="mb-3">
@@ -137,6 +162,7 @@ const {course_id} = useParams()
                   id="description"
                   name="description"
                   className="form-control"
+                  value={courseData.description}
                 ></textarea>
               </div>
 
@@ -153,6 +179,7 @@ const {course_id} = useParams()
                   id="video"
                   name="featured_img"
                   className="form-control"
+                  value={courseData.featured_img}
                 />
               </div>
 
