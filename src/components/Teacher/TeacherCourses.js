@@ -8,7 +8,7 @@ const baseUrl = "http://127.0.0.1:8000/api";
 export default function TeacherCourses() {
   const [courseData, setCourseData] = useState([]);
   const teacherId = localStorage.getItem("teacherId");
-
+  
   // fetch courses when page load
   useEffect(() => {
     try {
@@ -61,15 +61,21 @@ export default function TeacherCourses() {
                           <Link to="/">10</Link>
                         </td>
                         <td>
-                          <button className="btn btn-primary btn-danger">
-                            Delete
-                          </button>
+                          <Link
+                            className="btn btn-info btn-sm"
+                            to={"/edit-course/" + course.id}
+                          >
+                            Edit
+                          </Link>
                           <Link
                             className="btn btn-success btn-sm ms-2"
                             to={"/add-chapter/" + course.id}
                           >
                             Add Chapter
                           </Link>
+                          <button className="btn btn-primary btn-danger ms-2">
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     );

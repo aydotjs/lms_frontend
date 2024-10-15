@@ -27,7 +27,6 @@ export default function AddChapter() {
   const { course_id } = useParams();
   const formSubmit = () => {
     const _formData = new FormData();
-
     _formData.append("course", course_id);
     _formData.append("title", chapterData.title);
     _formData.append("description", chapterData.description);
@@ -36,7 +35,7 @@ export default function AddChapter() {
 
     try {
       axios
-        .post(baseUrl + "/chapter/", _formData, {
+        .post(baseUrl + "/chapter/" , _formData, {
           headers: {
             "content-type": "multipart/form-data",
           },

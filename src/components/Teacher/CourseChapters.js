@@ -56,16 +56,39 @@ export default function CourseChapters() {
   }, [course_id]);
   const Swal = require('sweetalert2');
 
-  const handleDeleteClick = () => {
-    Swal.fire({
-      title: 'Confirm',
-      text: 'Are you sure you want to delete this data?',
-      icon: 'info',
-      confirmButtonText: 'Continue',
-      showCancelButton: true
+  const handleDeleteClick = async (chapter_id) => {
+    const result = await Swal.fire({
+        title: 'Confirm',
+        text: 'Are you sure you want to delete this chapter?',
+        icon: 'info',
+        confirmButtonText: 'Continue',
+        showCancelButton: true
     });
-  }
-  
+
+    if (result.isConfirmed) {
+        try {
+            // Delete the chapter
+            await axios.delete(baseUrl + '/chapter/' + chapter_id + "/");
+            Swal.fire('success', 'This particular chapter has been deleted.');
+
+            try {
+                // Fetch updated list of course chapters
+                const res = await axios.get(baseUrl + '/course-chapters/' + course_id);
+                setTotalResult(res.data.length);
+                setChapterData(res.data);
+            } catch (error) {
+                console.error(error);
+            }
+
+        } catch (error) {
+            Swal.fire('error', 'Chapter has not been deleted!');
+        }
+    } else {
+        Swal.fire('error', 'Chapter has not been deleted!!');
+    }
+};
+
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -119,7 +142,7 @@ export default function CourseChapters() {
                           >
                             <i className="bi bi-pencil-square"></i>
                           </Link>
-                          <button onClick={handleDeleteClick}
+                          <button onClick={()=>handleDeleteClick(chapter.id)}
                             to={"/delete-chapter/" + chapter.id}
                             className="btn btn-danger ms-1"
                           >
@@ -133,7 +156,7 @@ export default function CourseChapters() {
                   </tbody>
                 </table>
               ) : (
-                !errorMsg && <p>Loading chapters...</p>
+                !errorMsg && <p>No chapters found🙇</p>
               )}
             </div>
           </div>
