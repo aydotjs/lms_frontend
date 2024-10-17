@@ -20,7 +20,7 @@ export default function EditCourse() {
     try {
       axios.get(baseUrl + "/category").then((res) => {
         setCats(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       });
     } catch (error) {
       console.log(error);
@@ -39,7 +39,7 @@ export default function EditCourse() {
           languages: res.data.languages,
         });
 
-        // console.log(res.data);
+        console.log("res data==>",res.data);
       } catch (error) {
         console.error(
           "Error fetching chapter data:",
@@ -107,7 +107,7 @@ export default function EditCourse() {
     }
   };
   
-
+console.log(courseData);
   return (
     <div className="container mt-4">
       <div className="row">
@@ -185,6 +185,7 @@ export default function EditCourse() {
                   className="form-control"
                 
                 />
+                {courseData.prev_image && <img src={courseData.prev_image}/>}
               </div>
 
               <button className="btn btn-primary" onClick={formSubmit}>
