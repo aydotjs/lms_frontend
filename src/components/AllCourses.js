@@ -24,12 +24,12 @@ export default function AllCourses() {
           courseData.map((course, index) => (
             <div className="col-md-3">
               <div className="card">
-                <Link to="/detail/1">
-                  <img src="logo512.png" className="card-img-top" alt="..." />
+                <Link to={`/detail/${course.id}`}>
+                  <img src={course.featured_img} className="card-img-top" alt={course.title} />
                 </Link>
                 <div className="card-body">
                   <h5 className="card-title">
-                    <Link to="/detail/1">Course title</Link>
+                    <Link to={`/detail/${course.id}`}>{course.title}</Link>
                   </h5>
                 </div>
               </div>

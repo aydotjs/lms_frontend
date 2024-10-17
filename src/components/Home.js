@@ -1,10 +1,21 @@
 import { Link } from "react-router-dom";
 import AllCourses from "./AllCourses";
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+const baseUrl = "http://127.0.0.1:8000/api";
 function Home() {
+  const [courseData, setCourseData] = useState([]);
+  // fetch courses when page load
   useEffect(() => {
-    document.title = "Language4All-Home Page";
-  });
+    try {
+      axios.get(baseUrl + "/course/?result=4").then((res) => {
+        setCourseData(res.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <div className="container mt-4">
       {/* Latest Course */}
@@ -15,70 +26,25 @@ function Home() {
         </Link>
       </h3>
       <div className="row mb-4">
-        <div className="col-md-3">
-          <div className="card">
-            <Link to="/detail/1">
-              <img
-                src="/language-icons/english-language.png"
-                className="card-img-top"
-                alt="..."
-              />
-            </Link>
-            <div className="card-body">
-              <h5 className="card-title">
-                <Link to="/detail/1">English Language</Link>
-              </h5>
+        {courseData &&
+          courseData.map((course, index) => (
+            <div className="col-md-3">
+              <div className="card">
+                <Link to={`/detail/${course.id}`}>
+                  <img
+                    src={course.featured_img}
+                    className="card-img-top"
+                    alt={course.title}
+                  />
+                </Link>
+                <div className="card-body">
+                  <h5 className="card-title">
+                    <Link to={`/detail/${course.id}`}>{course.title}</Link>
+                  </h5>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card">
-            <a href="#">
-              <img
-                src="/language-icons/german-flag.png"
-                className="card-img-top"
-                alt="..."
-              />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <a href="#">German Language</a>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card">
-            <a href="#">
-              <img
-                src="/language-icons/italy-flag.png"
-                className="card-img-top"
-                alt="..."
-              />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <a href="#">Italian Language</a>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card">
-            <a href="#">
-              <img
-                src="/language-icons/spanish-language.png"
-                className="card-img-top"
-                alt="..."
-              />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <a href="#">Spanish Language</a>
-              </h5>
-            </div>
-          </div>
-        </div>
+          ))}
       </div>
       {/* End of latest course */}
       {/* Popular Courses */}
@@ -325,9 +291,7 @@ function Home() {
                   to fit learning into my busy schedule. Highly recommend!
                 </p>
               </blockquote>
-              <figcaption class="blockquote-footer">
-              Sarah K.
-              </figcaption>
+              <figcaption class="blockquote-footer">Sarah K.</figcaption>
             </figure>
           </div>
         </div>
