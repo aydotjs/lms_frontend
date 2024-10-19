@@ -22,8 +22,6 @@ export default function TeacherDetail() {
     }
   }, []);
 
-
-
   return (
     <div className="container mt-3">
       <div className="row">
@@ -32,11 +30,10 @@ export default function TeacherDetail() {
         </div>
         <div className="col-8">
           <h3>{teacherData.full_name}</h3>
-          <p>
-           {teacherData.detail}
-          </p>
+          <p>{teacherData.detail}</p>
           <p className="fw-bold">
-            Languages: <Link to="/category/beginner-friendly">English</Link> {", "}
+            Languages: <Link to="/category/beginner-friendly">English</Link>{" "}
+            {", "}
             <Link to="/category/beginner-friendly">Spanish</Link>
           </p>
           <p className="fw-bold">
@@ -50,26 +47,18 @@ export default function TeacherDetail() {
       {/* Course Detail */}
       <div className="card mt-4">
         <div className="card-header">Course List</div>
-        <div className="list-group list-group-flush">
-          <Link to="/detail/1" className="list-group-item list-group-item-action">
-            English Course 1
-          </Link>
-          <Link to="/detail/1" className="list-group-item list-group-item-action">
-            English Course 2
-          </Link>
-          <Link to="/detail/1" className="list-group-item list-group-item-action">
-            French Course 1
-          </Link>
-          <Link to="/detail/1" className="list-group-item list-group-item-action">
-            French Course 2
-          </Link>
-          <Link to="/detail/1" className="list-group-item list-group-item-action">
-            Arabic Course 1
-          </Link>
-          <Link to="/detail/1" className="list-group-item list-group-item-action">
-            Arabic Course 2
-          </Link>
-        </div>
+        {
+          <div className="list-group list-group-flush">
+            {courseData.map((course, index) => (
+              <Link
+                to={`/detail/${course.id}`}
+                className="list-group-item list-group-item-action"
+              >
+                {course.title}
+              </Link>
+            ))}
+          </div>
+        }
       </div>
     </div>
   );
