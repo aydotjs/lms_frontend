@@ -1,8 +1,25 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+const baseUrl = "http://127.0.0.1:8000/api";
 function CourseDetail() {
+  const [courseData, setCourseData] = useState([]);
+  const [chapterData, setChapterData] = useState([]);
   let { course_id } = useParams();
+  
+  // Fetch courses when page load
+  useEffect(() => {
+    try {
+      axios.get(baseUrl + '/course/' + course_id)
+        .then((res) => {
+          setCourseData(res.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  
 
   return (
     <div className="container mt-3">
