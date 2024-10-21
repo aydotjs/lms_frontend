@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Sw
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
 import Login from "./User/Login";
-import Register from "./User/Register";
+
 import Dashboard from "./User/DashBoard";
 import MyCourses from "./User/MyCourses";
 import RecommendedCourses from "./User/RecommendedCourses";
@@ -30,6 +30,7 @@ import AddChapter from "./Teacher/AddChapter.js";
 import EditChapter from "./Teacher/EditChapter.js";
 import EditCourse from "./Teacher/EditCourse.js";
 import CourseChapters from "./Teacher/CourseChapters.js";
+import StudentRegister from "./User/Register";
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
 
         {/* ==========Student Panels =====================*/}
         <Route path="/user-login" element={<Login />} />
-        <Route path="/user-register" element={<Register />} />
+        <Route path="/user-register" element={<StudentRegister />} />
         <Route path="/user-dashboard" element={<Dashboard />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/favorite-courses" element={<FavouriteCourses />} />

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const baseUrl = "http://127.0.0.1:8000/api/teacher/";
 
-function Register() {
+function TeacherRegister() {
   const [teacherData, setTeacherData] = useState({
     full_name: "",
     email: "",
@@ -159,6 +159,7 @@ function Register() {
                 </div>
 
                 <button
+                  onClick={handleSubmit}
                   type="submit"
                   className="btn btn-primary"
                 >
@@ -173,4 +174,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default TeacherRegister;
