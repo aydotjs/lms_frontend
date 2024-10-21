@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+import axios from "axios";
+
+const baseUrl = "http://127.0.0.1:8000/api/teacher/";
 function Register() {
+  const [studntData, setStudentData] = useState({
+    full_name: "",
+    email: "",
+    password: "",
+    username: "",
+    interest: "",
+    status: "",
+  });
+  const handleChange = (event) => {
+    setStudentData({
+      ...studntData,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div className="container mt-4">
       <div className="row">

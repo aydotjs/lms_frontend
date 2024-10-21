@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function AllCourses() {
+export default function CategoryCourses() {
   return (
     <div className="container mt-3">
       {/* Latest Course */}
