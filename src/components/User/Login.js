@@ -54,7 +54,7 @@ function Login() {
         <div className="row">
             <div className="col-6 offset-3">
                 <div className="card">
-                    <div className="card-header">User Login</div>
+                    <div className="card-header"><h5>Student Login</h5></div>
                     <div className="card-body">
                         {errorMsg && <p className="text-danger">{errorMsg}</p>}
                         <form>

@@ -31,6 +31,7 @@ import EditChapter from "./Teacher/EditChapter.js";
 import EditCourse from "./Teacher/EditCourse.js";
 import CourseChapters from "./Teacher/CourseChapters.js";
 import StudentRegister from "./User/Register";
+import StudentLogout from "./User/StudentLogout.js";
 
 
 function App() {
@@ -45,14 +46,16 @@ function App() {
         <Route path="/category/:category_slug" element={<CategoryCourses />} />
 
         {/* ==========Student Panels =====================*/}
-        <Route path="/user-login" element={<Login />} />
-        <Route path="/user-register" element={<StudentRegister />} />
+        <Route path="/student-login" element={<Login />} />
+        <Route path="/student-register" element={<StudentRegister />} />
         <Route path="/student-dashboard" element={<Dashboard />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/favorite-courses" element={<FavouriteCourses />} />
         <Route path="/recommended-courses" element={<RecommendedCourses />} />
         <Route path="/profile-setting" element={<ProfileSetting />} />
         <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/student-logout" element={<StudentLogout />} />
+
 
         {/* ==========Teacher Panels =====================*/}
         <Route path="/teacher-login" element={<TeacherLogin />} />

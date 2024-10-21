@@ -83,12 +83,12 @@ function Header() {
                 {studentLoginStatus !== "true" && (
                   <>
                     <li>
-                      <Link className="dropdown-item" to="/user-login">
+                      <Link className="dropdown-item" to="/student-login">
                         Login
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/user-register">
+                      <Link className="dropdown-item" to="/student-register">
                         Register
                       </Link>
                     </li>
@@ -102,9 +102,9 @@ function Header() {
                       </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link to='/student-logout' className="dropdown-item" href="#">
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </>
                 )}
