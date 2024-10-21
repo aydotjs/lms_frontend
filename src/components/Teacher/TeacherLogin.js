@@ -51,7 +51,7 @@ function TeacherLogin() {
             <h5 className="card-header">Teacher Login</h5>
             <div className="card-body">
               {errorMsg && <p className="text-danger">{errorMsg}</p>}
-              <form onSubmit={handleSubmitForm}>
+             
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
                     Email
@@ -95,10 +95,11 @@ function TeacherLogin() {
                 <button
                   type="submit"
                   className="btn btn-primary"
+                  onClick={handleSubmitForm}
                 >
                   Login
                 </button>
-              </form>
+       
             </div>
           </div>
         </div>

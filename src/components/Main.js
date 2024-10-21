@@ -47,7 +47,7 @@ function App() {
         {/* ==========Student Panels =====================*/}
         <Route path="/user-login" element={<Login />} />
         <Route path="/user-register" element={<StudentRegister />} />
-        <Route path="/user-dashboard" element={<Dashboard />} />
+        <Route path="/student-dashboard" element={<Dashboard />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/favorite-courses" element={<FavouriteCourses />} />
         <Route path="/recommended-courses" element={<RecommendedCourses />} />
