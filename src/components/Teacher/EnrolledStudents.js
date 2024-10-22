@@ -5,15 +5,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const baseUrl = "http://127.0.0.1:8000/api";
 
-export default function TeacherCourses() {
-  const [courseData, setCourseData] = useState([]);
+export default function EnrolledStudents() {
+  const [studentData, setStudentData] = useState([]);
   const teacherId = localStorage.getItem("teacherId");
 
   // fetch courses when page load
   useEffect(() => {
     try {
       axios.get(baseUrl + "/teacher-courses/" + teacherId).then((res) => {
-        setCourseData(res.data);
+        setStudentData(res.data);
       });
     } catch (error) {
       console.log(error);
@@ -40,12 +40,12 @@ export default function TeacherCourses() {
                   </tr>
                 </thead>
                 <tbody>
-                  {courseData.map((course, index) => {
+                  {studentData.map((student, index) => {
                     return (
                       <tr>
                         <td>
-                          <Link to={`/course-chapters/${course.id}`}>
-                            {course.title}
+                          <Link to={`/view-student/${course.id}`}>
+                            {student.full_name}
                           </Link>
                         </td>
 
@@ -65,17 +65,10 @@ export default function TeacherCourses() {
                             className="btn btn-info btn-sm"
                             to={"/edit-course/" + course.id}
                           >
-                            Edit
+                           View
                           </Link>
-                          <Link
-                            className="btn btn-success btn-sm ms-2"
-                            to={"/add-chapter/" + course.id}
-                          >
-                            Add Chapter
-                          </Link>
-                          <button className="btn btn-primary btn-danger ms-2">
-                            Delete
-                          </button>
+                        
+                        
                         </td>
                       </tr>
                     );

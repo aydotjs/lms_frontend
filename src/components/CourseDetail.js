@@ -12,12 +12,12 @@ function CourseDetail() {
   const [chapterData, setChapterData] = useState([]);
   const [teacherData, setTeacherData] = useState([]);
   const [relatedCourseData, setRelatedCourseData] = useState([]);
-  const { course_id } = useParams();  // Corrected syntax
+  const { course_id } = useParams(); // Corrected syntax
   const [userLoginStatus, setUserLoginStatus] = useState();
   const [enrollStatus, setEnrollStatus] = useState();
 
   useEffect(() => {
-    const studentId = localStorage.getItem("studentId");  // Declare studentId here
+    const studentId = localStorage.getItem("studentId"); // Declare studentId here
 
     // Fetch course details when the page loads
     try {
@@ -33,11 +33,13 @@ function CourseDetail() {
 
     // Fetch enroll status
     try {
-      axios.get(`${baseUrl}/fetch-enroll-status/${studentId}/${course_id}`).then((res) => {
-        if (res.data.bool === true) {
-          setEnrollStatus("success");
-        }
-      });
+      axios
+        .get(`${baseUrl}/fetch-enroll-status/${studentId}/${course_id}`)
+        .then((res) => {
+          if (res.data.bool === true) {
+            setEnrollStatus("success");
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +103,11 @@ function CourseDetail() {
             </Link>
           </p>
           <p className="fw-bold">Duration: 3 Hours 30 Minutes</p>
-          <p className="fw-bold">Total Enrolled: 456 Students</p>
+          <p className="fw-bold">
+            Total Enrolled: {courseData.total_enrolled_students} Student
+            {courseData.total_enrolled_students > 1 ? "s" : ""}
+          </p>
+
           <p className="fw-bold">Rating: 4.5/5</p>
 
           {enrollStatus === "success" && userLoginStatus === "success" && (
@@ -133,28 +139,29 @@ function CourseDetail() {
       </div>
 
       {/* Course Detail */}
-      {enrollStatus === "success" && userLoginStatus === "success" &&
-      <div className="card mt-4">
-        <div className="card-header">
-          <h5>In this course</h5>
+      {enrollStatus === "success" && userLoginStatus === "success" && (
+        <div className="card mt-4">
+          <div className="card-header">
+            <h5>In this course</h5>
+          </div>
+          <ul className="list-group list-group-flush">
+            {chapterData.map((chapter) => (
+              <li className="list-group-item" key={chapter.id}>
+                {chapter.title}
+                <span className="float-end">
+                  <span className="me-5">1 Hour 30 Minutes</span>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => window.open(chapter.video, "_blank")}
+                  >
+                    <i className="bi-youtube"></i>
+                  </button>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="list-group list-group-flush">
-          {chapterData.map((chapter) => (
-            <li className="list-group-item" key={chapter.id}>
-              {chapter.title}
-              <span className="float-end">
-                <span className="me-5">1 Hour 30 Minutes</span>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={() => window.open(chapter.video, "_blank")}
-                >
-                  <i className="bi-youtube"></i>
-                </button>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>}
+      )}
 
       <h5 className="pb-1 mb-4 mt-5">Related Courses </h5>
       <div className="row mb-4">
