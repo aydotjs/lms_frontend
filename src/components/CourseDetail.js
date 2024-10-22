@@ -1,20 +1,27 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 import axios from "axios";
+
 const baseUrl = "http://127.0.0.1:8000/api";
 const siteUrl = "http://127.0.0.1:8000/";
+
 function CourseDetail() {
   const [courseData, setCourseData] = useState([]);
   const [chapterData, setChapterData] = useState([]);
   const [teacherData, setTeacherData] = useState([]);
   const [relatedCourseData, setRelatedCourseData] = useState([]);
-  let { course_id } = useParams();
+  const { course_id } = useParams();  // Corrected syntax
+  const [userLoginStatus, setUserLoginStatus] = useState();
+  const [enrollStatus, setEnrollStatus] = useState();
 
-  // Fetch courses when page load
   useEffect(() => {
+    const studentId = localStorage.getItem("studentId");  // Declare studentId here
+
+    // Fetch course details when the page loads
     try {
-      axios.get(baseUrl + "/course/" + course_id).then((res) => {
+      axios.get(`${baseUrl}/course/${course_id}`).then((res) => {
         setCourseData(res.data);
         setChapterData(res.data.course_chapters);
         setTeacherData(res.data.teacher);
@@ -23,8 +30,57 @@ function CourseDetail() {
     } catch (error) {
       console.log(error);
     }
-  }, []);
-  console.log(relatedCourseData);
+
+    // Fetch enroll status
+    try {
+      axios.get(`${baseUrl}/fetch-enroll-status/${studentId}/${course_id}`).then((res) => {
+        if (res.data.bool === true) {
+          setEnrollStatus("success");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    // Check login status
+    const studentLoginStatus = localStorage.getItem("studentLoginStatus");
+    if (studentLoginStatus === "true") {
+      setUserLoginStatus("success");
+    }
+  }, [course_id]);
+
+  const enrollCourse = () => {
+    const studentId = localStorage.getItem("studentId");
+    const formData = new FormData();
+    formData.append("course", course_id);
+    formData.append("student", studentId);
+
+    try {
+      axios
+        .post(`${baseUrl}/student-enroll-course/`, formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            Swal.fire({
+              title: "You have successfully enrolled in this course",
+              icon: "success",
+              toast: true,
+              timer: 10000,
+              position: "top-right",
+              timerProgressBar: true,
+              showConfirmButton: false,
+            });
+            setEnrollStatus("success");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container mt-3">
       <div className="row">
@@ -40,14 +96,44 @@ function CourseDetail() {
           <p>{courseData.description}</p>
           <p className="fw-bold">
             Course By:{" "}
-            <Link to={`/teacher-detail/${teacherData.id}`}>{teacherData.full_name}</Link>
+            <Link to={`/teacher-detail/${teacherData.id}`}>
+              {teacherData.full_name}
+            </Link>
           </p>
           <p className="fw-bold">Duration: 3 Hours 30 Minutes</p>
           <p className="fw-bold">Total Enrolled: 456 Students</p>
           <p className="fw-bold">Rating: 4.5/5</p>
+
+          {enrollStatus === "success" && userLoginStatus === "success" && (
+            <p>
+              <span>You are already enrolled in this course</span>
+            </p>
+          )}
+
+          {userLoginStatus === "success" && enrollStatus !== "success" && (
+            <p>
+              <button
+                onClick={enrollCourse}
+                type="button"
+                className="btn btn-success"
+              >
+                Enroll in this course
+              </button>
+            </p>
+          )}
+
+          {userLoginStatus !== "success" && (
+            <p>
+              <Link to="/student-login">
+                Please login to enroll in this course
+              </Link>
+            </p>
+          )}
         </div>
       </div>
+
       {/* Course Detail */}
+      {enrollStatus === "success" && userLoginStatus === "success" &&
       <div className="card mt-4">
         <div className="card-header">
           <h5>In this course</h5>
@@ -65,48 +151,15 @@ function CourseDetail() {
                   <i className="bi-youtube"></i>
                 </button>
               </span>
-              {/* Video Modal Start */}
-              <div
-                className="modal fade"
-                id="videoModal1"
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog modal-lg">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">
-                        Video 1
-                      </h5>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="modal-body">
-                      <div className="ratio ratio-16x9">
-                        <iframe
-                          src={chapter.video}
-                          title="Chapter Title"
-                          allowFullScreen
-                        ></iframe>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Video Modal End */}
             </li>
           ))}
         </ul>
-      </div>
+      </div>}
+
       <h5 className="pb-1 mb-4 mt-5">Related Courses </h5>
       <div className="row mb-4">
         {relatedCourseData.map((rcourse, index) => (
-          <div className="col-md-3">
+          <div className="col-md-3" key={index}>
             <div className="card">
               <Link to={`/detail/${rcourse.pk}`}>
                 <img
