@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,12 +7,12 @@ const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function EnrolledStudents() {
   const [studentData, setStudentData] = useState([]);
-  const teacherId = localStorage.getItem("teacherId");
+ let {course_id} =  useParams()
 
   // fetch courses when page load
   useEffect(() => {
     try {
-      axios.get(baseUrl + "/teacher-courses/" + teacherId).then((res) => {
+      axios.get(baseUrl + "/fetch-enrolled-students/" + course_id).then((res) => {
         setStudentData(res.data);
       });
     } catch (error) {
@@ -28,42 +28,37 @@ export default function EnrolledStudents() {
         </aside>
         <section className="col-md-9">
           <div className="card">
-            <h5 className="card-header">My Courses</h5>
+            <h5 className="card-header">Enrolled Students List</h5>
             <div className="card-body">
               <table className="table table-bordered">
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Image</th>
-                    <th>Total Enrolled</th>
+                    <th>Email</th>
+                    <th>Username</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {studentData.map((student, index) => {
+                  {studentData.map((row, index) => {
                     return (
                       <tr>
                         <td>
-                          <Link to={`/view-student/${course.id}`}>
-                            {student.full_name}
+                          <Link to={`/view-student/${row.student.id}`}>
+                            {row.student.full_name}
                           </Link>
                         </td>
 
                         <td>
-                          <img
-                            src={course.featured_img}
-                            width="80px"
-                            className="rounded"
-                            alt={course.title}
-                          />
+                          {row.student.email}
                         </td>
                         <td>
-                          <Link to="/">{course.total_enrolled_students}</Link>
+                          {row.student.username}
                         </td>
                         <td>
                           <Link
                             className="btn btn-info btn-sm"
-                            to={"/edit-course/" + course.id}
+                            to={"/view-student/" + row.student.id}
                           >
                            View
                           </Link>

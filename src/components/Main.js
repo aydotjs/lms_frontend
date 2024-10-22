@@ -32,7 +32,7 @@ import EditCourse from "./Teacher/EditCourse.js";
 import CourseChapters from "./Teacher/CourseChapters.js";
 import StudentRegister from "./User/Register";
 import StudentLogout from "./User/StudentLogout.js";
-
+import EnrolledStudents from "./Teacher/EnrolledStudents.js";
 
 function App() {
   return (
@@ -66,6 +66,7 @@ function App() {
         <Route path="/add-chapter/:course_id" element={<AddChapter />} />
         <Route path="/teacher-change-password" element={<TeacherChangePassword />} />
         <Route path="/teacher-courses" element={<TeacherCourses />} />
+        <Route path="/enrolled-students/:course_id" element={<EnrolledStudents />} />
         <Route path="/all-courses" element={<AllCourses />} />
         <Route path="/all-popular-courses" element={<AllPopularCourses />} />
         <Route path="/all-teachers" element={<AllTeachers />} />
