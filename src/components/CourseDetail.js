@@ -12,10 +12,10 @@ function CourseDetail() {
   const [chapterData, setChapterData] = useState([]);
   const [teacherData, setTeacherData] = useState([]);
   const [relatedCourseData, setRelatedCourseData] = useState([]);
-  const { course_id } = useParams(); // Corrected syntax
   const [userLoginStatus, setUserLoginStatus] = useState();
   const [enrollStatus, setEnrollStatus] = useState();
-
+  const [ratingStatus, setRatingStatus] = useState();
+  const { course_id } = useParams(); // Corrected syntax
   useEffect(() => {
     const studentId = localStorage.getItem("studentId"); // Declare studentId here
 
@@ -32,6 +32,18 @@ function CourseDetail() {
     }
 
     // Fetch enroll status
+    try {
+      axios
+        .get(`${baseUrl}/fetch-enroll-status/${studentId}/${course_id}`)
+        .then((res) => {
+          if (res.data.bool === true) {
+            setEnrollStatus("success");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+    // Fetch rating  status
     try {
       axios
         .get(`${baseUrl}/fetch-enroll-status/${studentId}/${course_id}`)
@@ -103,7 +115,7 @@ function CourseDetail() {
     formData.append("student", studentId);
     formData.append("rating", ratingData.rating);
     formData.append("reviews", ratingData.reviews);
-  
+
     try {
       axios
         .post(baseUrl + "/course-rating/" + course_id, formData)
@@ -125,7 +137,6 @@ function CourseDetail() {
       console.log(error);
     }
   };
-  
 
   return (
     <div className="container mt-3">
@@ -209,7 +220,7 @@ function CourseDetail() {
                           </label>
                           <textarea
                             className="form-control"
-                            name="review"
+                            name="reviews"
                           ></textarea>
                         </div>
 
