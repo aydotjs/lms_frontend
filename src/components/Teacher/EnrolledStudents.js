@@ -44,9 +44,9 @@ export default function EnrolledStudents() {
                     return (
                       <tr>
                         <td>
-                          <Link to={`/view-student/${row.student.id}`}>
+                          
                             {row.student.full_name}
-                          </Link>
+                      
                         </td>
 
                         <td>

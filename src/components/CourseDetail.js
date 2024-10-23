@@ -15,6 +15,7 @@ function CourseDetail() {
   const [userLoginStatus, setUserLoginStatus] = useState();
   const [enrollStatus, setEnrollStatus] = useState();
   const [ratingStatus, setRatingStatus] = useState();
+  const [avgRating, setAvgRating] = useState(0);
   const { course_id } = useParams(); // Corrected syntax
   useEffect(() => {
     const studentId = localStorage.getItem("studentId"); // Declare studentId here
@@ -26,11 +27,14 @@ function CourseDetail() {
         setChapterData(res.data.course_chapters);
         setTeacherData(res.data.teacher);
         setRelatedCourseData(JSON.parse(res.data.related_videos));
+        if (res.data.course_rating !== '' && res.data.course_rating !== null) {
+          setAvgRating(res.data.course_rating);
+      }
+      
       });
     } catch (error) {
       console.log(error);
     }
-
     // Fetch enroll status
     try {
       axios
@@ -49,7 +53,7 @@ function CourseDetail() {
         .get(`${baseUrl}/fetch-enroll-status/${studentId}/${course_id}`)
         .then((res) => {
           if (res.data.bool === true) {
-            setEnrollStatus("success");
+            setRatingStatus("success");
           }
         });
     } catch (error) {
@@ -122,10 +126,10 @@ function CourseDetail() {
         .then((res) => {
           if (res.status === 200 || res.status === 201) {
             Swal.fire({
-              title: "Data has been added",
+              title: "Rating has been saved",
               icon: "success",
               toast: true,
-              timer: 3000,
+              timer: 5000,
               position: "top-right",
               timerProgressBar: true,
               showConfirmButton: false,
@@ -163,18 +167,22 @@ function CourseDetail() {
             {courseData.total_enrolled_students > 1 ? "s" : ""}
           </p>
 
-          <p className="fw-bold">Rating: 4.5/5</p>
+          <span className="fw-bold">Rating: {avgRating}/5</span>
 
           {enrollStatus === "success" && userLoginStatus === "success" && (
             <>
-              <button
-                className="btn btn-success btn-sm ms-2"
-                data-bs-toggle="modal"
-                data-bs-target="#ratingModal"
-              >
-                Rating
-              </button>
-
+              {ratingStatus !== "success" && (
+                <button
+                  className="btn btn-success btn-sm ms-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ratingModal"
+                >
+                  Rating
+                </button>
+              )}
+              {ratingStatus === "success" && (
+                <small className="badge bg-info text-dark ms-2">You already rated this course</small>
+              )}
               <div
                 className="modal fade"
                 id="ratingModal"
@@ -197,8 +205,11 @@ function CourseDetail() {
                     </div>
                     <div className="modal-body">
                       <form>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">
+                        <div className="mb-3">
+                          <label
+                            htmlFor="exampleInputEmail1"
+                            className="form-label"
+                          >
                             Rating
                           </label>
                           <select
@@ -214,8 +225,11 @@ function CourseDetail() {
                           </select>
                         </div>
 
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">
+                        <div className="mb-3">
+                          <label
+                            htmlFor="exampleInputPassword1"
+                            className="form-label"
+                          >
                             Review
                           </label>
                           <textarea
@@ -227,7 +241,7 @@ function CourseDetail() {
                         <button
                           type="button"
                           onClick={formSubmit}
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                         >
                           Submit
                         </button>

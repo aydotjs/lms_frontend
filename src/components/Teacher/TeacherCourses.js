@@ -7,6 +7,8 @@ const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function TeacherCourses() {
   const [courseData, setCourseData] = useState([]);
+
+
   const teacherId = localStorage.getItem("teacherId");
 
   // fetch courses when page load
@@ -14,7 +16,10 @@ export default function TeacherCourses() {
     try {
       axios.get(baseUrl + "/teacher-courses/" + teacherId).then((res) => {
         setCourseData(res.data);
+       
+   
       });
+    
     } catch (error) {
       console.log(error);
     }
@@ -46,6 +51,8 @@ export default function TeacherCourses() {
                         <Link to={"/course-chapters/" + course.id}>
                           {course.title}
                         </Link>
+                        <hr/>
+                        {course.course_rating}
                       </td>
                       <td>
                         <img
