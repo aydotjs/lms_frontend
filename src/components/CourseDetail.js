@@ -83,6 +83,50 @@ function CourseDetail() {
     }
   };
 
+  //  Add rating
+  const [ratingData, setRatingData] = useState({
+    rating: "",
+    reviews: "",
+  });
+
+  const handleChange = (event) => {
+    setRatingData({
+      ...ratingData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const formSubmit = () => {
+    const studentId = localStorage.getItem("studentId"); // Declare studentId here
+    const formData = new FormData();
+    formData.append("course", course_id);
+    formData.append("student", studentId);
+    formData.append("rating", ratingData.rating);
+    formData.append("reviews", ratingData.reviews);
+  
+    try {
+      axios
+        .post(baseUrl + "/course-rating/" + course_id, formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            Swal.fire({
+              title: "Data has been added",
+              icon: "success",
+              toast: true,
+              timer: 3000,
+              position: "top-right",
+              timerProgressBar: true,
+              showConfirmButton: false,
+            });
+            window.location.reload();
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
   return (
     <div className="container mt-3">
       <div className="row">
@@ -109,6 +153,80 @@ function CourseDetail() {
           </p>
 
           <p className="fw-bold">Rating: 4.5/5</p>
+
+          {enrollStatus === "success" && userLoginStatus === "success" && (
+            <>
+              <button
+                className="btn btn-success btn-sm ms-2"
+                data-bs-toggle="modal"
+                data-bs-target="#ratingModal"
+              >
+                Rating
+              </button>
+
+              <div
+                className="modal fade"
+                id="ratingModal"
+                tabIndex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog modal-lg">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLabel">
+                        Rate for {courseData.title}
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">
+                            Rating
+                          </label>
+                          <select
+                            onChange={handleChange}
+                            className="form-control"
+                            name="rating"
+                          >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">
+                            Review
+                          </label>
+                          <textarea
+                            className="form-control"
+                            name="review"
+                          ></textarea>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={formSubmit}
+                          class="btn btn-primary"
+                        >
+                          Submit
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
 
           {enrollStatus === "success" && userLoginStatus === "success" && (
             <p>
