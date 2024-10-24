@@ -33,7 +33,7 @@ import CourseChapters from "./Teacher/CourseChapters.js";
 import StudentRegister from "./User/Register";
 import StudentLogout from "./User/StudentLogout.js";
 import EnrolledStudents from "./Teacher/EnrolledStudents.js";
-
+import MyStudents from "./Teacher/MyStudents.js";
 function App() {
   return (
     <div className="App">
@@ -71,6 +71,7 @@ function App() {
         <Route path="/all-popular-courses" element={<AllPopularCourses />} />
         <Route path="/all-teachers" element={<AllTeachers />} />
         <Route path="/add-course" element={<AddCourse />} />
+        <Route path="/my-students" element={<MyStudents />} />
         <Route path="/edit-course/:course_id" element={<EditCourse />} />
         <Route path="/course-chapters/:course_id" element={<CourseChapters />} />
         <Route path="/edit-chapter/:chapter_id" element={<EditChapter />} />
