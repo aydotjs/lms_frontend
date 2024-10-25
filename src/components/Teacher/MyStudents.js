@@ -12,9 +12,11 @@ export default function MyStudents() {
   // fetch courses when page load
   useEffect(() => {
     try {
-      axios.get(baseUrl + "/fetch-all-enrolled-students/" + teacherId).then((res) => {
-        setStudentData(res.data);
-      });
+      axios
+        .get(baseUrl + "/fetch-all-enrolled-students/" + teacherId)
+        .then((res) => {
+          setStudentData(res.data);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -36,34 +38,24 @@ export default function MyStudents() {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Action</th>
+                    <th>Asssignment</th>
                   </tr>
                 </thead>
                 <tbody>
                   {studentData.map((row, index) => {
                     return (
                       <tr>
-                        <td>
-                          
-                            {row.student.full_name}
-                      
-                        </td>
+                        <td>{row.student.full_name}</td>
 
+                        <td>{row.student.email}</td>
+                        <td>{row.student.username}</td>
                         <td>
-                          {row.student.email}
-                        </td>
-                        <td>
-                          {row.student.username}
-                        </td>
-                        <td>
-                          <Link
-                            className="btn btn-info btn-sm"
-                            to={"/view-student/" + row.student.id}
-                          >
-                           View
+                          <Link className="btn btn-warning btn-sm" to={"#"}>
+                            Asssignment
                           </Link>
-                        
-                        
+                          <Link className="btn btn-success btn-sm ms-2" to={"#"}>
+                            Add Asssignment
+                          </Link>
                         </td>
                       </tr>
                     );
