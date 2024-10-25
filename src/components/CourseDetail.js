@@ -22,7 +22,7 @@ function CourseDetail() {
   useEffect(() => {
     const studentId = localStorage.getItem("studentId"); // Declare studentId here
 
-    // Fetch course details when the page loads
+    // Fetch course details when course page loads
     try {
       axios.get(`${baseUrl}/course/${course_id}`).then((res) => {
         setCourseData(res.data);
