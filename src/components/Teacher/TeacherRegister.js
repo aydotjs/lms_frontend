@@ -144,7 +144,7 @@ function TeacherRegister() {
 
                 <div className="mb-3">
                   <label htmlFor="skills" className="form-label">
-                    Skills
+                    Language
                   </label>
                   <textarea
                     id="skills"
@@ -154,7 +154,7 @@ function TeacherRegister() {
                     value={teacherData.skills} // Set value here
                   ></textarea>
                   <div id="emailHelp" className="form-text">
-                    Php, Python, Javascript, etc
+                    Igbo, Yoruba, Akan etc
                   </div>
                 </div>
 

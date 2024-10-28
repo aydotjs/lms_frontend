@@ -36,30 +36,28 @@ export default function AddCourse() {
     });
   };
 
-  const formSubmit = () => {
-    const teacherId =  localStorage.getItem("teacherId")
-    const formData = new FormData();
-    formData.append("category", courseData.category);
-    formData.append("teacher", teacherId);
-    formData.append("title", courseData.title);
-    formData.append("description", courseData.description);
-    formData.append("featured_img", courseData.featured_img, courseData.featured_img.name); // No need for courseData.f_img.name
-    formData.append("languages", courseData.languages);
+ const formSubmit = async () => {
+  const teacherId = localStorage.getItem("teacherId");
+  const formData = new FormData();
+  formData.append("category", courseData.category);
+  formData.append("teacher", teacherId);
+  formData.append("title", courseData.title);
+  formData.append("description", courseData.description);
+  formData.append("featured_img", courseData.featured_img, courseData.featured_img.name);
+  formData.append("languages", courseData.languages);
 
-    try {
-      axios
-        .post(baseUrl + "/course/", formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          window.location.href = "/add-course";
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const res = await axios.post(baseUrl + "/course/", formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    window.location.href = "/add-course";
+  } catch (error) {
+    console.log("Error message:", error.response?.data || error.message);
+  }
+};
+
 
   return (
     <div className="container mt-4">
