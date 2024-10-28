@@ -1,25 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function TeacherCourses() {
   const [courseData, setCourseData] = useState([]);
-
   const teacherId = localStorage.getItem("teacherId");
 
-  // fetch courses when page load
+  // Fetch courses when page loads
   useEffect(() => {
-    try {
-      axios.get(baseUrl + "/teacher-courses/" + teacherId).then((res) => {
-        setCourseData(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    fetchCourses();
   }, []);
+
+  const fetchCourses = async () => {
+    try {
+      const res = await axios.get(baseUrl + "/teacher-courses/" + teacherId);
+      setCourseData(res.data);
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
+
+  const handleDeleteCourse = async (courseId) => {
+    const result = await Swal.fire({
+      title: "Confirm",
+      text: "Are you sure you want to delete this course?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, keep it",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        // Delete the course
+        await axios.delete(`${baseUrl}/course/${courseId}/`);
+        Swal.fire("Deleted!", "The course has been deleted.", "success");
+
+        // Fetch updated list of courses
+        fetchCourses();
+      } catch (error) {
+        Swal.fire("Error", "The course could not be deleted.", "error");
+        console.error("Error deleting course:", error);
+      }
+    }
+  };
 
   return (
     <div className="container mt-4">
@@ -42,7 +70,7 @@ export default function TeacherCourses() {
                 </thead>
                 <tbody>
                   {courseData.map((course, index) => (
-                    <tr>
+                    <tr key={index}>
                       <td>
                         <Link to={"/course-chapters/" + course.id}>
                           {course.title}
@@ -80,7 +108,10 @@ export default function TeacherCourses() {
                         >
                           Add Chapter
                         </Link>
-                        <button className="btn btn-danger btn-sm ms-2">
+                        <button
+                          className="btn btn-danger btn-sm ms-2"
+                          onClick={() => handleDeleteCourse(course.id)}
+                        >
                           Delete
                         </button>
                       </td>
