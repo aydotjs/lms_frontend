@@ -50,8 +50,8 @@ export default function MyStudents() {
                         <td>{row.student.email}</td>
                         <td>{row.student.username}</td>
                         <td>
-                          <Link className="btn btn-warning btn-sm" to={"#"}>
-                            Assignment {/* Fixed typo here */}
+                          <Link className="btn btn-warning btn-sm" to={`/show-assignment/${row.student.id}/${teacherId}`}>
+                           Show Assignment {/* Fixed typo here */}
                           </Link>
                           <Link to={`/add-assignment/${row.student.id}/${teacherId}`} className="btn btn-success btn-sm ms-2">
                             Add Assignment {/* Fixed typo here */}

@@ -35,6 +35,7 @@ import StudentLogout from "./User/StudentLogout.js";
 import EnrolledStudents from "./Teacher/EnrolledStudents.js";
 import MyStudents from "./Teacher/MyStudents.js";
 import AddAssignment from "./Teacher/AddAssignment.js";
+import ShowAssignment from "./Teacher/ShowAssignment.js";
 function App() {
   return (
     <div className="App">
@@ -75,7 +76,8 @@ function App() {
         <Route path="/my-students" element={<MyStudents />} />
         <Route path="/edit-course/:course_id" element={<EditCourse />} />
         <Route path="/course-chapters/:course_id" element={<CourseChapters />} />
-        <Route path="/add-assignment/:teacher_id/:student_id" element={<AddAssignment />} />
+        <Route path="/add-assignment/:student_id/:teacher_id" element={<AddAssignment />} />
+        <Route path="/show-assignment/:student_id/:teacher_id" element={<ShowAssignment />} />
         <Route path="/edit-chapter/:chapter_id" element={<EditChapter />} />
       </Routes>
       <Footer />
