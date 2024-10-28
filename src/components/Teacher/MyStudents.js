@@ -1,26 +1,27 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Removed useParams since it's not used
 import TeacherSidebar from "./TeacherSidebar";
-import { useState, useEffect } from "react";
 import axios from "axios";
+
 const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function MyStudents() {
   const [studentData, setStudentData] = useState([]);
   const teacherId = localStorage.getItem("teacherId");
 
-  // fetch courses when page load
+  // Fetch students when the page loads or teacherId changes
   useEffect(() => {
-    try {
-      axios
-        .get(baseUrl + "/fetch-all-enrolled-students/" + teacherId)
-        .then((res) => {
-          setStudentData(res.data);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+    const fetchStudents = async () => {
+      try {
+        const res = await axios.get(`${baseUrl}/fetch-all-enrolled-students/${teacherId}`);
+        setStudentData(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchStudents();
+  }, [teacherId]); // Added teacherId to dependency array
 
   return (
     <div className="container mt-4">
@@ -38,23 +39,22 @@ export default function MyStudents() {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Asssignment</th>
+                    <th>Assignment</th> {/* Fixed typo here */}
                   </tr>
                 </thead>
                 <tbody>
                   {studentData.map((row, index) => {
                     return (
-                      <tr>
+                      <tr key={index}> {/* Added key prop */}
                         <td>{row.student.full_name}</td>
-
                         <td>{row.student.email}</td>
                         <td>{row.student.username}</td>
                         <td>
                           <Link className="btn btn-warning btn-sm" to={"#"}>
-                            Asssignment
+                            Assignment {/* Fixed typo here */}
                           </Link>
-                          <Link className="btn btn-success btn-sm ms-2" to={"#"}>
-                            Add Asssignment
+                          <Link to={`/add-assignment/${row.student.id}/${teacherId}`} className="btn btn-success btn-sm ms-2">
+                            Add Assignment {/* Fixed typo here */}
                           </Link>
                         </td>
                       </tr>
