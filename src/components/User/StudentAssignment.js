@@ -35,6 +35,7 @@ export default function Assignment() {
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Detail</th>
                     <th>Created By</th>
 
                   </tr>
@@ -45,6 +46,7 @@ export default function Assignment() {
                       row ? (
                         <tr key={index}>
                           <td><Link to={"/detail/" + row.id}>{row.title}</Link></td>
+                          <td>{row.detail}</td>
                           <td>
                             <Link to={"/teacher-detail/" + row.teacher.id}>{row.teacher?.full_name}</Link>
                           </td>
