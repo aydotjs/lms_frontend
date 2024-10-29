@@ -36,6 +36,7 @@ import EnrolledStudents from "./Teacher/EnrolledStudents.js";
 import MyStudents from "./Teacher/MyStudents.js";
 import AddAssignment from "./Teacher/AddAssignment.js";
 import ShowAssignment from "./Teacher/ShowAssignment.js";
+import StudentAssignment from "./User/StudentAssignment.js";
 function App() {
   return (
     <div className="App">
@@ -78,6 +79,7 @@ function App() {
         <Route path="/course-chapters/:course_id" element={<CourseChapters />} />
         <Route path="/add-assignment/:student_id/:teacher_id" element={<AddAssignment />} />
         <Route path="/show-assignment/:student_id/:teacher_id" element={<ShowAssignment />} />
+        <Route path="/my-assignments/" element={<StudentAssignment />} />
         <Route path="/edit-chapter/:chapter_id" element={<EditChapter />} />
       </Routes>
       <Footer />

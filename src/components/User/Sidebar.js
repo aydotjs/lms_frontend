@@ -10,9 +10,9 @@ function Sidebar() {
         <Link to='/my-courses' className='list-group-item list-group-item-action'>
           My Courses
         </Link>
-        {/* <Link to='/favorite-courses' className='list-group-item list-group-item-action'>
-          Favorite Courses
-        </Link> */}
+        <Link to='/my-assignments' className='list-group-item list-group-item-action'>
+          Assignment
+        </Link>
         {/* <Link to='/recommended-courses' className='list-group-item list-group-item-action'>
           Recommended Courses
         </Link> */}
