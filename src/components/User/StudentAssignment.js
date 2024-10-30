@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function Assignment() {
   const [assignmentData, setAssignmentData] = useState([]);
+  const [assignmentStatus, setAssignmentStatus] = useState("");
   const studentId = localStorage.getItem("studentId");
   // fetch courses when page load
   useEffect(() => {
@@ -20,6 +22,30 @@ export default function Assignment() {
       console.log("Error: ", error); // Log the error if it occurs
     }
   }, []);
+// Mark as done
+const markAsDone = (assignment_id, title, detail, student, teacher) => {
+  const formData = new FormData();
+  formData.append('student_status', true);
+  formData.append('title', title);
+  formData.append('detail', detail);
+  formData.append('student', student);
+  formData.append('teacher', teacher);
+
+  try {
+      axios.put(`${baseUrl}/update-assignment/${assignment_id}/`, formData, {
+          headers: {
+              'content-type': 'multipart/form-data'
+          }
+      })
+      .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+              window.location.reload();
+          }
+      });
+  } catch (error) {
+      console.log(error);
+  }
+};
 
   return (
     <div className="container mt-4">
@@ -36,8 +62,8 @@ export default function Assignment() {
                   <tr>
                     <th>Name</th>
                     <th>Detail</th>
-                    <th>Created By</th>
-
+                    <th>Teacher</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,6 +75,15 @@ export default function Assignment() {
                           <td>{row.detail}</td>
                           <td>
                             <Link to={"/teacher-detail/" + row.teacher.id}>{row.teacher?.full_name}</Link>
+                          </td>
+                          <td>
+                            {row.student_status == false &&
+                              <button onClick={() => markAsDone(row.id, row.title, row.detail, row.student.id, row.teacher.id)} className="btn btn-success btn-sm">Mark as Done</button>
+                            }
+                            {row.student_status == true &&
+                              <span className="badge bg-primary">Completed</span>
+                            }
+
                           </td>
                         </tr>
                       ) : (

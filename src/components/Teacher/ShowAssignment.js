@@ -110,11 +110,19 @@ export default function ShowAssignment() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {assignmentData.map((assignment, index) => (
+                                        {assignmentData.map((row, index) => (
                                             <tr key={index}>
                                                 <td>
-                                                    {assignment.title}
+                                                    {row.title}
                                                 </td>
+                                                {row.student_status === false && (
+                                                    <span className='badge bg-warning'>Pending</span>
+                                                )}
+
+                                                {row.student_status === true && (
+                                                    <span className="badge bg-success">Completed</span>
+                                                )}
+
                                             </tr>
                                         ))}
                                     </tbody>
