@@ -49,13 +49,14 @@ function Dashboard() {
                                 </div>
                             </div>
                         </div>
+                  
                         <div className="col-md-4">
-                            <div className="card border-success">
-                                <h5 className="card-header bg-success text-white">Total Students</h5>
+                            <div className="card border-info">
+                                <h5 className="card-header bg-info text-white">Complete Assignments</h5>
                                 <div className="card-body">
                                     <h3>
-                                        <Link to="/my-students">
-                                            {dashboardData.total_teacher_students || 0}
+                                        <Link to="/teacher-courses">
+                                            {dashboardData.total_teacher_chapters || 0}
                                         </Link>
                                     </h3>
                                 </div>
@@ -63,7 +64,7 @@ function Dashboard() {
                         </div>
                         <div className="col-md-4">
                             <div className="card border-info">
-                                <h5 className="card-header bg-info text-white">Total Chapters</h5>
+                                <h5 className="card-header bg-info text-white">Pending Assignments</h5>
                                 <div className="card-body">
                                     <h3>
                                         <Link to="/teacher-courses">
