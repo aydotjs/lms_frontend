@@ -4,7 +4,7 @@ function Sidebar() {
   return (
     <div className='card'>
       <div className='list-group list-group-flush'>
-        <Link to='/user-dashboard' className='list-group-item list-group-item-action'>
+        <Link to='/student-dashboard' className='list-group-item list-group-item-action'>
           Dashboard
         </Link>
         <Link to='/my-courses' className='list-group-item list-group-item-action'>
