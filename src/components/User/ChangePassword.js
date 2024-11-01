@@ -27,22 +27,22 @@ function ChangePassword() {
         try {
             axios.post(`${baseUrl}/student/change-password/${studentId}/`, studentFormData).then((response) => {
                 if (response.status === 200) {
-                    window.location.href = '/teacher-logout';
+                    window.location.href = '/user-logout';
                 } else {
                     alert('Oops... Some error occurred');
                 }
             });
         } catch (error) {
             console.log(error);
-            setTeacherData({ 'status': 'error' });
+            setStudentData({ 'status': 'error' });
         }
     };
 
     useEffect(() => {
-        document.title = 'Teacher Change Password';
+        document.title = 'Student Change Password';
     }, []);
 
-    const teacherLoginStatus = localStorage.getItem('teacherLoginStatus');
+    const studentLoginStatus = localStorage.getItem('teacherLoginStatus');
     if (teacherLoginStatus !== 'true') {
         window.location.href = '/teacher-login';
     }
