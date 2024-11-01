@@ -11,21 +11,21 @@ function ChangePassword() {
         password: ''
     });
     
-    const teacherId = localStorage.getItem('teacherId');
+    const studentId = localStorage.getItem('studentId');
 
     const handleChange = (event) => {
-        setTeacherData({
-            ...teacherData,
+        setStudentData({
+            ...studentData,
             [event.target.name]: event.target.value
         });
     };
 
     const submitForm = () => {
-        const teacherFormData = new FormData();
-        teacherFormData.append('password', teacherData.password);
+        const studentFormData = new FormData();
+        studentFormData.append('password', studentData.password);
 
         try {
-            axios.post(`${baseUrl}/student/change-password/${teacherId}/`, teacherFormData).then((response) => {
+            axios.post(`${baseUrl}/student/change-password/${studentId}/`, studentFormData).then((response) => {
                 if (response.status === 200) {
                     window.location.href = '/teacher-logout';
                 } else {
