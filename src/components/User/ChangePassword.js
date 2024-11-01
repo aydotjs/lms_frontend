@@ -1,8 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
-import TeacherSidebar from './TeacherSidebar';
+import Sidebar from './Sidebar';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2';
+
 
 const baseUrl = 'http://127.0.0.1:8000/api';
 
@@ -27,7 +27,7 @@ function ChangePassword() {
         try {
             axios.post(`${baseUrl}/student/change-password/${studentId}/`, studentFormData).then((response) => {
                 if (response.status === 200) {
-                    window.location.href = '/user-logout';
+                    window.location.href = '/student-logout';
                 } else {
                     alert('Oops... Some error occurred');
                 }
@@ -51,7 +51,7 @@ function ChangePassword() {
         <div className="container mt-4">
             <div className="row">
                 <aside className="col-md-3">
-                    <TeacherSidebar />
+                    <Sidebar />
                 </aside>
                 <section className="col-md-9">
                     <div className="card">
