@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Removed useParams since it's not used
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
+import MessageList from "./MessageList";
 import Swal from "sweetalert2";
 
 const baseUrl = "http://127.0.0.1:8000/api";
@@ -147,26 +148,7 @@ export default function MyStudents() {
                                       className="col-md-8 mb-2 col-12 border-end"
                                       style={msgList}
                                     >
-                                      <div className="row">
-                                        {/* From Another user */}
-                                        <div className="col-5">
-                                          <div className="alert alert-primary mb-1">
-                                            A simple primary alert—check it out!
-                                          </div>
-                                          <small className="text-muted">22-07-2022 10:34</small>
-                                        </div>
-                                      </div>
-
-                                      {/* My Messages */}
-                                      <div className="row">
-                                        {/* From Another user */}
-                                        <div className="col-5 offset-7">
-                                          <div className="alert alert-success mb-1">
-                                            A simple primary alert—check it out!
-                                          </div>
-                                          <small className="text-muted">22-07-2022 10:34</small>
-                                        </div>
-                                      </div>
+                                      <MessageList teacher_id={teacherId} student_id={row.student_id}/>
                                     </div>
 
                                     <div className="col-md-4 col-12">
