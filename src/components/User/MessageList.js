@@ -48,7 +48,7 @@ function MessageList(props) {
                 {
                     msgData.map((row, index) => (
                         <div className="row mb-4" key={index}>
-                            {row.msg_from !== 'teacher' && (
+                            {row.msg_from !== 'student' && (
                                 <div className="col-5">
                                     <div className="alert alert-primary mb-1">
                                         {row.msg_text}
@@ -57,7 +57,7 @@ function MessageList(props) {
                                 </div>
                             )}
 
-                            {row.msg_from === 'teacher' && (
+                            {row.msg_from === 'student' && (
                                 <div className="col-5 offset-7">
                                     <div className="alert alert-success mb-1">
                                         {row.msg_text}

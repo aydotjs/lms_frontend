@@ -25,20 +25,18 @@ export default function MyStudents() {
     fetchStudents();
   }, [teacherId]); // Added teacherId to dependency array
 
-
-
-  const [groupMsgData, setGroupMsgData] = useState({
-    msg_text: "",
-  });
-
+  
+  const [groupSuccessMsg, setGroupSuccessMsg] = useState("");
+  const [groupErrorMsg, setGroupErrorMsg] = useState("");
   const [msgData, setMsgData] = useState({
     msg_text: "",
   });
-
+  const [groupMsgData, setGroupMsgData] = useState({
+    msg_text: "",
+  });
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [groupSuccessMsg, setGroupSuccessMsg] = useState("");
-  const [groupErrorMsg, setGroupErrorMsg] = useState("");
+ 
 
   const handleChange = (event) => {
     setMsgData({
@@ -54,12 +52,12 @@ export default function MyStudents() {
 
     try {
       axios
-        .post(baseUrl + "/send-message/" + teacherId + "/" + student_id + "/", _formData)
+        .post(`${baseUrl}/send-message/${teacherId}/${student_id}/`, _formData)
         .then((res) => {
           if (res.data.bool === true) {
             setMsgData({
               msg_text: ""
-            })
+            });
             setSuccessMsg(res.data.msg);
             setErrorMsg("");
           } else {
@@ -78,6 +76,7 @@ export default function MyStudents() {
       [event.target.name]: event.target.value,
     });
   };
+
   // group form submit
   const groupFormSubmit = () => {
     const _formData = new FormData();
@@ -86,12 +85,12 @@ export default function MyStudents() {
 
     try {
       axios
-        .post(baseUrl + "/send-group-message/" + teacherId + "/", _formData)
+        .post(`${baseUrl}/send-group-message/${teacherId}/`, _formData)
         .then((res) => {
           if (res.data.bool === true) {
             setGroupMsgData({
               msg_text: ""
-            })
+            });
             setGroupSuccessMsg(res.data.msg);
             setGroupErrorMsg("");
           } else {
@@ -112,27 +111,25 @@ export default function MyStudents() {
         </aside>
         <section className="col-md-9">
           <div className="card">
-            <h5 className="card-header">All of my Students
-              <button type="button" class="btn btn-primary float-end btn-sm" data-bs-toggle="modal" data-bs-target="#groupMsgModal">
+            <h5 className="card-header">
+              All of my Students
+              <button type="button" className="btn btn-primary float-end btn-sm" data-bs-toggle="modal" data-bs-target="#groupMsgModal">
                 Send Message
               </button>
-
             </h5>
-            <div class="modal fade" id="groupMsgModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Send message to All Students</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="groupMsgModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="staticBackdropLabel">Send message to All Students</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body">
+                  <div className="modal-body">
                     {groupSuccessMsg && <p className="text-success">{groupSuccessMsg}</p>}
                     {groupErrorMsg && <p className="text-danger">{groupErrorMsg}</p>}
                     <form>
                       <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">
-                          Message
-                        </label>
+                        <label htmlFor="exampleInputEmail1" className="form-label">Message</label>
                         <textarea
                           className="form-control"
                           name="msg_text"
@@ -150,7 +147,6 @@ export default function MyStudents() {
                       </button>
                     </form>
                   </div>
-                
                 </div>
               </div>
             </div>
@@ -173,99 +169,38 @@ export default function MyStudents() {
                         <td>{row.student.email}</td>
                         <td>{row.student.username}</td>
                         <td>
-                          <Link
-                            to={`/show-assignment/${row.student.id}/${teacherId}`}
-                            className="btn btn-sm btn-warning mb-2 me-2"
-                          >
-                            Assignments
-                          </Link>
-                          <Link
-                            to={`/add-assignment/${row.student.id}/${teacherId}`}
-                            className="btn btn-sm btn-success ms-2 mb-2 me-2"
-                          >
-                            Add Assignment
-                          </Link>
-                          <button
-                            data-bs-toggle="modal"
-                            data-bs-target={`#msgModal${index}`}
-                            className="btn btn-sm btn-dark mb-2"
-                            title="Send Message"
-                          >
+                          <Link to={`/show-assignment/${row.student.id}/${teacherId}`} className="btn btn-sm btn-warning mb-2 me-2">Assignments</Link>
+                          <Link to={`/add-assignment/${row.student.id}/${teacherId}`} className="btn btn-sm btn-success mb-2 me-2">Add Assignment</Link>
+                          <button data-bs-toggle="modal" data-bs-target={`#msgModal${index}`} className="btn btn-sm btn-dark mb-2" title="Send Message">
                             <i className="bi bi-chat-fill"></i>
                           </button>
-
                           {/* Message Modal */}
-                          <div
-                            className="modal fade"
-                            id={`msgModal${index}`}
-                            tabIndex="-1" // Updated to tabIndex for React
-                            aria-labelledby="exampleModalLabel"
-                            aria-hidden="true"
-                          >
-                            <div className="modal-dialog modal-dialog-scrollable modal-fullscreen">
+                          <div className="modal fade" id={`msgModal${index}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div className="modal-dialog modal-fullscreen">
                               <div className="modal-content">
                                 <div className="modal-header">
                                   <h5 className="modal-title" id="exampleModalLabel">
-                                    Send Message to{" "}
-                                    <span className="text-danger">{row.student.full_name}</span>
-                                    <span className="ms-5 btn btn-sm btn-secondary" title="Refresh">
-                                      <i className="bi bi-bootstrap-reboot"></i>
-                                    </span>
+                                    <span className="text-primary">Send Message to {row.student.full_name}</span>
                                   </h5>
-                                  <button
-                                    type="button"
-                                    className="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                  ></button>
+                                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
                                   <div className="row">
-                                    <div
-                                      className="col-md-7 mb-2 col-12 border-end"
-
-                                    >
-                                      <MessageList teacher_id={teacherId} student_id={row.student_id} />
+                                    <div className="col-md-7 mb-2 col-12 border-end">
+                                      <MessageList teacher_id={teacherId} student_id={row.student.id} />
                                     </div>
-
                                     <div className="col-md-4 col-12">
                                       {successMsg && <p className="text-success">{successMsg}</p>}
                                       {errorMsg && <p className="text-danger">{errorMsg}</p>}
                                       <form>
                                         <div className="mb-3">
-                                          <label htmlFor="exampleInputEmail1" className="form-label">
-                                            Message
-                                          </label>
-                                          <textarea
-                                            className="form-control"
-                                            name="msg_text"
-                                            rows="10"
-                                            onChange={handleChange}
-                                            value={msgData.msg_text}
-                                          ></textarea>
+                                          <label htmlFor="exampleInputEmail1" className="form-label">Message</label>
+                                          <textarea onChange={handleChange} value={msgData.msg_text} name="msg_text" className="form-control" rows="5"></textarea>
                                         </div>
-                                        <button
-                                          type="button"
-                                          onClick={() => formSubmit(row.student.id)}
-                                          className="btn btn-primary"
-                                        >
-                                          Send
-                                        </button>
+                                        <button type="button" onClick={() => formSubmit(row.student.id)} className="btn btn-primary">Submit</button>
                                       </form>
                                     </div>
                                   </div>
-                                </div>
-                                <div className="modal-footer">
-                                  <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    data-bs-dismiss="modal"
-                                  >
-                                    Close
-                                  </button>
-                                  <button type="button" className="btn btn-primary">
-                                    Send
-                                  </button>
                                 </div>
                               </div>
                             </div>
