@@ -25,10 +25,11 @@ export default function MyStudents() {
     fetchStudents();
   }, [teacherId]); // Added teacherId to dependency array
 
-  const msgList = {
-    height: "500px",
-    overflow: "auto",
-  };
+
+
+  const [groupMsgData, setgroupMsgData] = useState({
+    msg_text: "",
+  });
 
   const [msgData, setMsgData] = useState({
     msg_text: "",
@@ -55,7 +56,7 @@ export default function MyStudents() {
         .then((res) => {
           if (res.data.bool === true) {
             setMsgData({
-              msg_text:  ""
+              msg_text: ""
             })
             setSuccessMsg(res.data.msg);
             setErrorMsg("");
@@ -77,7 +78,52 @@ export default function MyStudents() {
         </aside>
         <section className="col-md-9">
           <div className="card">
-            <h5 className="card-header">All of my Students</h5>
+            <h5 className="card-header">All of my Students
+              <button type="button" class="btn btn-primary float-end btn-sm" data-bs-toggle="modal" data-bs-target="#groupMsgModal">
+                Send Message
+              </button>
+
+            </h5>
+            <div class="modal fade" id="groupMsgModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Send message to All Students</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {successMsg && <p className="text-success">{successMsg}</p>}
+                    {errorMsg && <p className="text-danger">{errorMsg}</p>}
+                    <form>
+                      <div className="mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label">
+                          Message
+                        </label>
+                        <textarea
+                          className="form-control"
+                          name="msg_text"
+                          rows="10"
+                          onChange={handleChange}
+                          value={msgData.msg_text}
+                        ></textarea>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => formSubmit(row.student.id)}
+                        className="btn btn-primary"
+                      >
+                        Send
+                      </button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="card-body">
               <table className="table table-bordered">
                 <thead>
@@ -145,10 +191,10 @@ export default function MyStudents() {
                                 <div className="modal-body">
                                   <div className="row">
                                     <div
-                                      className="col-md-8 mb-2 col-12 border-end"
-                                      style={msgList}
+                                      className="col-md-7 mb-2 col-12 border-end"
+
                                     >
-                                      <MessageList teacher_id={teacherId} student_id={row.student_id}/>
+                                      <MessageList teacher_id={teacherId} student_id={row.student_id} />
                                     </div>
 
                                     <div className="col-md-4 col-12">
