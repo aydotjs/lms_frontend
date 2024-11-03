@@ -29,49 +29,36 @@ export default function MyStudents() {
   }
   const [msgData, setMsgData] = useState({
     msg_text: "",
-  
-});
 
-const handleChange = (event) => {
+  });
+
+  const handleChange = (event) => {
     setMsgData({
-        ...msgData,
-        [event.target.name]: event.target.value,
+      ...msgData,
+      [event.target.name]: event.target.value,
     });
-};
-const formSubmit = () => {
-  const _formData = new FormData();
-  _formData.append("teacher", teacher_id);
-  _formData.append("student", assignmentData.title);
-  _formData.append("msg_text", assignmentData.detail);
-  _formData.append("msg_from", student_id);
+  };
+  const formSubmit = (student_id) => {
+    const _formData = new FormData();
+    _formData.append("teacher", teacherId);
+    _formData.append("student", student_id);
+    _formData.append("msg_text", msgData.msg_text);
+    _formData.append("msg_from", student_id);
 
 
-  try {
+    try {
       axios
-          .post(baseUrl + "/student-assignment/" + teacher_id + "/" + student_id + "/", _formData, {
-              headers: {
-                  "content-type": "multipart/form-data",
-              },
-          })
-          .then((res) => {
-              if (res.status === 200 || res.status === 201) {
-                  Swal.fire({
-                      title: 'Assignment has been added',
-                      icon: 'success',
-                      toast: true,
-                      timer: 3000,
-                      position: 'top-right',
-                      timerProgressBar: true,
-                      showConfirmButton: false
-                  });
-                  window.location.reload();
-              }
+        .post(baseUrl + "/send-message/" + teacherId + "/" + student_id + "/", _formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            console.log(res);
+          }
 
-          });
-  } catch (error) {
+        });
+    } catch (error) {
       console.log(error);
-  }
-};
+    }
+  };
 
   return (
     <div className="container mt-4">
@@ -146,7 +133,7 @@ const formSubmit = () => {
                                           <label for="exampleInputEmail1" class="form-label">Message</label>
                                           <textarea className='form-control' rows="10" onChange={handleChange}></textarea>
                                         </div>
-                                        <button type="submit" onClick={formSubmit} class="btn btn-primary">Submit</button>
+                                        <button type="submit" onClick={() => formSubmit(row.student.id)} class="btn btn-primary">Submit</button>
                                       </form>
 
                                     </div>
