@@ -27,7 +27,7 @@ export default function MyStudents() {
 
 
 
-  const [groupMsgData, setgroupMsgData] = useState({
+  const [groupMsgData, setGroupMsgData] = useState({
     msg_text: "",
   });
 
@@ -37,6 +37,8 @@ export default function MyStudents() {
 
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [groupSuccessMsg, setGroupSuccessMsg] = useState("");
+  const [groupErrorMsg, setGroupErrorMsg] = useState("");
 
   const handleChange = (event) => {
     setMsgData({
@@ -48,7 +50,7 @@ export default function MyStudents() {
   const formSubmit = (student_id) => {
     const _formData = new FormData();
     _formData.append("msg_text", msgData.msg_text);
-    _formData.append("msg_from", student_id);
+    _formData.append("msg_from", "teacher");
 
     try {
       axios
@@ -63,6 +65,38 @@ export default function MyStudents() {
           } else {
             setSuccessMsg("");
             setErrorMsg(res.data.msg);
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  const groupHandleChange = (event) => {
+    setGroupMsgData({
+      ...groupMsgData,
+      [event.target.name]: event.target.value,
+    });
+  };
+  // group form submit
+  const groupFormSubmit = () => {
+    const _formData = new FormData();
+    _formData.append("msg_text", groupMsgData.msg_text);
+    _formData.append("msg_from", "teacher");
+
+    try {
+      axios
+        .post(baseUrl + "/send-group-message/" + teacherId + "/", _formData)
+        .then((res) => {
+          if (res.data.bool === true) {
+            setGroupMsgData({
+              msg_text: ""
+            })
+            setGroupSuccessMsg(res.data.msg);
+            setGroupErrorMsg("");
+          } else {
+            setGroupSuccessMsg("");
+            setGroupErrorMsg(res.data.msg);
           }
         });
     } catch (error) {
@@ -92,8 +126,8 @@ export default function MyStudents() {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    {successMsg && <p className="text-success">{successMsg}</p>}
-                    {errorMsg && <p className="text-danger">{errorMsg}</p>}
+                    {groupSuccessMsg && <p className="text-success">{groupSuccessMsg}</p>}
+                    {groupErrorMsg && <p className="text-danger">{groupErrorMsg}</p>}
                     <form>
                       <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">
@@ -103,13 +137,13 @@ export default function MyStudents() {
                           className="form-control"
                           name="msg_text"
                           rows="10"
-                          onChange={handleChange}
-                          value={msgData.msg_text}
+                          onChange={groupHandleChange}
+                          value={groupMsgData.msg_text}
                         ></textarea>
                       </div>
                       <button
                         type="button"
-                        onClick={() => formSubmit(row.student.id)}
+                        onClick={groupFormSubmit}
                         className="btn btn-primary"
                       >
                         Send
