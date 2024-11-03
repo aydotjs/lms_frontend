@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Removed useParams since it's not used
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const baseUrl = "http://127.0.0.1:8000/api";
 // testing
 export default function MyStudents() {
   const [studentData, setStudentData] = useState([]);
+
   const teacherId = localStorage.getItem("teacherId");
 
   // Fetch students when the page loads or teacherId changes
@@ -22,10 +23,56 @@ export default function MyStudents() {
 
     fetchStudents();
   }, [teacherId]); // Added teacherId to dependency array
- const msgList = {
-  height : "500px",
-  overflow : "auto"
- }
+  const msgList = {
+    height: "500px",
+    overflow: "auto"
+  }
+  const [msgData, setMsgData] = useState({
+    msg_text: "",
+  
+});
+
+const handleChange = (event) => {
+    setMsgData({
+        ...msgData,
+        [event.target.name]: event.target.value,
+    });
+};
+const formSubmit = () => {
+  const _formData = new FormData();
+  _formData.append("teacher", teacher_id);
+  _formData.append("student", assignmentData.title);
+  _formData.append("msg_text", assignmentData.detail);
+  _formData.append("msg_from", student_id);
+
+
+  try {
+      axios
+          .post(baseUrl + "/student-assignment/" + teacher_id + "/" + student_id + "/", _formData, {
+              headers: {
+                  "content-type": "multipart/form-data",
+              },
+          })
+          .then((res) => {
+              if (res.status === 200 || res.status === 201) {
+                  Swal.fire({
+                      title: 'Assignment has been added',
+                      icon: 'success',
+                      toast: true,
+                      timer: 3000,
+                      position: 'top-right',
+                      timerProgressBar: true,
+                      showConfirmButton: false
+                  });
+                  window.location.reload();
+              }
+
+          });
+  } catch (error) {
+      console.log(error);
+  }
+};
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -64,12 +111,47 @@ export default function MyStudents() {
                             <div class="modal-dialog  modal-dialog-scrollable modal-fullscreen">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Send Message to <span className="text-danger">{row.student.full_name}</span></h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Send Message to <span className="text-danger">{row.student.full_name}</span>
+                                    <span className="ms-5 btn btn-sm btn-secondary" title="Refresh"><i className="bi bi-bootstrap-reboot"></i></span></h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                <div className="col-md-9 mb-2 col-12 border-end" style={msgList}></div>
-                                <div className="cold-md-3 col-12"></div>
+                                  <div className="row">
+                                    <div className="col-md-8 mb-2 col-12 border-end" style={msgList}>
+                                      <div className="row">
+                                        {/* From Another user */}
+                                        <div className="col-5">
+                                          <div className="alert alert-primary mb-1">
+                                            A simple primary alert—check it out!
+                                          </div>
+                                          <small className="text-muted">22-07-2022 10:34</small>
+                                        </div>
+                                      </div>
+
+                                      {/* My Messages */}
+                                      <div className="row">
+                                        {/* From Another user */}
+                                        <div className="col-5 offset-7">
+                                          <div className="alert alert-success mb-1">
+                                            A simple primary alert—check it out!
+                                          </div>
+                                          <small className="text-muted">22-07-2022 10:34</small>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div className="col-md-4 col-12">
+                                      <form>
+                                        <div class="mb-3">
+                                          <label for="exampleInputEmail1" class="form-label">Message</label>
+                                          <textarea className='form-control' rows="10" onChange={handleChange}></textarea>
+                                        </div>
+                                        <button type="submit" onClick={formSubmit} class="btn btn-primary">Submit</button>
+                                      </form>
+
+                                    </div>
+                                  </div>
+
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
