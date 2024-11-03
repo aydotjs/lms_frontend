@@ -22,7 +22,10 @@ export default function MyStudents() {
 
     fetchStudents();
   }, [teacherId]); // Added teacherId to dependency array
-
+ const msgList = {
+  height : "500px",
+  overflow : "auto"
+ }
   return (
     <div className="container mt-4">
       <div className="row">
@@ -50,22 +53,23 @@ export default function MyStudents() {
                         <td>{row.student.email}</td>
                         <td>{row.student.username}</td>
                         <td>
-                          <Link to={`/show-assignment/${row.student.id}/${teacherId}`} className="btn btn-sm btn-warning">Assignments</Link>
-                          <Link to={`/add-assignment/${row.student.id}/${teacherId}`} className="btn btn-sm btn-success ms-2">Add Assignment</Link>
-                          <button data-bs-toggle="modal" data-bs-target={`#msgModal${index}`} className="btn btn-sm btn-dark ms-2" title="Send Message">
+                          <Link to={`/show-assignment/${row.student.id}/${teacherId}`} className="btn btn-sm btn-warning mb-2 me-2">Assignments</Link>
+                          <Link to={`/add-assignment/${row.student.id}/${teacherId}`} className="btn btn-sm btn-success ms-2 mb-2 me-2">Add Assignment</Link>
+                          <button data-bs-toggle="modal" data-bs-target={`#msgModal${index}`} className="btn btn-sm btn-dark mb-2" title="Send Message">
                             <i class="bi bi-chat-fill"></i>
                           </button>
 
                           {/* Message Modal */}
                           <div class="modal fade" id={`msgModal${index}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <div class="modal-dialog  modal-dialog-scrollable modal-fullscreen">
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="exampleModalLabel">Send Message to <span className="text-danger">{row.student.full_name}</span></h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-
+                                <div className="col-md-9 mb-2 col-12 border-end" style={msgList}></div>
+                                <div className="cold-md-3 col-12"></div>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
