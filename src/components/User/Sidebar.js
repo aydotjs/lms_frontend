@@ -13,6 +13,9 @@ function Sidebar() {
         <Link to='/my-assignments' className='list-group-item list-group-item-action'>
           Assignment
         </Link>
+        <Link to='/my-teachers' className='list-group-item list-group-item-action'>
+          My Teachers
+        </Link>
         {/* <Link to='/recommended-courses' className='list-group-item list-group-item-action'>
           Recommended Courses
         </Link> */}
