@@ -141,7 +141,7 @@ export default function AddCourse() {
 
               {/* File Input for Course Video */}
               <div className="mb-3">
-                <label className="form-label fw-bold">Course Video</label>
+                <label className="form-label fw-bold">Course Image</label>
                 <input
                   type="file"
                   onChange={handleFileChange}
