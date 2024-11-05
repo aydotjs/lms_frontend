@@ -36,6 +36,11 @@ function Dashboard() {
           <Sidebar />
         </aside>
         <div className="col-md-9">
+          {/* Welcome message with student's full name */}
+          <h2 className="mb-4">
+            Welcome, {dashboardData.student_full_name || 'Student'}
+          </h2>
+
           <div className="row">
             <div className="col-md-4">
               <div className="card border-primary">
@@ -62,6 +67,7 @@ function Dashboard() {
                 </div>
               </div>
             </div>
+            
             <div className="col-md-4">
               <div className="card border-danger">
                 <h5 className="card-header bg-danger text-white">Pending Assignments</h5>

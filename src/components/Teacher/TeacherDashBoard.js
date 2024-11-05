@@ -36,6 +36,11 @@ function TeacherDashboard() {
                     <TeacherSidebar />
                 </aside>
                 <div className="col-md-9">
+                    {/* Welcome message with teacher's full name */}
+                    <h2 className="mb-4">
+                        Welcome, {dashboardData.teacher_full_name || 'Teacher'}
+                    </h2>
+                    
                     <div className="row">
                         <div className="col-md-4">
                             <div className="card border-primary">

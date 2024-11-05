@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 function Header() {
   const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
   const studentLoginStatus = localStorage.getItem("studentLoginStatus");
@@ -21,6 +22,7 @@ function Header() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
             <Link className="nav-link active" aria-current="page" to="/">
@@ -29,18 +31,19 @@ function Header() {
             <Link className="nav-link" to="/all-courses">
               Courses
             </Link>
+
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
+                id="navbarDropdownTeacher"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Teacher
               </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {teacherLoginStatus != "true" && (
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdownTeacher">
+                {teacherLoginStatus !== "true" ? (
                   <>
                     <li>
                       <Link className="dropdown-item" to="/teacher-login">
@@ -53,18 +56,20 @@ function Header() {
                       </Link>
                     </li>
                   </>
+                ) : (
+                  <>
+                    <li>
+                      <Link className="dropdown-item" to="/teacher-dashboard">
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/teacher-logout">
+                        Logout
+                      </Link>
+                    </li>
+                  </>
                 )}
-
-                <li>
-                  <Link className="dropdown-item" to="/teacher-dashboard">
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/teacher-logout">
-                    Logout
-                  </Link>
-                </li>
               </ul>
             </li>
 
@@ -72,15 +77,14 @@ function Header() {
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
-                role="button"
+                id="navbarDropdownStudent"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Student
               </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {studentLoginStatus !== "true" && (
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdownStudent">
+                {studentLoginStatus !== "true" ? (
                   <>
                     <li>
                       <Link className="dropdown-item" to="/student-login">
@@ -93,8 +97,7 @@ function Header() {
                       </Link>
                     </li>
                   </>
-                )}{" "}
-                {studentLoginStatus === "true" && (
+                ) : (
                   <>
                     <li>
                       <Link className="dropdown-item" to="/student-dashboard">
@@ -102,7 +105,7 @@ function Header() {
                       </Link>
                     </li>
                     <li>
-                      <Link to='/student-logout' className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="/student-logout">
                         Logout
                       </Link>
                     </li>
