@@ -8,6 +8,7 @@ const baseUrl = 'http://127.0.0.1:8000/api/';
 
 function Dashboard() {
   const [dashboardData, setDashboardData] = useState({});
+  const [studentData, setStudentData] = useState({})
   const studentId = localStorage.getItem('studentId');
 
   useEffect(() => {
@@ -25,8 +26,22 @@ function Dashboard() {
         });
       }
     };
+    const fetchStudentdata = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}student/${studentId}`)
+        setStudentData(response.data)
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to get teacher  data',
+        });
+      }
 
+    }
     fetchDashboardData();
+    fetchStudentdata()
   }, [studentId]);
 
   return (
@@ -38,7 +53,10 @@ function Dashboard() {
         <div className="col-md-9">
           {/* Welcome message with student's full name */}
           <h2 className="mb-4">
-            Welcome, {dashboardData.student_full_name || 'Student'}
+            <h2 className="mb-4">
+              Welcome, {studentData.full_name ? studentData.full_name.split(" ")[0] : 'Student'}
+            </h2>
+
           </h2>
 
           <div className="row">
@@ -67,7 +85,7 @@ function Dashboard() {
                 </div>
               </div>
             </div>
-            
+
             <div className="col-md-4">
               <div className="card border-danger">
                 <h5 className="card-header bg-danger text-white">Pending Assignments</h5>
