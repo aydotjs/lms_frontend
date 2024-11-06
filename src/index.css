@@ -11,8 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:wght@700&family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 .khula-extrabold {
   font-family: "Khula", system-ui;
   font-weight: 800;
 
 }
+.navbar-brand {
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem !important;
+  color: white !important;
+  position: relative;
+}
+
+.navbar-brand::after {
+  content: "Academy";
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: #00c2cb; /* Teal color similar to the logo */
+  display: block;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+
+}
+
+.navbar-brand::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #00c2cb; /* Teal color similar to the logo */
+  margin-top: 5px;
+}
+

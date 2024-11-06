@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function EditCourse() {
   const [cats, setCats] = useState([]);
+  const teacherId = localStorage.getItem("teacherId");
   const [courseData, setCourseData] = useState({
     category: "",
     title: "",
@@ -17,19 +18,19 @@ export default function EditCourse() {
   });
   const { course_id } = useParams();
   useEffect(() => {
-    try {
-      axios.get(baseUrl + "/category").then((res) => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get(`${baseUrl}/category`);
         setCats(res.data);
-        // console.log(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+        console.log("Categories fetched:", res.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error.response ? error.response.data : error.message);
+      }
+    };
+
     const fetchCourseData = async () => {
       try {
-        const res = await axios.get(
-          `${baseUrl}/teacher-course-detail/${course_id}/`
-        );
+        const res = await axios.get(`${baseUrl}/teacher-course-detail/${course_id}/`);
         setCourseData({
           category: res.data.category,
           title: res.data.title,
@@ -38,24 +39,24 @@ export default function EditCourse() {
           prev_image: res.data.featured_image,
           languages: res.data.languages,
         });
-
-        console.log("res data==>",res.data);
+        console.log("Course data fetched:", res.data);
       } catch (error) {
-        console.error(
-          "Error fetching chapter data:",
-          error.response ? error.response.data : error.message
-        );
+        console.error("Error fetching course data:", error.response ? error.response.data : error.message);
       }
     };
 
-    fetchCourseData();
-  }, []);
+    // Fetch categories first, then course data
+    fetchCategories().then(fetchCourseData);
+
+  }, [course_id]);
+
   const handleChange = (event) => {
     setCourseData({
       ...courseData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.name === "category" ? parseInt(event.target.value) : event.target.value,
     });
   };
+
 
   const handleFileChange = (event) => {
     setCourseData({
@@ -67,10 +68,10 @@ export default function EditCourse() {
   const formSubmit = () => {
     const formData = new FormData();
     formData.append("category", courseData.category);
-    formData.append("teacher", 1);
+    formData.append("teacher", teacherId);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-  
+
     // Check if featured_img is a file before appending
     if (courseData.featured_img && typeof courseData.featured_img === 'object') {
       formData.append(
@@ -79,9 +80,9 @@ export default function EditCourse() {
         courseData.featured_img.name
       );
     }
-  
+
     formData.append("languages", courseData.languages);
-  
+
     try {
       axios
         .put(baseUrl + "/teacher-course-detail/" + course_id + "/", formData, {
@@ -101,13 +102,17 @@ export default function EditCourse() {
               showConfirmButton: false,
             });
           }
+        })
+        .catch((error) => {
+          // Log detailed server response here
+          console.log("Error response:", error.response ? error.response.data : error.message);
         });
     } catch (error) {
       console.log(error);
     }
   };
-  
-console.log(courseData);
+
+  console.log(courseData);
   return (
     <div className="container mt-4">
       <div className="row">
@@ -175,7 +180,7 @@ console.log(courseData);
                   htmlFor="exampleInputEmail1"
                   className="form-label fw-bold"
                 >
-                  Course Video
+                  Course Image
                 </label>
                 <input
                   type="file"
@@ -183,9 +188,9 @@ console.log(courseData);
                   id="video"
                   name="featured_img"
                   className="form-control"
-                
+
                 />
-                {courseData.prev_image && <img src={courseData.prev_image}/>}
+                {courseData.prev_image && <img src={courseData.prev_image} />}
               </div>
 
               <button className="btn btn-primary" onClick={formSubmit}>

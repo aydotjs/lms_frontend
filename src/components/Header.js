@@ -7,8 +7,8 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link className="navbar-brand khula-extrabold fs-3" to="/">
-          Language4all
+        <Link className="navbar-brand brand-style" to="/">
+          Am Besten
         </Link>
 
         <button

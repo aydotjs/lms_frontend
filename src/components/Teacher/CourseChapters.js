@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 // Base URL for API requests
-const baseUrl = "http://127.0.0.1:8000/api"; 
+const baseUrl = "http://127.0.0.1:8000/api";
 
 // Component for displaying and managing chapters within a specific course
 export default function CourseChapters() {
@@ -13,7 +13,7 @@ export default function CourseChapters() {
   const [chapterData, setChapterData] = useState([]);
   const [totalResult, setTotalResult] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
-  
+
   // Get the course_id from the URL parameters
   const { course_id } = useParams();
 
@@ -34,7 +34,8 @@ export default function CourseChapters() {
     axios
       .get(url)
       .then((res) => {
-        console.log("Response Data:", res.data);
+        console.log("API Response Data:", res.data); // Log the entire response data
+
         if (res.data && res.data.length > 0) {
           setChapterData(res.data);
           setTotalResult(res.data.length);
@@ -101,18 +102,18 @@ export default function CourseChapters() {
         <aside className="col-md-3">
           <TeacherSidebar />
         </aside>
-        
+
         {/* Main content area displaying chapters */}
         <section className="col-md-9">
           <div className="card">
             <h5 className="card-header">
-              All Chapters ({totalResult}) 
+              All Chapters ({totalResult})
               <Link className="btn btn-success float-end" to={`/add-chapter/${course_id}`}>Add Chapter</Link>
             </h5>
             <div className="card-body">
               {/* Display error message if present */}
               {errorMsg && <p className="text-danger">{errorMsg}</p>}
-              
+
               {/* Chapter data table or "No chapters found" message */}
               {chapterData.length > 0 ? (
                 <table className="table table-bordered">
@@ -121,39 +122,44 @@ export default function CourseChapters() {
                       <th>Title</th>
                       <th>Video</th>
                       <th>Remarks</th>
-                      <th>Action</th>
+                      <th style={{ width: '120px' }}>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Map over chapter data to display each chapter */}
-                    {chapterData.map((chapter, index) => (
-                      <tr key={index}>
-                        <td><Link to="#">{chapter.title}</Link></td>
-                        <td>
-                          {chapter.video_url ? (
-                            <video controls width="250">
-                              <source src={chapter.video.url} type="video/webm" />
-                              <source src={chapter.video.url} type="video/mp4" />
-                              Sorry, your browser doesn't support embedded videos.
-                            </video>
-                          ) : (
-                            "No Video"
-                          )}
-                        </td>
-                        <td>{chapter.remarks}</td>
-                        <td>
-                          <Link to={`/edit-chapter/${chapter.id}`} className="btn btn-info">
-                            <i className="bi bi-pencil-square"></i>
-                          </Link>
-                          <button 
-                            onClick={() => handleDeleteClick(chapter.id)} 
-                            className="btn btn-danger ms-1">
-                            <i className="bi bi-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                    {chapterData.map((chapter, index) => {
+                      console.log("Inspecting chapter:", chapter);  // Log the chapter data for verification
+                      console.log("Video URL found:", chapter.video);  // Log the video URL directly
+
+                      return (
+                        <tr key={index}>
+                          <td><Link to="#">{chapter.title}</Link></td>
+                          <td>
+                            {chapter.video ? (
+                              <video controls width="250">
+                                <source src={chapter.video} type="video/webm" />
+                                <source src={chapter.video} type="video/mp4" />
+                                Sorry, your browser doesn't support embedded videos.
+                              </video>
+                            ) : (
+                              "No Video"
+                            )}
+                          </td>
+                          <td>{chapter.remarks}</td>
+                          <td>
+                            <Link to={`/edit-chapter/${chapter.id}`} className="btn btn-info">
+                              <i className="bi bi-pencil-square"></i>
+                            </Link>
+                            <button
+                              onClick={() => handleDeleteClick(chapter.id)}
+                              className="btn btn-danger ms-1">
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
+
                 </table>
               ) : (
                 !errorMsg && <p>No chapters found🙇</p>
