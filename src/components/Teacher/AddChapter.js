@@ -149,7 +149,7 @@ export default function AddChapter() {
                   onClick={formSubmit}
                   className="btn btn-primary"
                 >
-                  Submit
+                  Upload Chapter
                 </button>
               </form>
             </div>
