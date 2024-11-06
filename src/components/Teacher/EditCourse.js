@@ -33,7 +33,7 @@ export default function EditCourse() {
       try {
         const res = await axios.get(`${baseUrl}/category`);
         setCats(res.data); // Populate categories state
-        console.log("Categories fetched:", res.data);
+        // console.log("Categories fetched:", res.data);
       } catch (error) {
         console.error("Error fetching categories:", error.response ? error.response.data : error.message);
       }
@@ -81,18 +81,23 @@ export default function EditCourse() {
   // Handle form submission to update course data
   const formSubmit = () => {
     const formData = new FormData();
-    formData.append("category", courseData.category);
+    formData.append("category", courseData.category.id);
     formData.append("teacher", teacherId);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-
+  
     // Append the new image file only if it exists
     if (courseData.featured_img && typeof courseData.featured_img === 'object') {
       formData.append("featured_img", courseData.featured_img, courseData.featured_img.name);
     }
-
+  
     formData.append("languages", courseData.languages);
-
+  
+    // Inspect the formData values
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:===>`, value);
+    }
+  
     try {
       // Send PUT request to update course data
       axios
@@ -123,6 +128,7 @@ export default function EditCourse() {
       console.log(error);
     }
   };
+  
 
   // Render the edit course form
   return (
@@ -201,7 +207,7 @@ export default function EditCourse() {
 
               {/* Submit button */}
               <button className="btn btn-primary" onClick={formSubmit}>
-                Upload
+                Update
               </button>
             </div>
           </div>
