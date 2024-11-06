@@ -58,7 +58,7 @@ function TeacherDashboard() {
                 <div className="col-md-9">
                     {/* Welcome message with teacher's full name */}
                     <h2 className="mb-4">
-                        Welcome Back, {teacherData.full_name.split(" ")[0] || 'Teacher'}
+                    Welcome, {teacherData.full_name ? teacherData.full_name.split(" ")[0] : 'Student'}
                     </h2>
 
                     <div className="row">
