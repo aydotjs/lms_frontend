@@ -2,22 +2,21 @@ import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-// Base URL for API requests
 const baseUrl = "http://127.0.0.1:8000/api";
 
-// Component for adding a new chapter
 export default function AddChapter() {
-  // State to store chapter data
   const [chapterData, setChapterData] = useState({
     title: "",
     description: "",
-    video: "",
+    video: null,
     remarks: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const { course_id } = useParams();
 
-  // Handle input change for text fields
   const handleChange = (event) => {
     setChapterData({
       ...chapterData,
@@ -25,74 +24,62 @@ export default function AddChapter() {
     });
   };
 
-  // Handle file input for video upload
   const handleFileChange = (event) => {
     setChapterData({
       ...chapterData,
-      [event.target.name]: event.target.files[0], // Store the file object
+      video: event.target.files[0],
     });
   };
 
-  // Get the course ID from the route parameters
-  const { course_id } = useParams();
+  const formSubmit = async () => {
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("course", course_id);
+    formData.append("title", chapterData.title);
+    formData.append("description", chapterData.description);
+    formData.append("video", chapterData.video, chapterData.video.name);
+    formData.append("remarks", chapterData.remarks);
 
-  // Form submission function to send data to API
-  const formSubmit = () => {
-    // Prepare form data to send to backend
-    const _formData = new FormData();
-    _formData.append("course", course_id);
-    _formData.append("title", chapterData.title);
-    _formData.append("description", chapterData.description);
-    _formData.append("video", chapterData.video, chapterData.video.name);
-    _formData.append("remarks", chapterData.remarks);
+    const loadingToastId = toast.info("Uploading chapter, please wait...", { autoClose: false });
 
     try {
-      // Send POST request to backend API
-      axios
-        .post(baseUrl + "/chapter/", _formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          // Show success message if the chapter is added successfully
-          if (res.status === 200 || res.status === 201) {
-            Swal.fire({
-              title: "Data has been added",
-              icon: "success",
-              toast: true,
-              timer: 3000,
-              position: "top-right",
-              timerProgressBar: true,
-              showConfirmButton: false,
-            });
-            window.location.reload();
-          }
-        });
+      const res = await axios.post(`${baseUrl}/chapter/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      toast.update(loadingToastId, {
+        render: "Chapter uploaded successfully!",
+        type: "success",
+        autoClose: 5000,
+      });
+
+      window.location.reload();
     } catch (error) {
-      console.log(error); // Log any errors to the console
+      console.error("Error submitting chapter:", error.response?.data || error.message);
+      toast.update(loadingToastId, {
+        render: "Error uploading chapter. Please try again.",
+        type: "error",
+        autoClose: 5000,
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="container mt-4">
+      <ToastContainer />
       <div className="row">
-        {/* Sidebar for teacher navigation */}
         <aside className="col-md-3">
           <TeacherSidebar />
         </aside>
-
-        {/* Main content area for adding a chapter */}
         <div className="col-9">
           <div className="card">
             <h5 className="card-header">Add Chapter</h5>
             <div className="card-body">
               <form>
-                {/* Title input field */}
                 <div className="mb-3">
-                  <label htmlFor="title" className="form-label">
-                    Title
-                  </label>
+                  <label htmlFor="title" className="form-label">Title</label>
                   <input
                     type="text"
                     id="title"
@@ -101,12 +88,8 @@ export default function AddChapter() {
                     onChange={handleChange}
                   />
                 </div>
-
-                {/* Description input field */}
                 <div className="mb-3">
-                  <label htmlFor="description" className="form-label">
-                    Description
-                  </label>
+                  <label htmlFor="description" className="form-label">Description</label>
                   <textarea
                     id="description"
                     name="description"
@@ -114,12 +97,8 @@ export default function AddChapter() {
                     onChange={handleChange}
                   ></textarea>
                 </div>
-
-                {/* Video file input */}
                 <div className="mb-3">
-                  <label htmlFor="video" className="form-label">
-                    Video
-                  </label>
+                  <label htmlFor="video" className="form-label">Video</label>
                   <input
                     type="file"
                     id="video"
@@ -128,28 +107,22 @@ export default function AddChapter() {
                     className="form-control"
                   />
                 </div>
-
-                {/* Remarks input field */}
                 <div className="mb-3">
-                  <label htmlFor="remarks" className="form-label">
-                    Remarks
-                  </label>
+                  <label htmlFor="remarks" className="form-label">Remarks</label>
                   <textarea
                     id="remarks"
                     name="remarks"
                     className="form-control"
-                    placeholder="This video is focused on basic introduction..."
                     onChange={handleChange}
                   ></textarea>
                 </div>
-
-                {/* Submit button */}
                 <button
                   type="button"
                   onClick={formSubmit}
                   className="btn btn-primary"
+                  disabled={isLoading}
                 >
-                  Upload Chapter
+                  {isLoading ? "Uploading..." : "Upload Chapter"}
                 </button>
               </form>
             </div>
