@@ -194,7 +194,7 @@ export default function EditChapter() {
 
                 {/* Submit button */}
                 <button type="submit" className="btn btn-primary">
-                  Submit
+                  Update
                 </button>
               </form>
             </div>
