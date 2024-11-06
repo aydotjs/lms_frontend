@@ -8,7 +8,9 @@ const baseUrl = 'http://127.0.0.1:8000/api/';
 
 function TeacherDashboard() {
     const [dashboardData, setDashboardData] = useState({});
+    const [teacherData, setTeacherData] = useState({})
     const teacherId = localStorage.getItem('teacherId');
+    console.log(teacherId);
 
     useEffect(() => {
         // Fetch dashboard data
@@ -26,8 +28,26 @@ function TeacherDashboard() {
             }
         };
 
+        const fetchTeacherData = async () => {
+            try {
+                const response = await axios.get(`${baseUrl}teacher/${teacherId}`)
+                setTeacherData(response.data)
+            } catch (error) {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to get teacher  data',
+                });
+            }
+        }
+        fetchTeacherData()
         fetchDashboardData();
     }, [teacherId]);
+    // Log teacherData to the console whenever it changes
+    useEffect(() => {
+        console.log("Teacher Data:", teacherData);
+    }, [teacherData]);
 
     return (
         <div className="container mt-4">
@@ -38,9 +58,9 @@ function TeacherDashboard() {
                 <div className="col-md-9">
                     {/* Welcome message with teacher's full name */}
                     <h2 className="mb-4">
-                        Welcome, {dashboardData.teacher_full_name || 'Teacher'}
+                        Welcome Back, {teacherData.full_name.split(" ")[0] || 'Teacher'}
                     </h2>
-                    
+
                     <div className="row">
                         <div className="col-md-4">
                             <div className="card border-primary">
