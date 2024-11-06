@@ -33,7 +33,6 @@ export default function EditCourse() {
       try {
         const res = await axios.get(`${baseUrl}/category`);
         setCats(res.data); // Populate categories state
-        // console.log("Categories fetched:", res.data);
       } catch (error) {
         console.error("Error fetching categories:", error.response ? error.response.data : error.message);
       }
@@ -42,25 +41,29 @@ export default function EditCourse() {
     const fetchCourseData = async () => {
       try {
         const res = await axios.get(`${baseUrl}/teacher-course-detail/${course_id}/`);
-        // Set the fetched course data into state
+        // Set the fetched course data into state, especially setting category as its id
         setCourseData({
-          category: res.data.category,
+          category: res.data.category.id, // Only set the category id
           title: res.data.title,
           description: res.data.description,
-          featured_image: "", // Initially empty for the file input
+          featured_img: "", // Initially empty for the file input
           prev_image: res.data.featured_image, // Store previous image URL for preview
           languages: res.data.languages,
         });
-        console.log("Course data fetched:", res.data);
       } catch (error) {
         console.error("Error fetching course data:", error.response ? error.response.data : error.message);
       }
     };
 
-    // Fetch categories first, then fetch course data
-    fetchCategories().then(fetchCourseData);
-
+    fetchCategories();
+    fetchCourseData();
   }, [course_id]);
+  // UseEffect to log courseData after it changes
+  useEffect(() => {
+    if (courseData) {
+      console.log("Updated courseData:", courseData); // Logs when courseData is updated
+    }
+  }, [courseData]); // This useEffect will run whenever courseData changes
 
   // Handle input changes (for text fields and dropdown)
   const handleChange = (event) => {
@@ -81,23 +84,23 @@ export default function EditCourse() {
   // Handle form submission to update course data
   const formSubmit = () => {
     const formData = new FormData();
-    formData.append("category", courseData.category.id);
+    formData.append("category", courseData.category);
     formData.append("teacher", teacherId);
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
-  
+
     // Append the new image file only if it exists
     if (courseData.featured_img && typeof courseData.featured_img === 'object') {
       formData.append("featured_img", courseData.featured_img, courseData.featured_img.name);
     }
-  
+
     formData.append("languages", courseData.languages);
-  
+
     // Inspect the formData values
     for (let [key, value] of formData.entries()) {
       console.log(`${key}:===>`, value);
     }
-  
+
     try {
       // Send PUT request to update course data
       axios
@@ -128,7 +131,7 @@ export default function EditCourse() {
       console.log(error);
     }
   };
-  
+
 
   // Render the edit course form
   return (
@@ -152,6 +155,7 @@ export default function EditCourse() {
                   className="form-control"
                   value={courseData.category}
                 >
+                  <option value="">Select Category</option>
                   {cats.map((category, index) => (
                     <option key={index} value={category.id}>
                       {category.title}
