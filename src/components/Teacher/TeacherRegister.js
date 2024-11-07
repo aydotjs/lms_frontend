@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// Define API base URL for teacher registration
 const baseUrl = "http://127.0.0.1:8000/api/teacher/";
 
-function TeacherRegister() {
+// TeacherRegister component
+export default function TeacherRegister() {
+  // State to hold form data and submission status
   const [teacherData, setTeacherData] = useState({
     full_name: "",
     email: "",
@@ -14,16 +17,20 @@ function TeacherRegister() {
     status: "",
   });
 
-  // Change Element value
+  // Handle form input changes
   const handleChange = (event) => {
+    // Update specific input field in the state
     setTeacherData({
       ...teacherData,
       [event.target.name]: event.target.value,
     });
   };
 
+  // Handle form submission
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    // Prepare form data for submission
     const teacherFormData = new FormData();
     teacherFormData.append("full_name", teacherData.full_name);
     teacherFormData.append("email", teacherData.email);
@@ -32,8 +39,10 @@ function TeacherRegister() {
     teacherFormData.append("mobile_no", teacherData.mobile_no);
     teacherFormData.append("skills", teacherData.skills);
 
+    // Submit form data via axios
     try {
       axios.post(baseUrl, teacherFormData).then((response) => {
+        // Reset form data and set status to success upon successful submission
         setTeacherData({
           full_name: "",
           email: "",
@@ -46,32 +55,40 @@ function TeacherRegister() {
       });
     } catch (err) {
       console.log(err);
+      // Set status to error if submission fails
       setTeacherData({ status: "error" });
     }
   };
 
+  // Set document title on component mount
   useEffect(() => {
     document.title = "Teacher Register";
-  });
+  }, []); // Empty dependency array ensures this effect runs only once after the component mounts
+
+  // Redirect if already logged in as a teacher
   const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
-  if (teacherLoginStatus == "true") {
+  if (teacherLoginStatus === "true") {
     window.location.href = "/teacher-dashboard";
   }
 
+  // Render registration form
   return (
     <div className="container mt-4">
       <div className="row">
+        {/* Display success or error message based on form submission status */}
         {teacherData.status === "success" && (
           <p className="text-success">Thanks for your registration</p>
         )}
         {teacherData.status === "error" && (
           <p className="text-danger">Something went wrong!</p>
         )}
+
         <div className="col-6 offset-3">
           <div className="card">
             <h5 className="card-header">As a Teacher, you can register here</h5>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
+                {/* Full Name Field */}
                 <div className="mb-3">
                   <label htmlFor="fullName" className="form-label">
                     Full Name
@@ -82,10 +99,11 @@ function TeacherRegister() {
                     name="full_name"
                     type="text"
                     className="form-control"
-                    value={teacherData.full_name} // Set value here
+                    value={teacherData.full_name}
                   />
                 </div>
 
+                {/* Email Field */}
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     Email
@@ -96,10 +114,11 @@ function TeacherRegister() {
                     name="email"
                     type="email"
                     className="form-control"
-                    value={teacherData.email} // Set value here
+                    value={teacherData.email}
                   />
                 </div>
 
+                {/* Password Field */}
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">
                     Password
@@ -110,10 +129,11 @@ function TeacherRegister() {
                     name="password"
                     type="password"
                     className="form-control"
-                    value={teacherData.password} // Set value here
+                    value={teacherData.password}
                   />
                 </div>
 
+                {/* Qualification Field */}
                 <div className="mb-3">
                   <label htmlFor="qualification" className="form-label">
                     Qualification
@@ -124,10 +144,11 @@ function TeacherRegister() {
                     type="text"
                     name="qualification"
                     className="form-control"
-                    value={teacherData.qualification} // Set value here
+                    value={teacherData.qualification}
                   />
                 </div>
 
+                {/* Mobile Number Field */}
                 <div className="mb-3">
                   <label htmlFor="mobileNo" className="form-label">
                     Mobile Number
@@ -138,10 +159,11 @@ function TeacherRegister() {
                     type="number"
                     name="mobile_no"
                     className="form-control"
-                    value={teacherData.mobile_no} // Set value here
+                    value={teacherData.mobile_no}
                   />
                 </div>
 
+                {/* Skills/Language Field */}
                 <div className="mb-3">
                   <label htmlFor="skills" className="form-label">
                     Language
@@ -151,13 +173,14 @@ function TeacherRegister() {
                     onChange={handleChange}
                     name="skills"
                     className="form-control"
-                    value={teacherData.skills} // Set value here
+                    value={teacherData.skills}
                   ></textarea>
                   <div id="emailHelp" className="form-text">
-                    Igbo, Yoruba, Akan etc
+                    Igbo, Yoruba, Akan, etc.
                   </div>
                 </div>
 
+                {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
                   type="submit"
@@ -173,5 +196,3 @@ function TeacherRegister() {
     </div>
   );
 }
-
-export default TeacherRegister;
