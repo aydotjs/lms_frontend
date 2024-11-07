@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Define API base URL for teacher registration
 const baseUrl = "http://127.0.0.1:8000/api/teacher/";
@@ -42,6 +44,9 @@ export default function TeacherRegister() {
     // Submit form data via axios
     try {
       axios.post(baseUrl, teacherFormData).then((response) => {
+        // Display success toast notification
+        toast.success("Thanks for your registration!");
+
         // Reset form data and set status to success upon successful submission
         setTeacherData({
           full_name: "",
@@ -55,6 +60,9 @@ export default function TeacherRegister() {
       });
     } catch (err) {
       console.log(err);
+      // Display error toast notification
+      toast.error("Something went wrong!");
+
       // Set status to error if submission fails
       setTeacherData({ status: "error" });
     }
@@ -74,15 +82,8 @@ export default function TeacherRegister() {
   // Render registration form
   return (
     <div className="container mt-4">
+      <ToastContainer position="top-center" />
       <div className="row">
-        {/* Display success or error message based on form submission status */}
-        {teacherData.status === "success" && (
-          <p className="text-success">Thanks for your registration</p>
-        )}
-        {teacherData.status === "error" && (
-          <p className="text-danger">Something went wrong!</p>
-        )}
-
         <div className="col-6 offset-3">
           <div className="card">
             <h5 className="card-header">As a Teacher, you can register here</h5>

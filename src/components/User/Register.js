@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
+// API base URL for student registration
 const baseUrl = "http://127.0.0.1:8000/api/student/";
-function StudentRegister() {
+
+ export default function StudentRegister() {
+  // State to manage form data and submission status
   const [studentData, setStudentData] = useState({
     full_name: "",
     email: "",
@@ -13,6 +17,8 @@ function StudentRegister() {
     interested_categories: "",
     status: "",
   });
+
+  // Handle form input changes to update state
   const handleChange = (event) => {
     setStudentData({
       ...studentData,
@@ -20,11 +26,11 @@ function StudentRegister() {
     });
   };
 
-  // Submit Form
+  // Handle form submission
   const handleSubmitForm = () => {
     const studentFormData = new FormData();
 
-    // Append form data fields
+    // Append form data to FormData object for submission
     studentFormData.append("full_name", studentData.full_name);
     studentFormData.append("email", studentData.email);
     studentFormData.append("password", studentData.password);
@@ -35,39 +41,50 @@ function StudentRegister() {
     );
 
     try {
-      // POST request using axios
+      // POST request to submit form data
       axios.post(baseUrl, studentFormData).then((response) => {
+        // notification of succesfful registration
+        toast.success("Thank you for registration, now you can login")
+        // Reset form after successful submission
         setStudentData({
           full_name: "",
           email: "",
           password: "",
           username: "",
-          interest: "",
-          status: "success",
+          interested_categories: "",
+          status: "success", // Update status to success
         });
       });
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong")
+      // Update status to error on failure
       setStudentData({ status: "error" });
     }
   };
+
+  // Set page title when component mounts
   useEffect(() => {
     document.title = "Student Register";
-  });
+  }, []); // Empty array ensures this runs once when component is mounted
 
   return (
     <div className="container mt-4">
+      <ToastContainer position="top-center" />
       <div className="row">
+        {/* Display success or error message */}
         {studentData.status === "success" && (
           <p className="text-success">Thanks for your registration</p>
         )}
         {studentData.status === "error" && (
-          <p className="text-danger">Somwthing wrong happened</p>
+          <p className="text-danger">Something wrong happened</p>
         )}
+
         <div className="col-6 offset-3">
           <div className="card">
             <h5 className="card-header">Register Now</h5>
             <div className="card-body">
+              {/* Full Name Field */}
               <div className="mb-3">
                 <label htmlFor="full_name" className="form-label">
                   Full Name
@@ -81,6 +98,7 @@ function StudentRegister() {
                 />
               </div>
 
+              {/* Email Field */}
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
                   Email
@@ -94,6 +112,7 @@ function StudentRegister() {
                 />
               </div>
 
+              {/* Username Field */}
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">
                   Username
@@ -107,6 +126,7 @@ function StudentRegister() {
                 />
               </div>
 
+              {/* Password Field */}
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">
                   Password
@@ -121,8 +141,9 @@ function StudentRegister() {
                 />
               </div>
 
+              {/* Interested Categories Field */}
               <div className="mb-3">
-                <label htmlFor="interest" className="form-label">
+                <label htmlFor="interested_categories" className="form-label">
                   Interests
                 </label>
                 <textarea
@@ -136,6 +157,7 @@ function StudentRegister() {
                 </textarea>
               </div>
 
+              {/* Submit Button */}
               <button
                 type="submit"
                 onClick={handleSubmitForm}
@@ -151,4 +173,4 @@ function StudentRegister() {
   );
 }
 
-export default StudentRegister;
+
