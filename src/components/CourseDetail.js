@@ -351,7 +351,7 @@ function CourseDetail() {
                 type="button"
                 className="btn btn-success"
               >
-                Enroll in this course
+                Enroll Now
               </button>
             </p>
           )}
