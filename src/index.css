@@ -45,3 +45,9 @@ code {
   margin-top: 5px;
 }
 
+.profile-img {
+  width: 150px; /* Adjust the size as needed */
+  height: 150px; /* Ensure it's a perfect circle by setting both width and height */
+  object-fit: cover; /* Ensures the image scales properly without distortion */
+  border-radius: 50%; /* Makes the image circular */
+}

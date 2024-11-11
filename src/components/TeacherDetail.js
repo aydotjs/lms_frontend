@@ -22,6 +22,7 @@ export default function TeacherDetail() {
         const response = await axios.get(`${baseUrl}/teacher/${teacher_id}`);
         setTeacherData(response.data); // Set teacher data
         setCourseData(response.data.teacher_courses); // Set the list of courses
+        console.log("Teacher Data", response.data);
       } catch (error) {
         console.error("Error fetching teacher details:", error);
       }
@@ -35,7 +36,7 @@ export default function TeacherDetail() {
       <div className="row">
         <div className="col-4">
           {/* Placeholder image for the teacher */}
-          <img src="/logo512.png" className="img-thumbnail" alt="Teacher profile" />
+          <img  src={teacherData.profile_img}  className="profile-img" alt="Teacher profile" />
         </div>
         <div className="col-8">
           {/* Teacher Name and Details */}
