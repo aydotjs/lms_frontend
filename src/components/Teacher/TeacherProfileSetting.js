@@ -27,12 +27,12 @@ function TeacherProfileSetting() {
       try {
         const res = await axios.get(`${baseUrl}/teacher/${teacherId}/`);
         setTeacherData({
-          full_name: res.data.full_name,
-          email: res.data.email,
-          qualification: res.data.qualification,
-          mobile_no: res.data.mobile_no,
-          skills: res.data.skills,
-          profile_img: res.data.profile_image, // API response for the image URL
+          full_name: res.data.full_name || "",
+          email: res.data.email || "",
+          qualification: res.data.qualification || "",
+          mobile_no: res.data.mobile_no || "",
+          skills: res.data.skills || "",
+          profile_img: res.data.profile_image || "", // API response for the image URL
           p_img: "", // Empty initially for file input
         });
       } catch (error) {
@@ -132,7 +132,7 @@ function TeacherProfileSetting() {
                     type="text"
                     className="form-control"
                     id="full_name"
-                    value={teacherData.full_name}
+                    value={teacherData.full_name || ""} // Ensure value is always controlled
                     onChange={handleChange}
                     name="full_name"
                   />
@@ -149,7 +149,7 @@ function TeacherProfileSetting() {
                     type="text"
                     className="form-control"
                     id="email"
-                    value={teacherData.email}
+                    value={teacherData.email || ""} // Ensure value is always controlled
                     onChange={handleChange}
                     name="email"
                   />
@@ -192,7 +192,7 @@ function TeacherProfileSetting() {
                     type="text"
                     className="form-control"
                     id="skills"
-                    value={teacherData.skills}
+                    value={teacherData.skills || ""} // Ensure value is always controlled
                     onChange={handleChange}
                     name="skills"
                   />
@@ -208,7 +208,7 @@ function TeacherProfileSetting() {
                   <textarea
                     className="form-control"
                     id="qualification"
-                    value={teacherData.qualification}
+                    value={teacherData.qualification || ""} // Ensure value is always controlled
                     name="qualification"
                     onChange={handleChange}
                   ></textarea>
