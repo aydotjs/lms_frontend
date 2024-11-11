@@ -80,4 +80,4 @@ export default function TeacherDetail() {
     </div>
   );
 }
-// 1234
+// 12345
