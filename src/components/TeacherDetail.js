@@ -34,32 +34,32 @@ export default function TeacherDetail() {
     <div className="container mt-3">
       {/* Display Teacher's Profile */}
       <div className="row">
-        <div className="col-4">
-          {/* Placeholder image for the teacher */}
-          <img  src={teacherData.profile_img}  className="profile-img" alt="Teacher profile" />
-        </div>
-        <div className="col-8">
-          {/* Teacher Name and Details */}
-          <h3>{teacherData.full_name}</h3>
-          <p>{teacherData.detail}</p>
+  <div className="col-2">
+    {/* Placeholder image for the teacher */}
+    <img src={teacherData.profile_img} className="profile-img" alt="Teacher profile" />
+  </div>
+  <div className="col-8">
+    {/* Teacher Name and Details */}
+    <h3>{teacherData.full_name}</h3>
+    <p>{teacherData.detail}</p>
 
-          {/* Languages Taught by the Teacher */}
-          <p className="fw-bold">
-            Languages:{" "}
-            <Link to="/category/beginner-friendly">English</Link>
-            {", "}
-            <Link to="/category/beginner-friendly">Spanish</Link>
-          </p>
+    {/* Languages Taught by the Teacher */}
+    <p className="fw-bold">
+      Languages:{" "}
+      <Link to="/category/beginner-friendly">English</Link>,{" "}
+      <Link to="/category/beginner-friendly">Spanish</Link>
+    </p>
 
-          {/* Display Teacher's Recent Course */}
-          <p className="fw-bold">
-            Recent Course: <Link to="/category/beginner-friendly">Spanish</Link>
-          </p>
+    {/* Display Teacher's Recent Course */}
+    <p className="fw-bold">
+      Recent Course: <Link to="/category/beginner-friendly">Spanish</Link>
+    </p>
 
-          {/* Static rating for now, ideally this should come from the backend */}
-          <p className="fw-bold">Rating: 4.5/5</p>
-        </div>
-      </div>
+    {/* Static rating for now, ideally this should come from the backend */}
+    <p className="fw-bold">Rating: 4.5/5</p>
+  </div>
+</div>
+
 
       {/* Course List for the Teacher */}
       <div className="card mt-4">
