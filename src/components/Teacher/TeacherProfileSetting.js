@@ -1,25 +1,28 @@
-import { Link } from "react-router-dom";
-import TeacherSidebar from "./TeacherSidebar";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
-const baseUrl = "http://127.0.0.1:8000/api";
+import { Link } from "react-router-dom"; // Importing necessary library
+import TeacherSidebar from "./TeacherSidebar"; // Importing Sidebar component
+import { useState, useEffect } from "react"; // Importing React hooks
+import axios from "axios"; // Importing axios for API requests
+import Swal from "sweetalert2"; // Importing SweetAlert2 for notifications
+
+const baseUrl = "http://127.0.0.1:8000/api"; // API base URL for the application
 
 function TeacherProfileSetting() {
+  // State for storing teacher profile data and profile image
   const [teacherData, setTeacherData] = useState({
     full_name: "",
     email: "",
     qualification: "",
     mobile_no: "",
     skills: "",
-    profile_img: "",
-    p_img: "", // This is used for file input (profile image upload)
+    profile_img: "", // Current profile image URL from the server
+    p_img: "", // For file input, to store new profile image
   });
 
+  // Get teacherId from local storage to fetch the teacher's data
   const teacherId = localStorage.getItem("teacherId");
 
+  // Fetch teacher data on component mount
   useEffect(() => {
-    // Fetch Current Teacher Data
     const fetchCurrentTeacherData = async () => {
       try {
         const res = await axios.get(`${baseUrl}/teacher/${teacherId}/`);
@@ -29,64 +32,60 @@ function TeacherProfileSetting() {
           qualification: res.data.qualification,
           mobile_no: res.data.mobile_no,
           skills: res.data.skills,
-          profile_img: res.data.profile_image, // This should match the API's response
-          p_img: "", // Leave empty initially, as this is only for uploading
+          profile_img: res.data.profile_image, // API response for the image URL
+          p_img: "", // Empty initially for file input
         });
       } catch (error) {
-        console.error(
-          "Error fetching teacher data:",
-          error.response ? error.response.data : error.message
-        );
+        console.error("Error fetching teacher data:", error.response ? error.response.data : error.message);
       }
     };
 
     fetchCurrentTeacherData();
-  }, []);
+  }, []); // Empty dependency array ensures it runs only once when component mounts
 
-  // Handle input changes for text fields
+  // Handle input field changes
   const handleChange = (event) => {
     setTeacherData({
       ...teacherData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value, // Update specific field
     });
   };
 
-  // Handle file input change for profile image
+  // Handle file input for profile image upload
   const handleFileChange = (event) => {
     setTeacherData({
       ...teacherData,
-      p_img: event.target.files[0], // Store the file object
+      p_img: event.target.files[0], // Store the file object when the user selects an image
     });
   };
 
-  // Handle form submission
+  // Form submission handler for updating the teacher's profile data
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const teacherFormData = new FormData();
+    event.preventDefault(); // Prevent default form submission behavior
+
+    const teacherFormData = new FormData(); // Prepare FormData object for sending data
     teacherFormData.append("full_name", teacherData.full_name);
     teacherFormData.append("email", teacherData.email);
     teacherFormData.append("qualification", teacherData.qualification);
     teacherFormData.append("mobile_no", teacherData.mobile_no);
     teacherFormData.append("skills", teacherData.skills);
 
+    // Append profile image if a new one is selected
     if (teacherData.p_img) {
-      teacherFormData.append(
-        "profile_img",
-        teacherData.p_img,
-        teacherData.p_img.name
-      );
+      teacherFormData.append("profile_img", teacherData.p_img, teacherData.p_img.name);
     }
 
+    // Send a PUT request to update the teacher's profile data
     axios
       .put(`${baseUrl}/teacher/${teacherId}/`, teacherFormData, {
         headers: {
-          "content-type": "multipart/form-data",
+          "content-type": "multipart/form-data", // Indicate that we're sending form data
         },
       })
       .then((response) => {
         if (response.status === 200) {
           Swal.fire({
-            title: "Data has been updated",
+            title: "Data has been updated", // Show a success alert
             icon: "success",
             toast: true,
             timer: 3000,
@@ -102,25 +101,28 @@ function TeacherProfileSetting() {
       });
   };
 
-  useEffect(() => {
-    document.title = "Teacher Profile";
-  });
-
+  // Check if the teacher is logged in, otherwise redirect to login page
   const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
   if (teacherLoginStatus !== "true") {
-    window.location.href = "/teacher-login";
+    window.location.href = "/teacher-login"; // Redirect to login page if not logged in
   }
+
+  // Update document title on component mount
+  useEffect(() => {
+    document.title = "Teacher Profile"; // Set the page title
+  }, []);
 
   return (
     <div className="container mt-4">
       <div className="row">
         <aside className="col-md-3">
-          <TeacherSidebar />
+          <TeacherSidebar /> {/* Render the sidebar */}
         </aside>
         <section className="col-md-9">
           <div className="card">
             <h5 className="card-header">Profile Setting</h5>
             <div className="card-body">
+              {/* Full Name Input */}
               <div className="mb-3 row">
                 <label htmlFor="full_name" className="col-sm-2 col-form-label">
                   Full Name
@@ -137,6 +139,7 @@ function TeacherProfileSetting() {
                 </div>
               </div>
 
+              {/* Email Input */}
               <div className="mb-3 row">
                 <label htmlFor="email" className="col-sm-2 col-form-label">
                   Email
@@ -153,11 +156,9 @@ function TeacherProfileSetting() {
                 </div>
               </div>
 
+              {/* Profile Image Upload */}
               <div className="mb-3 row">
-                <label
-                  htmlFor="profile_img"
-                  className="col-sm-2 col-form-label"
-                >
+                <label htmlFor="profile_img" className="col-sm-2 col-form-label">
                   Profile Image
                 </label>
                 <div className="col-sm-10">
@@ -168,10 +169,11 @@ function TeacherProfileSetting() {
                     id="profile_img"
                     className="form-control"
                   />
+                  {/* Display the current profile image if available */}
                   {teacherData.profile_img && (
                     <p className="mt-2">
                       <img
-                        src={`${baseUrl}${teacherData.profile_img}`} // Ensure the full URL is used here
+                        src={`${baseUrl}${teacherData.profile_img}`} // Use full URL for image
                         width="300"
                         alt={teacherData.full_name}
                       />
@@ -180,6 +182,7 @@ function TeacherProfileSetting() {
                 </div>
               </div>
 
+              {/* Skills Input */}
               <div className="mb-3 row">
                 <label htmlFor="skills" className="col-sm-2 col-form-label">
                   Skills
@@ -196,11 +199,9 @@ function TeacherProfileSetting() {
                 </div>
               </div>
 
+              {/* Qualification Input */}
               <div className="mb-3 row">
-                <label
-                  htmlFor="qualification"
-                  className="col-sm-2 col-form-label"
-                >
+                <label htmlFor="qualification" className="col-sm-2 col-form-label">
                   Qualification
                 </label>
                 <div className="col-sm-10">
@@ -218,6 +219,7 @@ function TeacherProfileSetting() {
               </div>
 
               <hr />
+              {/* Submit Button */}
               <button onClick={handleSubmit} className="btn btn-primary">
                 Update
               </button>

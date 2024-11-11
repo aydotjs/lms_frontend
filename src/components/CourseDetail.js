@@ -301,7 +301,7 @@ function CourseDetail() {
             <div className="card">
               <Link to={`/detail/${rcourse.pk}`}>
                 <img
-                  src={`${siteUrl}/media/${rcourse.fields.featured_img}`}
+                  src={courseData.featured_img}
                   className="card-img-top"
                   alt={rcourse.fields.title}
                 />
