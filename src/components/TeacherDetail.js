@@ -80,3 +80,4 @@ export default function TeacherDetail() {
     </div>
   );
 }
+// 1
