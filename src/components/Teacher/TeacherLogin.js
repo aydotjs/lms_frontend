@@ -1,14 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
+
+// API base URL
 const baseUrl = "http://127.0.0.1:8000/api";
 
 function TeacherLogin() {
+  // State to manage login form data
   const [teacherLoginData, setTeacherLoginData] = useState({
     email: "",
     password: "",
   });
+  
+  // State to store error message
   const [errorMsg, setErrorMsg] = useState("");
 
+  // Update form data when input fields change
   const handleChange = (event) => {
     setTeacherLoginData({
       ...teacherLoginData,
@@ -16,6 +22,7 @@ function TeacherLogin() {
     });
   };
 
+  // Handle form submission
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     const teacherFormData = new FormData();
@@ -23,21 +30,25 @@ function TeacherLogin() {
     teacherFormData.append("password", teacherLoginData.password);
 
     try {
+      // Send login request to API
       const res = await axios.post(baseUrl + "/teacher-login", teacherFormData);
+
+      // If login is successful
       if (res.data.bool === true) {
+        // Store login status and teacher ID in localStorage
         localStorage.setItem("teacherLoginStatus", true);
         localStorage.setItem("teacherId", res.data.teacher_id);
-        window.location.href = "/teacher-dashboard";
+        window.location.href = "/teacher-dashboard"; // Redirect to dashboard
       } else {
         setErrorMsg("Oops!🙇 It looks like your email or password is incorrect. Please try again.");
-  
       }
     } catch (error) {
+      // Show error message if login fails
       setErrorMsg("Oops! It looks like your email or password is incorrect. Please try again.");
-     
     }
   };
 
+  // Redirect to dashboard if teacher is already logged in
   const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
   if (teacherLoginStatus === "true") {
     window.location.href = "/teacher-dashboard";
@@ -50,12 +61,13 @@ function TeacherLogin() {
           <div className="card">
             <h5 className="card-header">Teacher Login</h5>
             <div className="card-body">
+              {/* Display error message if any */}
               {errorMsg && <p className="text-danger">{errorMsg}</p>}
-             
+
+              <form onSubmit={handleSubmitForm}>
+                {/* Email Input */}
                 <div className="mb-3">
-                  <label htmlFor="exampleInputEmail1" className="form-label">
-                    Email
-                  </label>
+                  <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -66,10 +78,9 @@ function TeacherLogin() {
                   />
                 </div>
 
+                {/* Password Input */}
                 <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
-                  </label>
+                  <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                   <input
                     type="password"
                     className="form-control"
@@ -81,25 +92,15 @@ function TeacherLogin() {
                   />
                 </div>
 
+                {/* Remember Me Checkbox */}
                 <div className="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="exampleCheck1"
-                  />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
-                    Remember me
-                  </label>
+                  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                  <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  onClick={handleSubmitForm}
-                >
-                  Login
-                </button>
-       
+                {/* Submit Button */}
+                <button type="submit" className="btn btn-primary">Login</button>
+              </form>
             </div>
           </div>
         </div>
