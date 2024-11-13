@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import TeacherSidebar from "./TeacherSidebar";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import TeacherSidebar from "./TeacherSidebar";
+
+// Base URL for the API
 const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function EnrolledStudents() {
+  // State to hold the list of enrolled students
   const [studentData, setStudentData] = useState([]);
- let {course_id} =  useParams()
 
-  // fetch courses when page load
+  // Extract course ID from the route parameters
+  let { course_id } = useParams();
+
+  // Fetch enrolled students for the specified course when the component loads
   useEffect(() => {
-    try {
-      axios.get(baseUrl + "/fetch-enrolled-students/" + course_id).then((res) => {
-        setStudentData(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+    const fetchEnrolledStudents = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/fetch-enrolled-students/${course_id}`);
+        setStudentData(response.data);
+      } catch (error) {
+        console.error("Error fetching enrolled students:", error);
+      }
+    };
+    
+    fetchEnrolledStudents();
+  }, [course_id]); // Dependency array ensures this runs only when course_id changes
 
   return (
     <div className="container mt-4">
       <div className="row">
+        {/* Sidebar component for teacher navigation */}
         <aside className="col-md-3">
           <TeacherSidebar />
         </aside>
+
+        {/* Main content area displaying enrolled students */}
         <section className="col-md-9">
           <div className="card">
             <h5 className="card-header">Enrolled Students List</h5>
@@ -40,34 +50,20 @@ export default function EnrolledStudents() {
                   </tr>
                 </thead>
                 <tbody>
-                  {studentData.map((row, index) => {
-                    return (
-                      <tr>
-                        <td>
-                          
-                            {row.student.full_name}
-                      
-                        </td>
-
-                        <td>
-                          {row.student.email}
-                        </td>
-                        <td>
-                          {row.student.username}
-                        </td>
-                        <td>
-                          <Link
-                            className="btn btn-info btn-sm"
-                            to={"/view-student/" + row.student.id}
-                          >
-                           View
-                          </Link>
-                        
-                        
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {/* Map through the studentData array and render each student's info in a table row */}
+                  {studentData.map((row, index) => (
+                    <tr key={index}>
+                      <td>{row.student.full_name}</td>
+                      <td>{row.student.email}</td>
+                      <td>{row.student.username}</td>
+                      <td>
+                        {/* Link to view more details about the student */}
+                        <Link className="btn btn-info btn-sm" to={`/view-student/${row.student.id}`}>
+                          View
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
