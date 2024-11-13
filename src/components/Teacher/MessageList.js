@@ -3,51 +3,61 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+// Base URL for the API
 const baseUrl = 'http://127.0.0.1:8000/api';
 
 function MessageList(props) {
+    // State to hold messages data
     const [msgData, setMsgData] = useState([]);
 
-    // Fetch messages when page loads
+    // Fetch initial messages when the component loads
     useEffect(() => {
-        try {
-            axios.get(baseUrl + '/get-messages/' + props.teacher_id + '/' + props.student_id)
-                .then((res) => {
-                    setMsgData(res.data);
-                });
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
+        const fetchInitialMessages = async () => {
+            try {
+                const response = await axios.get(`${baseUrl}/get-messages/${props.teacher_id}/${props.student_id}`);
+                setMsgData(response.data);
+            } catch (error) {
+                console.error("Error fetching messages:", error);
+            }
+        };
 
-    const fetchMsgs = () => {
+        fetchInitialMessages();
+    }, [props.teacher_id, props.student_id]); // Dependencies ensure this runs when teacher_id or student_id changes
+
+    // Function to manually fetch messages, also scrolls to the latest message
+    const fetchMsgs = async () => {
         try {
-            axios.get(baseUrl + '/get-messages/' + props.teacher_id + '/' + props.student_id)
-                .then((res) => {
-                    setMsgData(res.data);
-                    const objDiv = document.getElementById("msgList");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                });
+            const response = await axios.get(`${baseUrl}/get-messages/${props.teacher_id}/${props.student_id}`);
+            setMsgData(response.data);
+
+            // Automatically scroll to the bottom of the message list
+            const objDiv = document.getElementById("msgList");
+            objDiv.scrollTop = objDiv.scrollHeight;
         } catch (error) {
-            console.log(error);
+            console.error("Error refreshing messages:", error);
         }
     };
 
-    const msgList = {
+    // Inline styling for the message list container
+    const msgListStyle = {
         height: "500px",
         overflow: "auto",
     };
 
     return (
         <>
+            {/* Refresh button to manually fetch messages */}
             <span className="btn btn-sm btn-secondary" onClick={fetchMsgs} title="Refresh">
                 <i className="bi bi-bootstrap-reboot"></i>
             </span>
 
-            <div style={msgList} id="msgList">
+            {/* Message list container */}
+            <div style={msgListStyle} id="msgList">
                 {
+                    // Map through msgData and display each message
                     msgData.map((row, index) => (
                         <div className="row mb-4" key={index}>
+                            {/* Display messages from the student on the left side */}
                             {row.msg_from !== 'teacher' && (
                                 <div className="col-5">
                                     <div className="alert alert-primary mb-1">
@@ -57,6 +67,7 @@ function MessageList(props) {
                                 </div>
                             )}
 
+                            {/* Display messages from the teacher on the right side */}
                             {row.msg_from === 'teacher' && (
                                 <div className="col-5 offset-7">
                                     <div className="alert alert-success mb-1">
