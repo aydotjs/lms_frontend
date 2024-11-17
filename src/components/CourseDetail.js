@@ -68,34 +68,55 @@ function CourseDetail() {
   };
 
   // Enroll the student in the course
+  // const enrollCourse = () => {
+  //   const studentId = localStorage.getItem("studentId");
+  //   const formData = new FormData();
+  //   formData.append("course", course_id);
+  //   formData.append("student", studentId);
+
+  //   axios
+  //     .post(`${baseUrl}/student-enroll-course/`, formData, {
+  //       headers: {
+  //         "content-type": "multipart/form-data",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       if (res.status === 200 || res.status === 201) {
+  //         Swal.fire({
+  //           title: "You have successfully enrolled in this course",
+  //           icon: "success",
+  //           toast: true,
+  //           timer: 10000,
+  //           position: "top-right",
+  //           timerProgressBar: true,
+  //           showConfirmButton: false,
+  //         });
+  //         setEnrollStatus("success");
+  //       }
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
   const enrollCourse = () => {
     const studentId = localStorage.getItem("studentId");
     const formData = new FormData();
-    formData.append("course", course_id);
-    formData.append("student", studentId);
+    formData.append("course_id", course_id);
+    formData.append("student_id", studentId);
 
+    // Call the backend to create a payment session
     axios
-      .post(`${baseUrl}/student-enroll-course/`, formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
+      .post(`${baseUrl}/create-payment-session/`, formData)
+      .then((response) => {
+        const sessionId = response.data.session_id;
+
+        // Redirect to the Stripe Checkout page
+        const stripe = window.Stripe("sk_test_51QIxQ406TBZSzy23jbtdnV5Iwz59q2vryxi5FsiM947DgOO4HjkzHEV9BjbLXffEfo8go6TOcbL1QO25wKyAILc5008CfQt1Hf");  // Add your public Stripe key here
+        stripe.redirectToCheckout({ sessionId: sessionId });
       })
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          Swal.fire({
-            title: "You have successfully enrolled in this course",
-            icon: "success",
-            toast: true,
-            timer: 10000,
-            position: "top-right",
-            timerProgressBar: true,
-            showConfirmButton: false,
-          });
-          setEnrollStatus("success");
-        }
-      })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log("Error creating payment session", error);
+      });
   };
+
 
   // Submit the rating and review
   const formSubmit = () => {
@@ -325,73 +346,73 @@ export default CourseDetail;
 
 
 
-  // // Mark as Favorite Course
-  // const markAsFavorite = () => {
-  //   const studentId = localStorage.getItem("studentId");
-  //   const formData = new FormData();
+// // Mark as Favorite Course
+// const markAsFavorite = () => {
+//   const studentId = localStorage.getItem("studentId");
+//   const formData = new FormData();
 
-  //   formData.append("course", course_id);
-  //   formData.append("student", studentId);
-  //   formData.append("status", true);
+//   formData.append("course", course_id);
+//   formData.append("student", studentId);
+//   formData.append("status", true);
 
-  //   try {
-  //     axios
-  //       .post(`${baseUrl}/student-add-favorite-course/`, formData, {
-  //         headers: {
-  //           "content-type": "multipart/form-data",
-  //         },
-  //       })
-  //       .then((res) => {
-  //         if (res.status === 200 || res.status === 201) {
-  //           Swal.fire({
-  //             title: "This course has been added to your wish list",
-  //             icon: "success",
-  //             toast: true,
-  //             timer: 10000,
-  //             position: "top-right",
-  //             timerProgressBar: true,
-  //             showConfirmButton: false,
-  //           });
-  //           setFavoriteStatus("success");
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+//   try {
+//     axios
+//       .post(`${baseUrl}/student-add-favorite-course/`, formData, {
+//         headers: {
+//           "content-type": "multipart/form-data",
+//         },
+//       })
+//       .then((res) => {
+//         if (res.status === 200 || res.status === 201) {
+//           Swal.fire({
+//             title: "This course has been added to your wish list",
+//             icon: "success",
+//             toast: true,
+//             timer: 10000,
+//             position: "top-right",
+//             timerProgressBar: true,
+//             showConfirmButton: false,
+//           });
+//           setFavoriteStatus("success");
+//         }
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-  // // Remove from favorite course
-  // const removeFavorite = () => {
-  //   const studentId = localStorage.getItem("studentId");
-  //   try {
-  //     axios
-  //       .get(
-  //         `${baseUrl}/student-remove-favorite-course/${course_id}/${studentId}`
-  //       )
-  //       .then((res) => {
-  //         if (res.status === 200 || res.status === 201) {
-  //           Swal.fire({
-  //             title: "This course has been removed from your wish list",
-  //             icon: "success",
-  //             toast: true,
-  //             timer: 10000,
-  //             position: "top-right",
-  //             timerProgressBar: true,
-  //             showConfirmButton: false,
-  //           });
-  //           setFavoriteStatus("");
-  //         }
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+// // Remove from favorite course
+// const removeFavorite = () => {
+//   const studentId = localStorage.getItem("studentId");
+//   try {
+//     axios
+//       .get(
+//         `${baseUrl}/student-remove-favorite-course/${course_id}/${studentId}`
+//       )
+//       .then((res) => {
+//         if (res.status === 200 || res.status === 201) {
+//           Swal.fire({
+//             title: "This course has been removed from your wish list",
+//             icon: "success",
+//             toast: true,
+//             timer: 10000,
+//             position: "top-right",
+//             timerProgressBar: true,
+//             showConfirmButton: false,
+//           });
+//           setFavoriteStatus("");
+//         }
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 
-     {/* {userLoginStatus === "success" &&   favoriteStatus !== "success" &&(
+{/* {userLoginStatus === "success" &&   favoriteStatus !== "success" &&(
           <p>
             <button
               onClick={markAsFavorite}
@@ -403,7 +424,7 @@ export default CourseDetail;
             </button>
           </p>
         )} */}
-          {/* {userLoginStatus === "success" &&   favoriteStatus === "success" &&(
+{/* {userLoginStatus === "success" &&   favoriteStatus === "success" &&(
           <p>
             <button
               onClick={removeFavorite}
@@ -416,17 +437,17 @@ export default CourseDetail;
           </p>
         )} */}
 
-            // // Fetch favorite status
-    // try {
-    //   axios
-    //     .get(`${baseUrl}/fetch-favorite-status/${studentId}/${course_id}`)
-    //     .then((res) => {
-    //       if (res.data.bool === true) {
-    //         setFavoriteStatus("success");
-    //       } else {
-    //         setFavoriteStatus("");
-    //       }
-    //     });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+// // Fetch favorite status
+// try {
+//   axios
+//     .get(`${baseUrl}/fetch-favorite-status/${studentId}/${course_id}`)
+//     .then((res) => {
+//       if (res.data.bool === true) {
+//         setFavoriteStatus("success");
+//       } else {
+//         setFavoriteStatus("");
+//       }
+//     });
+// } catch (error) {
+//   console.log(error);
+// }
