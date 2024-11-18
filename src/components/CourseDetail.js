@@ -109,7 +109,7 @@ function CourseDetail() {
         const sessionId = response.data.session_id;
 
         // Redirect to the Stripe Checkout page
-        const stripe = window.Stripe("sk_test_51QIxQ406TBZSzy23jbtdnV5Iwz59q2vryxi5FsiM947DgOO4HjkzHEV9BjbLXffEfo8go6TOcbL1QO25wKyAILc5008CfQt1Hf");  // Add your public Stripe key here
+        const stripe = window.Stripe("pk_test_51QIxQ406TBZSzy23nCJqiBBHXoKyhbwtYCWJoib7ODwIlthRXp1mBrwrFxqRsYEyfSaESVJ7L4wBh28Z6ihaGZh000SDU73dBA");  // Add your public Stripe key here
         stripe.redirectToCheckout({ sessionId: sessionId });
       })
       .catch((error) => {
