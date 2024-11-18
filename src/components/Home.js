@@ -49,7 +49,7 @@ function Home() {
       {/* End of latest course */}
       {/* Popular Courses */}
       <h3 className="pb-1 mb-4 mt-5">
-        Popular Courses Wadup
+        Popular Courses
         <Link to="/all-popular-courses" className="float-end">
           See All
         </Link>
