@@ -2,11 +2,11 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import { loadStripe } from "@stripe/stripe-js";
 // Base URLs for API and site
 const baseUrl = "http://127.0.0.1:8000/api";
 const siteUrl = "http://127.0.0.1:8000/";
-
+const stripePromise = loadStripe("pk_test_51QIxQ406TBZSzy23nCJqiBBHXoKyhbwtYCWJoib7ODwIlthRXp1mBrwrFxqRsYEyfSaESVJ7L4wBh28Z6ihaGZh000SDU73dBA");
 function CourseDetail() {
   // State for various course-related data
   const [courseData, setCourseData] = useState([]);
@@ -18,7 +18,6 @@ function CourseDetail() {
   const [ratingStatus, setRatingStatus] = useState();
   const [avgRating, setAvgRating] = useState(0);
   const [ratingData, setRatingData] = useState({ rating: "", reviews: "" });
-
   // Get course ID from URL params
   const { course_id } = useParams();
 
@@ -109,7 +108,7 @@ function CourseDetail() {
         const sessionId = response.data.session_id;
 
         // Redirect to the Stripe Checkout page
-        const stripe = window.Stripe("pk_test_51QIxQ406TBZSzy23nCJqiBBHXoKyhbwtYCWJoib7ODwIlthRXp1mBrwrFxqRsYEyfSaESVJ7L4wBh28Z6ihaGZh000SDU73dBA");  // Add your public Stripe key here
+        const stripe = window.Stripe("pk_test_51QKSM1HdbnsyluPYHhBKxcsFqFiylF9Hq05dzct8kXklrqmqihOInMNoDteV96ta1p9qcqGAJLsfKgQxyjFvWDGz00ncLG8PoZ");  // Add your public Stripe key here
         stripe.redirectToCheckout({ sessionId: sessionId });
       })
       .catch((error) => {

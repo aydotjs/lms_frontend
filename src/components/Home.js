@@ -273,7 +273,7 @@ function Home() {
               <blockquote class="blockquote">
                 <p>
                   This app made learning Spanish easy and fun! The interactive
-                  lessons on Language4All helped me gain confidence quickly, and
+                  lessons on Ambesten academy helped me gain confidence quickly, and
                   now I can hold basic conversations. Highly recommend it to
                   anyone wanting to learn a new language!"
                 </p>
