@@ -106,7 +106,8 @@ function CourseDetail() {
       .post(`${baseUrl}/create-payment-session/`, formData)
       .then((response) => {
         const sessionId = response.data.session_id;
-
+        console.log(sessionId);
+        alert("Session ID", sessionId)
         // Redirect to the Stripe Checkout page
         const stripe = window.Stripe("pk_test_51QKSM1HdbnsyluPYHhBKxcsFqFiylF9Hq05dzct8kXklrqmqihOInMNoDteV96ta1p9qcqGAJLsfKgQxyjFvWDGz00ncLG8PoZ");  // Add your public Stripe key here
         stripe.redirectToCheckout({ sessionId: sessionId });
