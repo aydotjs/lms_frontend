@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='container flexSB'>
           <div className='left row'>
             <h1>Newsletter - Stay tune and get the latest update</h1>
-            <span>Far far away, behind the word mountains</span>
+            <span>Join our community of language enthusiasts and learners worldwide</span>
           </div>
           <div className='right row'>
             <input type='text' placeholder='Enter email address' />
@@ -20,9 +20,9 @@ const Footer = () => {
       <footer>
         <div className='container padding'>
           <div className='box logo'>
-            <h1>ACADEMIA</h1>
-            <span>ONLINE EDUCATION & LEARNING</span>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+            <h1>AMBESTEN ACADEMY</h1>
+            <span>EXCELLENCE IN LANGUAGE EDUCATION</span>
+            <p>ADiscover the joy of learning languages and connect with cultures around the world at Ambesten Academy.</p>
 
             <i className='fab fa-facebook-f icon'></i>
             <i className='fab fa-twitter icon'></i>
@@ -74,15 +74,15 @@ const Footer = () => {
             <ul>
               <li>
                 <i className='fa fa-map'></i>
-                203 Fake St. Mountain View, San Francisco, California, USA
+                Ambesten Academy, 123 Language Lane, London, United Kingdom
               </li>
               <li>
                 <i className='fa fa-phone-alt'></i>
-                +2 392 3929 210
+                +44 1234 567890
               </li>
               <li>
                 <i className='fa fa-paper-plane'></i>
-                info@yourdomain.com
+                ambestenacademy@gmail.com
               </li>
             </ul>
           </div>
@@ -90,7 +90,7 @@ const Footer = () => {
       </footer>
       <div className='legal'>
         <p>
-          Copyright ©2022 All rights reserved | This template is made with <i className='fa fa-heart'></i> by GorkhCoder
+          Copyright ©2022 All rights reserved | Ambesten Academy
         </p>
       </div>
     </>
