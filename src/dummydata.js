@@ -213,7 +213,7 @@ export const online = [
 export const testimonial = [
   {
     id: 1,
-    name: "John Doe",
+    name: "John Adebiyi",
     photo: "../images/testimonials/john.jpg",
     feedback: "Ambesten Academy made learning Spanish so easy and fun! The interactive lessons and supportive tutors helped me achieve fluency in just a few months.",
     course: "Spanish - Intermediate",
