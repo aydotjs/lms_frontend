@@ -22,34 +22,34 @@ const Footer = () => {
           <div className='box logo'>
             <h1>AMBESTEN ACADEMY</h1>
             <span>EXCELLENCE IN LANGUAGE EDUCATION</span>
-            <p>ADiscover the joy of learning languages and connect with cultures around the world at Ambesten Academy.</p>
+            <p>Discover the joy of learning languages and connect with cultures around the world at Ambesten Academy.</p>
 
             <i className='fab fa-facebook-f icon'></i>
             <i className='fab fa-twitter icon'></i>
             <i className='fab fa-instagram icon'></i>
           </div>
           <div className='box link'>
-            <h3>Explore</h3>
+            <h3 className="fs-medium">Explore</h3>
             <ul>
-              <li>About Us</li>
-              <li>Services</li>
-              <li>Courses</li>
-              <li>Blog</li>
-              <li>Contact us</li>
+              <li className="fs-small">About Us</li>
+              <li className="fs-small">Services</li>
+              <li className="fs-small">Courses</li>
+              <li className="fs-small">Blog</li>
+              <li className="fs-small">Contact us</li>
             </ul>
           </div>
           <div className='box link'>
-            <h3>Quick Links</h3>
+            <h3 className="fs-medium">Quick Links</h3>
             <ul>
-              <li>Contact Us</li>
-              <li>Pricing</li>
-              <li>Terms & Conditions</li>
-              <li>Privacy</li>
-              <li>Feedbacks</li>
+              <li className="fs-small">Contact Us</li>
+              <li className="fs-small">Pricing</li>
+              <li className="fs-small">Terms & Conditions</li>
+              <li className="fs-small">Privacy</li>
+              <li className="fs-small">Feedbacks</li>
             </ul>
           </div>
           <div className='box'>
-            <h3>Recent Post</h3>
+            <h3 className="fs-medium">Recent Post</h3>
             {blog.slice(0, 3).map((val) => (
               <div className='items flexSB'>
                 <div className='img'>
@@ -70,7 +70,7 @@ const Footer = () => {
             ))}
           </div>
           <div className='box last'>
-            <h3>Have a Questions?</h3>
+            <h3 className="fs-medium">Have a Question?</h3>
             <ul>
               <li>
                 <i className='fa fa-map'></i>

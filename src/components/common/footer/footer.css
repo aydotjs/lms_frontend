@@ -12,6 +12,7 @@
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 15px;
+
 }
 .newletter .right {
   display: flex;
@@ -35,8 +36,9 @@ footer {
 }
 footer .container {
   display: grid;
-  grid-template-columns: 3fr 2fr 2fr 4fr 3fr;
+  grid-template-columns: 3fr 4fr 4fr 6fr 2fr;
   grid-gap: 30px;
+
 }
 @media screen and (max-width: 768px) {
   footer .container {
@@ -66,11 +68,12 @@ footer ul li {
 footer .link li::before {
   content: "⟶";
   color: #1eb2a6;
-  margin-right: 5px;
+  margin-right: 3px;
 }
 footer .items {
   margin-bottom: 30px;
 }
+
 footer .items img {
   width: 50px;
   height: 50px;
@@ -88,6 +91,7 @@ footer .items i {
 footer h4 {
   font-weight: 400;
   margin-top: 5px;
+  font-size: 1em;
 }
 footer .last ul li {
   display: flex;
@@ -110,3 +114,12 @@ footer .last i {
 .legal i {
   color: #1eb2a6;
 }
+
+.fs-medium{
+  font-size: 1.3rem !important;
+
+}
+/* .fs-small{
+  font-size: 0.8rem !important;
+  font-weight: bold;
+} */

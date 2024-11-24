@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Sw
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
 import Login from "./User/Login";
+import "../index.css"
 
 import Dashboard from "./User/DashBoard";
 import MyCourses from "./User/MyCourses";
