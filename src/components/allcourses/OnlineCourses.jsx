@@ -9,7 +9,7 @@ const OnlineCourses = () => {
       <section className='online'>
         <div className='container'>
           <Heading subtitle='COURSES' title='Browse Our Online Courses' />
-          <div className='content grid3'>
+          <div className='content grid3' style={{border : "2px solid red !important"}}>
             {online.map((val) => (
               <div className='box'>
                 <div className='img'>

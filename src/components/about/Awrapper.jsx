@@ -5,7 +5,7 @@ const Awrapper = () => {
   return (
     <>
       <section className='awrapper'>
-        <div className='container grid'>
+        <div className='container grid' >
           {awrapper.map((val) => {
             return (
               <div className='box flex'>
@@ -13,8 +13,8 @@ const Awrapper = () => {
                   <img src={val.cover} alt='' />
                 </div>
                 <div className='text'>
-                  <h1>{val.data}</h1>
-                  <h3>{val.title}</h3>
+                  <h1 style={{fontSize : "1.8rem"}}>{val.data}</h1>
+                  <h3  style={{fontSize : "1.8rem"}}>{val.title}</h3>
                 </div>
               </div>
             )

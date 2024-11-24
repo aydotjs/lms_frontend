@@ -65,12 +65,12 @@ export const blog = [
 export const awrapper = [
   {
     cover: "https://img.icons8.com/external-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto/80/ffffff/external-graduation-education-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto.png",
-    data: "5,000",
+    data: "100",
     title: "SUCCESS STORIES",
   },
   {
     cover: "https://img.icons8.com/ios/80/ffffff/athlete.png",
-    data: "500",
+    data: "50",
     title: "CERTIFIED INSTRUCTORS",
   },
   {
@@ -80,7 +80,7 @@ export const awrapper = [
   },
   {
     cover: "https://img.icons8.com/ios/80/ffffff/macbook-idea--v3.png",
-    data: "800",
+    data: "20",
     title: "COURSES AVAILABLE",
   },
 ];
