@@ -96,7 +96,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className="legal">
-        <p>Copyright ©2022 All rights reserved | Ambesten Academy</p>
+        <p>Copyright ©2024 All rights reserved | Ambesten Academy</p>
       </div>
     </>
   );
