@@ -88,45 +88,45 @@ export const awrapper = [
 export const coursesCard = [
   {
     id: 1,
-    cover: "../images/courses/c1.png",
-    coursesName: "English for Beginners",
+    cover: "../images/courses/online/spanish-language.png",
+    coursesName: "Spanish for Beginners",
     courTeacher: [
       {
         dcover: "./images/back.webp",
         name: "by Sarah Johnson",
-        totalTime: "40 lectures (100 hrs)",
+        totalTime: "40 chapters (20 hrs)",
       },
     ],
-    priceAll: "$120 All Course",
-    pricePer: "$20 per month",
+    priceAll: "$20 ",
+    // pricePer: "$20 per month",
   },
   {
     id: 2,
-    cover: "../images/courses/c2.png",
+    cover: "../images/courses/online/pidgin.jpg",
     coursesName: "Conversational Pidgin",
     courTeacher: [
       {
-        dcover: "./images/back.webp",
+        dcover: "../images/courses/online/pidgin.jpg",
         name: "by Adekunle Adebayo",
         totalTime: "25 lectures (75 hrs)",
       },
     ],
-    priceAll: "$100 All Course",
-    pricePer: "$15 per month",
+    priceAll: "$15",
+
   },
   {
     id: 3,
-    cover: "../images/courses/c3.png",
+    cover: "../images/courses/online/french.webp",
     coursesName: "French Grammar and Vocabulary",
     courTeacher: [
       {
-        dcover: "./images/back.webp",
+        dcover: "../images/courses/online/french.webp",
         name: "by Marie Dupont",
         totalTime: "50 lectures (150 hrs)",
       },
     ],
-    priceAll: "$200 All Course",
-    pricePer: "$25 per month",
+    priceAll: "$25",
+    // pricePer: "$25 per month",
   },
   {
     id: 4,

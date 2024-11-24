@@ -51,7 +51,7 @@ const HAbout = () => {
                   </div>
                   <div className='price'>
                     <h3>
-                      {val.priceAll} / {val.pricePer}
+                      {val.priceAll} 
                     </h3>
                   </div>
                   <button className='outline-btn'>ENROLL NOW !</button>
