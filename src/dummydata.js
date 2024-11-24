@@ -174,40 +174,40 @@ export const coursesCard = [
 
 export const online = [
   {
-    cover: "./images/courses/online/o1.png",
-    hoverCover: "./images/courses/online/o1.1.png",
-    courseName: "English Courses",
-    course: "50 Courses",
-  },
-  {
-    cover: "./images/courses/online/o2.png",
-    hoverCover: "./images/courses/online/o2.1.png",
-    courseName: "Pidgin Language",
-    course: "20 Courses",
-  },
-  {
-    cover: "./images/courses/online/o3.png",
-    hoverCover: "./images/courses/online/o3.1.png",
-    courseName: "French Language",
-    course: "30 Courses",
-  },
-  {
-    cover: "./images/courses/online/o4.png",
-    hoverCover: "./images/courses/online/o4.1.png",
-    courseName: "Spanish Language",
-    course: "25 Courses",
-  },
-  {
-    cover: "./images/courses/online/o5.png",
-    hoverCover: "./images/courses/online/o5.1.png",
+    cover: "./images/courses/online/german-flag.png",
+    hoverCover: "./images/courses/online/german-flag.png",
     courseName: "German Language",
-    course: "40 Courses",
+    course: "50 chapters",
   },
   {
-    cover: "./images/courses/online/o6.png",
-    hoverCover: "./images/courses/online/o6.1.png",
+    cover: "./images/courses/online/english-language.png",
+    hoverCover: "./images/courses/online/english-language.png",
+    courseName: "English Language",
+    course: "20 Chapters",
+  },
+  {
+    cover: "./images/courses/online/pidgin.jpg",
+    hoverCover: "./images/courses/online/pidgin.jpg",
+    courseName: "Pidgin English",
+    course: "30 chapters",
+  },
+  {
+    cover: "./images/courses/online/french.webp",
+    hoverCover: "./images/courses/online/french.webp",
+    courseName: "French Language",
+    course: "25 Chapters",
+  },
+  {
+    cover: "./images/courses/online/akan.png",
+    hoverCover: "./images/courses/online/akan.png",
+    courseName: "Akan Language",
+    course: "40 Chapters",
+  },
+  {
+    cover: "./images/courses/online/yoruba.jpg",
+    hoverCover: "./images/courses/online/yoruba.jpg",
     courseName: "Yoruba Language",
-    course: "15 Courses",
+    course: "15 Chapters",
   },
 ];
 export const testimonial = [
