@@ -19,6 +19,35 @@
   justify-content: space-between;
   align-items: center;
 }
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding-right: 40px; /* Add space for the icon */
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+.input-with-icon i {
+  position: absolute;
+  right: 10px; /* Position the icon inside the input field */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1eb2a6; /* Adjust the icon color */
+  cursor: pointer;
+}
+
 .newletter input {
   width: 100%;
   padding: 20px;
