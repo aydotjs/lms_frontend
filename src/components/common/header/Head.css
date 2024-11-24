@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap');
+.logo h1{
+    font-family: cursive;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+ 
+h1 span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .logo {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .logo h1 {
+    margin: 0;
+  }
+  
+  .logo .academy {
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  
+  .logo .academy::before,
+  .logo .academy::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 50px;
+    background-color: white; /* Change to your preferred color */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .logo .academy::before {
+    left: -60px; /* Adjust spacing */
+  }
+  
+  .logo .academy::after {
+    right: -60px; /* Adjust spacing */
+  }
+  
