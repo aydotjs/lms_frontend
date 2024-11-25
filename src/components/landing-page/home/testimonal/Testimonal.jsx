@@ -1,5 +1,5 @@
 import React from "react"
-import { testimonial } from "../../../dummydata"
+import { testimonial } from "../../../../dummydata"
 import Heading from "../../common/heading/Heading"
 import "./style.css"
 

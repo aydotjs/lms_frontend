@@ -1,5 +1,5 @@
 import React from "react"
-import { team } from "../../dummydata"
+import { team } from "../../../dummydata"
 
 const TeamCard = () => {
   return (
