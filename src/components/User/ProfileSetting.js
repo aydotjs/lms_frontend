@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-
+import Back from "../landing-page/common/back/Back";
 function ProfileSetting() {
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         <aside className="col-md-3">
           <Sidebar />

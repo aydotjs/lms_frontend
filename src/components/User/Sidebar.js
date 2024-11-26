@@ -22,7 +22,7 @@ function Sidebar() {
         <Link to='/profile-setting' className='list-group-item list-group-item-action'>
           Profile Setting
         </Link>
-        <Link to='/change-password' className='list-group-item list-group-item-action'>
+        <Link to='/' className='list-group-item list-group-item-action'>
           Change Password
         </Link>
         <Link to='/student-logout' className='list-group-item list-group-item-action text-danger'>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import axios from "axios";
 import MessageList from "./MessageList";
-
+import Back from "../landing-page/common/back/Back";
 const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function MyTeachers() {
@@ -101,6 +101,7 @@ export default function MyTeachers() {
 
     return (
         <div className="container mt-4">
+            <Back/>
             <div className="row">
                 {/* Sidebar */}
                 <aside className="col-md-3">

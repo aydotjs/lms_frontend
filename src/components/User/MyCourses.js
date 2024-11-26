@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Back from "../landing-page/common/back/Back";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function MyCourses() {
   const [courseData, setCourseData] = useState([]);
@@ -23,6 +24,7 @@ export default function MyCourses() {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         <aside className="col-md-3">
           <Sidebar />

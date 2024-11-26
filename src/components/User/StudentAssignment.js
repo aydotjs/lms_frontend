@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Back from "../landing-page/common/back/Back";
 import Swal from "sweetalert2";
 const baseUrl = "http://127.0.0.1:8000/api";
 export default function Assignment() {
@@ -49,6 +50,7 @@ const markAsDone = (assignment_id, title, detail, student, teacher) => {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         <aside className="col-md-3">
           <Sidebar />
