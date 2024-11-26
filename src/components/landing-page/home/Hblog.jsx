@@ -1,24 +1,24 @@
 import React from "react"
 import "../blog/blog.css"
-import { blog } from "../../dummydata"
+import { blog } from "../dummydata"
 import Heading from "../common/heading/Heading"
-
+import styles from "../style.module.css"
 // copy code of blog => blogCard
 
 const Hblog = () => {
   return (
     <>
       <section className='blog'>
-        <div className='container'>
-          <Heading subtitle='OUR BLOG' title='Recent From Blog' />
-          <div className='grid2'>
+        <div className={`${styles.container}`}>
+          <Heading subtitle='OUR BLOG' title='Recent From Blog' style = {{border : "2px solid red"}} />
+          <div className={`${styles.grid2}`}>
             {blog.slice(0, 3).map((val) => (
               <div className='items shadow'>
                 <div className='img'>
                   <img src={val.cover} alt='' />
                 </div>
                 <div className='text'>
-                  <div className='admin flexSB'>
+                  <div className={`admin ${styles.flexSB}`}>
                     <span>
                       <i className='fa fa-user'></i>
                       <label htmlFor=''>{val.type}</label>

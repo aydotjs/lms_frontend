@@ -1,14 +1,15 @@
 import React from "react"
 import Heading from "../common/heading/Heading"
 import "./about.css"
-import { homeAbout } from "../../dummydata"
+import { homeAbout } from "../dummydata"
 import Awrapper from "./Awrapper"
+import styles from "../style.module.css"
 
 const AboutCard = () => {
   return (
     <>
       <section className='aboutHome'>
-        <div className='container flexSB'>
+        <div  className={`${styles.container} ${styles.flexSB}`}>
           <div className='left row'>
             <img src='./images/about.webp' alt='' />
           </div>

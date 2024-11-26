@@ -1,15 +1,15 @@
 import React from "react"
 import "./courses.css"
 import { coursesCard } from "../../dummydata"
-
+import styles from "../style.module.css"
 const CoursesCard = () => {
   return (
     <>
       <section className='coursesCard'>
-        <div className='container grid2'>
+        <div className={`${styles.container} ${styles.grid}`}>
           {coursesCard.map((val) => (
             <div className='items'>
-              <div className='content flex'>
+              <div className={`content ${flex}`}>
                 <div className='left'>
                   <div className='img'>
                     <img src={val.cover} alt='' />

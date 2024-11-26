@@ -1,6 +1,6 @@
 import React from "react"
 import { blog } from "../../../dummydata"
-
+import styles from "../style.module.css"
 const BlogCard = () => {
   return (
     <>
@@ -10,7 +10,7 @@ const BlogCard = () => {
             <img src={val.cover} alt='' />
           </div>
           <div className='text'>
-            <div className='admin flexSB'>
+            <div className={`admin ${styles.flexSB}`}>
               <span>
                 <i className='fa fa-user'></i>
                 <label htmlFor=''>{val.type}</label>

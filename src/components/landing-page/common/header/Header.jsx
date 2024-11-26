@@ -1,17 +1,21 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import Head from "./Head"
-import "./header.css"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Head from "./Head";
+import "./header.css";
+import styles from '../../style.module.css'; // For CSS Module styles
 
 const Header = () => {
-  const [click, setClick] = useState(false)
+  const [click, setClick] = useState(false);
 
   return (
     <>
       <Head />
       <header>
-        <nav className='flexSB'>
-          <ul className={click ? "mobile-nav" : "flexSB "} onClick={() => setClick(false)}>
+        <nav className={`${styles.flexSB} flexSB`}>
+          <ul 
+            className={`${click ? "mobile-nav" : `flexSB ${styles.flexSB}`}`} 
+            onClick={() => setClick(false)}
+          >
             <li>
               <Link to='/'>Home</Link>
             </li>
@@ -25,16 +29,16 @@ const Header = () => {
               <Link to='/team'>Team</Link>
             </li>
             <li>
-              <Link to='/pricing'>Pricing</Link>
+              <Link to='/'>Teachers</Link>
             </li>
             <li>
-              <Link to='/journal'>Journal</Link>
+              <Link to='/student-login'>Students</Link>
             </li>
             <li>
               <Link to='/contact'>Contact</Link>
             </li>
           </ul>
-          <div className='start'>
+          <div className={`${styles.start} start`}>
             <div className='button'>START NOW</div>
           </div>
           <button className='toggle' onClick={() => setClick(!click)}>
@@ -43,7 +47,7 @@ const Header = () => {
         </nav>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

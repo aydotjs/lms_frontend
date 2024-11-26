@@ -2,18 +2,18 @@ import React from "react"
 import OnlineCourses from "../allcourses/OnlineCourses"
 import Heading from "../common/heading/Heading"
 import "../allcourses/courses.css"
-import { coursesCard } from "../../dummydata"
-
+import { coursesCard } from "../dummydata"
+import styles from "../style.module.css"
 const HAbout = () => {
   return (
     <>
       <section className='homeAbout'>
-        <div className='container'>
+        <div className={`${styles.container}`}>
           <Heading subtitle='our courses' title='explore our popular online courses' />
 
           <div className='coursesCard'>
             {/* copy code form  coursesCard */}
-            <div className='grid2'>
+            <div className={`${styles.grid2}`}>
               {coursesCard.slice(0, 3).map((val) => (
                 <div className='items'>
                   <div className='content flex'>

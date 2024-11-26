@@ -1,12 +1,13 @@
 import React from "react";
-import { blog } from "../../../dummydata";
+import { blog } from "../../dummydata";
 import "./footer.css";
+import styles from '../../style.module.css'; // For CSS Module styles
 
 const Footer = () => {
   return (
     <>
-      <section className="newletter">
-        <div className="container flexSB">
+      <section className={`newletter`}>
+        <div className={`${styles.flexSB} ${styles.container}`}>
           <div className="left row">
             <h1>Newsletter - Stay tune and get the latest update</h1>
             <span>
@@ -22,7 +23,7 @@ const Footer = () => {
         </div>
       </section>
       <footer>
-        <div className="container padding">
+        <div className={`${styles.container} container padding`}>
           <div className="box logo">
             <h1>AMBESTEN ACADEMY</h1>
             <span>EXCELLENCE IN LANGUAGE EDUCATION</span>
@@ -31,9 +32,9 @@ const Footer = () => {
               around the world at Ambesten Academy.
             </p>
 
-            <i className="fab fa-facebook-f icon"></i>
-            <i className="fab fa-twitter icon"></i>
-            <i className="fab fa-instagram icon"></i>
+            <i className={`${styles.icon} fab fa-facebook-f icon`}></i>
+            <i className={`${styles.icon} fab fa-twitter icon`}></i>
+            <i className={`${styles.icon} fab fa-instagram icon`}></i>
           </div>
           <div className="box link">
             <h3 className="fs-medium">Explore</h3>
@@ -58,7 +59,7 @@ const Footer = () => {
           <div className="box">
             <h3 className="fs-medium">Recent Post</h3>
             {blog.slice(0, 3).map((val) => (
-              <div className="items flexSB">
+              <div className={`${styles.flexSB} items flexSB`} key={val.id}>
                 <div className="img">
                   <img src={val.cover} alt="" />
                 </div>

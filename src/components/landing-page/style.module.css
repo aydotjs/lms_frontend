@@ -79,6 +79,7 @@ button:hover {
   font-size: 45px;
   margin: 20px 0;
   text-transform: capitalize;
+ 
 }
 p {
   line-height: 30px;
@@ -86,7 +87,7 @@ p {
 }
 
 .back {
-  background-image: url("../public/images/back.webp");
+  background-image: url("../../../public/images/back.webp");
   background-size: cover;
   background-attachment: fixed;
   position: absolute;
@@ -124,6 +125,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
+  /* border: 2px solid red; */
 }
 .outline-btn {
   margin: 0;
