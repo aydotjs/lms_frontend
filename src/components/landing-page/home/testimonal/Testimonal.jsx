@@ -9,7 +9,11 @@ const Testimonal = () => {
     <>
       <section className="testimonal padding">
         <div className={`${styles.container}`}>
-          <Heading subtitle="TESTIMONIAL" title="Our Successful Students" />
+        <div id={`${styles.heading}`}>
+        <h3>TESTIMONIAL</h3>
+        <h1 >Our Successful Students</h1>
+      </div>
+          {/* <Heading subtitle="TESTIMONIAL" title="Our Successful Students" /> */}
 
           <div className={`content ${styles.grid2}`}>
             {testimonial.map((val) => {

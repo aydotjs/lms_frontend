@@ -10,7 +10,11 @@ const Hblog = () => {
     <>
       <section className='blog'>
         <div className={`${styles.container}`}>
-          <Heading subtitle='OUR BLOG' title='Recent From Blog' style = {{border : "2px solid red"}} />
+        <div id={`${styles.heading}`}>
+        <h3>OUR BLOG </h3>
+        <h1 >Recent From Blog</h1>
+      </div>
+          {/* <Heading subtitle='OUR BLOG' title='Recent From Blog' style = {{border : "2px solid red"}} /> */}
           <div className={`${styles.grid2}`}>
             {blog.slice(0, 3).map((val) => (
               <div className='items shadow'>
