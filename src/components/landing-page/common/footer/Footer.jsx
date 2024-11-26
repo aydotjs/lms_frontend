@@ -1,7 +1,7 @@
 import React from "react";
 import { blog } from "../../dummydata";
 import "./footer.css";
-import styles from '../../style.module.css'; // For CSS Module styles
+import styles from "../../style.module.css"; // For CSS Module styles
 
 const Footer = () => {
   return (
@@ -14,16 +14,14 @@ const Footer = () => {
               Join our community of language enthusiasts and learners worldwide
             </span>
           </div>
-          <div className="right row input-container">
-            <div className="input-with-icon">
-              <input type="text" placeholder="Enter email address" />
-              <i className="fa fa-paper-plane"></i>
-            </div>
+          <div className={`${styles.row} right`}>
+            <input type="text" placeholder="Enter email address" />
+            <i className="fa fa-paper-plane"></i>
           </div>
         </div>
       </section>
       <footer>
-        <div className={`${styles.container} container padding`}>
+        <div className={`${styles.container}  container ${styles.padding}`}>
           <div className="box logo">
             <h1>AMBESTEN ACADEMY</h1>
             <span>EXCELLENCE IN LANGUAGE EDUCATION</span>
@@ -82,11 +80,11 @@ const Footer = () => {
             <ul>
               <li>
                 <i className="fa fa-map"></i>
-                Ambesten Academy, 123 Language Lane, London, United Kingdom
+                1 Oliver Street Mexborough  Doncaster S64 9NW
               </li>
               <li>
                 <i className="fa fa-phone-alt"></i>
-                +44 1234 567890
+                +447553544846,
               </li>
               <li>
                 <i className="fa fa-paper-plane"></i>
