@@ -30,14 +30,10 @@ const Header = () => {
             </li>
             
             <li>
-<<<<<<< HEAD:src/components/common/header/Header.jsx
-              <Link to='/journal'>Students</Link>
-=======
               <Link to='/'>Teachers</Link>
             </li>
             <li>
               <Link to='/student-login'>Students</Link>
->>>>>>> testing-branch:src/components/landing-page/common/header/Header.jsx
             </li>
             <li>
               <Link to='/contact'>Contact</Link>
