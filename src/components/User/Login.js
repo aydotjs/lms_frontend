@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Back from "../landing-page/common/back/Back";
 const baseUrl = "http://127.0.0.1:8000/api";  // Base URL for API
 
 function Login() {
@@ -63,6 +63,7 @@ function Login() {
 
   return (
     <div className="container mt-4">
+      <Back />
       <div className="row">
         <div className="col-6 offset-3">
           <div className="card">
@@ -72,7 +73,7 @@ function Login() {
             <div className="card-body">
               {/* Display error message if it exists */}
               {errorMsg && <p className="text-danger">{errorMsg}</p>}
-              
+
               {/* Login form */}
               <form>
                 <div className="mb-3">
@@ -107,7 +108,18 @@ function Login() {
                   Login
                 </button>
               </form>
+
+              {/* Registration Link */}
+              <div className="mt-3">
+                <p>
+                  Don't have an account?{" "}
+                  <Link to="/student-register" className="text-primary">
+                    Click here to register
+                  </Link>
+                </p>
+              </div>
             </div>
+
           </div>
         </div>
       </div>

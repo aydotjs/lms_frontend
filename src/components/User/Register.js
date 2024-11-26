@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
+import Back from "../landing-page/common/back/Back";
 // API base URL for student registration
 const baseUrl = "http://127.0.0.1:8000/api/student/";
 
@@ -70,6 +70,7 @@ const baseUrl = "http://127.0.0.1:8000/api/student/";
 
   return (
     <div className="container mt-4">
+      <Back/>
       <ToastContainer position="top-center" />
       <div className="row">
         {/* Display success or error message */}

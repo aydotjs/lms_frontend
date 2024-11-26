@@ -1,6 +1,6 @@
-import Home from "./home/Home.jsx";
-import Header from "./common/header/Header.jsx";
-import Footer from "./common/footer/Footer.jsx";
+import Home from "./landing-page/home/Home.jsx";
+import Header from "./landing-page/common/header/Header.jsx";
+import Footer from "./landing-page/common/footer/Footer.jsx";
 import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Switch
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
