@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Back from "../landing-page/common/back/Back";
 // Define API base URL for teacher registration
 const baseUrl = "http://127.0.0.1:8000/api/teacher/";
 
@@ -82,6 +82,7 @@ export default function TeacherRegister() {
   // Render registration form
   return (
     <div className="container mt-4">
+      <Back/>
       <ToastContainer position="top-center" />
       <div className="row">
         <div className="col-6 offset-3">
