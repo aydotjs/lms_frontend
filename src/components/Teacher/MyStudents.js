@@ -4,7 +4,7 @@ import TeacherSidebar from "./TeacherSidebar"; // Teacher Sidebar component
 import axios from "axios"; // Importing axios for making API requests
 import MessageList from "./MessageList"; // Component to display the list of messages
 import Swal from "sweetalert2"; // SweetAlert2 for displaying alerts
-
+import Back from "../landing-page/common/back/Back";
 const baseUrl = "http://127.0.0.1:8000/api"; // Base URL for API calls
 
 export default function MyStudents() {
@@ -103,6 +103,7 @@ export default function MyStudents() {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         {/* Sidebar component for teacher navigation */}
         <aside className="col-md-3">

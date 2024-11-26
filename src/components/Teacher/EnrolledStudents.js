@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import TeacherSidebar from "./TeacherSidebar";
-
+import Back from "../landing-page/common/back/Back";
 // Base URL for the API
 const baseUrl = "http://127.0.0.1:8000/api";
 
@@ -29,12 +29,13 @@ export default function EnrolledStudents() {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         {/* Sidebar component for teacher navigation */}
+       
         <aside className="col-md-3">
           <TeacherSidebar />
         </aside>
-
         {/* Main content area displaying enrolled students */}
         <section className="col-md-9">
           <div className="card">

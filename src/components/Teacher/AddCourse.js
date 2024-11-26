@@ -3,7 +3,7 @@ import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Back from "../landing-page/common/back/Back";
 const baseUrl = "http://127.0.0.1:8000/api";
 
 export default function AddCourse() {
@@ -103,6 +103,7 @@ export default function AddCourse() {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <ToastContainer />
       <div className="row">
         <aside className="col-md-3">

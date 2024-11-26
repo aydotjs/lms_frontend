@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import Back from "../landing-page/common/back/Back";
 // Base URL for the API
 const baseUrl = "http://127.0.0.1:8000/api";
 
@@ -57,6 +57,7 @@ export default function TeacherCourses() {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         {/* Sidebar for teacher navigation */}
         <aside className="col-md-3">

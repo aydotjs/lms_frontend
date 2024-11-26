@@ -3,7 +3,7 @@ import TeacherSidebar from "./TeacherSidebar"; // Importing Sidebar component
 import { useState, useEffect } from "react"; // Importing React hooks
 import axios from "axios"; // Importing axios for API requests
 import Swal from "sweetalert2"; // Importing SweetAlert2 for notifications
-
+import Back from "../landing-page/common/back/Back";
 const baseUrl = "http://127.0.0.1:8000/api"; // API base URL for the application
 
 function TeacherProfileSetting() {
@@ -114,6 +114,7 @@ function TeacherProfileSetting() {
 
   return (
     <div className="container mt-4">
+      <Back/>
       <div className="row">
         <aside className="col-md-3">
           <TeacherSidebar /> {/* Render the sidebar */}
