@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Sw
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
 // import AboutUsPage from "./AboutUsPage";
+import CourseHome from "./landing-page/allcourses/CourseHome.jsx";
 import About from "./landing-page/about/About.jsx";
 import Contact from "./landing-page/contact/Contact.jsx";
 import Login from "./User/Login";
@@ -48,6 +49,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/course" element={<CourseHome />} />
+
         <Route path="/detail/:course_id" element={<CourseDetail />} />
         
         <Route path="/teacher-detail/:teacher_id" element={<TeacherDetail />} />
