@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
+import Back from "./landing-page/common/back/Back";
 // Base URLs for API and site
 const baseUrl = "http://127.0.0.1:8000/api";
 const siteUrl = "http://127.0.0.1:8000/";
@@ -148,6 +149,7 @@ function CourseDetail() {
 
   return (
     <div className="container mt-3">
+      <Back/>
       <div className="row">
         {/* Course Image and Overview */}
         <div className="col-4">

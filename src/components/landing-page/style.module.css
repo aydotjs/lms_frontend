@@ -126,7 +126,6 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
-  /* border: 2px solid red; */
 }
 .outline-btn {
   margin: 0;

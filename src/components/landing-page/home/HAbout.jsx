@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import OnlineCourses from "../allcourses/OnlineCourses";
 import styles from "../style.module.css";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const baseUrl = "http://127.0.0.1:8000/api";
@@ -74,7 +75,7 @@ const HAbout = () => {
                 <div className="price">
                   <h3>${course.price || "Free"}</h3>
                 </div>
-                <button className="outline-btn">ENROLL NOW!</button>
+                <button className="outline-btn" style={{border : "2px solid #1eb2a6"}}><Link style={{color : "#1eb2a6"}} to={`/detail/${course.id}`}>ENROLL NOW!</Link></button>
               </div>
             ))}
           </div>

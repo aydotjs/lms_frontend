@@ -4,6 +4,9 @@ import Footer from "./landing-page/common/footer/Footer.jsx";
 import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Switch
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
+// import AboutUsPage from "./AboutUsPage";
+import About from "./landing-page/about/About.jsx";
+import Contact from "./landing-page/contact/Contact.jsx";
 import Login from "./User/Login";
 import Dashboard from "./User/DashBoard";
 import MyCourses from "./User/MyCourses";
@@ -43,8 +46,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/detail/:course_id" element={<CourseDetail />} />
+        
         <Route path="/teacher-detail/:teacher_id" element={<TeacherDetail />} />
         <Route path="/category/:category_slug" element={<CategoryCourses />} />
 
