@@ -6,7 +6,7 @@ const CoursesCard = () => {
   return (
     <>
       <section className='coursesCard'>
-        <div className={`${styles.container} ${styles.grid}`}>
+        <div className={`${styles.container} ${styles.grid2}`}>
           {coursesCard.map((val) => (
             <div className='items'>
               <div className={`content ${styles.flex}`}>
