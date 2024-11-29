@@ -17,6 +17,7 @@ export default function AddCourse() {
     description: "",
     languages: "",
     featured_img: null,
+    price : "",
   });
 
   // State to manage the loading state
@@ -64,6 +65,7 @@ export default function AddCourse() {
     formData.append("title", courseData.title);
     formData.append("description", courseData.description);
     formData.append("languages", courseData.languages);
+    formData.append("price", courseData.price);
     formData.append("featured_img", courseData.featured_img, courseData.featured_img.name);
   
     // Show loading message
@@ -162,6 +164,18 @@ export default function AddCourse() {
                   id="languages"
                   className="form-control"
                   value={courseData.languages}
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label fw-bold">Price</label>
+                <input
+                placeholder="Enter the price of this course.. $10"
+                  type="number"
+                  onChange={handleChange}
+                  name="price"
+                  id="price"
+                  className="form-control"
+                  value={courseData.price}
                 />
               </div>
 

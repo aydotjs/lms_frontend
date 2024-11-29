@@ -36,7 +36,7 @@ const Header = () => {
             </li>
           </ul>
           <div className={`${styles.start} start`}>
-            <div className='button'>START NOW</div>
+            <div className='button'>APPLY AS A TEACHER</div>
           </div>
           <button className='toggle' onClick={() => setClick(!click)}>
             {click ? <i className='fa fa-times'> </i> : <i className='fa fa-bars'></i>}
