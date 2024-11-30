@@ -2,6 +2,7 @@ import React from "react";
 import { blog } from "../../dummydata";
 import "./footer.css";
 import styles from "../../style.module.css"; // For CSS Module styles
+import {Link} from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -37,11 +38,11 @@ const Footer = () => {
           <div className="box link">
             <h3 className="fs-medium">Explore</h3>
             <ul>
-              <li className="fs-small">About Us</li>
+              <li className="fs-small"><Link style={{color : "black"}} to='/about'>About</Link></li>
               <li className="fs-small">Services</li>
-              <li className="fs-small">Courses</li>
+              <li className="fs-small"><Link style={{color : "black"}} to='/course'>Course</Link></li>
               <li className="fs-small">Blog</li>
-              <li className="fs-small">Contact us</li>
+              <li className="fs-small"><Link style={{color : "black"}} to='/contact'>Contact</Link></li>
             </ul>
           </div>
           <div className="box link">

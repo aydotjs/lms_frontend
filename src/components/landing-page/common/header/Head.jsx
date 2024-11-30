@@ -23,9 +23,9 @@ const Head = () => {
           </div>
 
           <div className="social">
-            <i className={`fab fa-facebook-f icon ${styles.icon}`}></i>
-            <i className={`fab fa-instagram icon ${styles.icon}`}></i>
-            <i className={`fab fa-twitter icon ${styles.icon}`}></i>
+            <a href="https://www.facebook.com/share/18APFRoC8T/"><i className={`fab fa-facebook-f icon ${styles.icon}`}></i></a>
+            <a href="https://www.instagram.com/ambestenacademy"><i className={`fab fa-instagram icon ${styles.icon}`}></i></a>
+            <a href="https://www.tiktok.com/@ambestenacademy?_t=8rnICSR5889&_r=1"><i className={`fab fa-tiktok icon ${styles.icon}`}></i></a>
             <i className={`fab fa-youtube icon ${styles.icon}`}></i>
           </div>
         </div>
