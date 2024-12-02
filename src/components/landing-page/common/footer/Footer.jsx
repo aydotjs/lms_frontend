@@ -2,7 +2,7 @@ import React from "react";
 import { blog } from "../../dummydata";
 import "./footer.css";
 import styles from "../../style.module.css"; // For CSS Module styles
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -38,19 +38,38 @@ const Footer = () => {
           <div className="box link">
             <h3 className="fs-medium">Explore</h3>
             <ul>
-              <li className="fs-small"><Link style={{color : "black"}} to='/about'>About</Link></li>
+              <li className="fs-small">
+                <Link style={{ color: "black" }} to="/about">
+                  About
+                </Link>
+              </li>
               <li className="fs-small">Services</li>
-              <li className="fs-small"><Link style={{color : "black"}} to='/course'>Course</Link></li>
+              <li className="fs-small">
+                <Link style={{ color: "black" }} to="/course">
+                  Course
+                </Link>
+              </li>
               <li className="fs-small">Blog</li>
-              <li className="fs-small"><Link style={{color : "black"}} to='/contact'>Contact</Link></li>
+              <li className="fs-small">
+                <Link style={{ color: "black" }} to="/contact">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="box link">
             <h3 className="fs-medium">Quick Links</h3>
             <ul>
-              <li className="fs-small">Contact Us</li>
-              <li className="fs-small">Pricing</li>
-              <li className="fs-small">Terms & Conditions</li>
+              <Link to="/contact">
+                <li className="fs-small">Contact Us</li>
+              </Link>
+
+              <Link to="/pricing">
+                <li className="fs-small">Pricing</li>
+              </Link>
+              <Link to="/terms_and_conditions">
+                <li className="fs-small">Terms & Conditions</li>
+              </Link>
               <li className="fs-small">Privacy</li>
               <li className="fs-small">Feedbacks</li>
             </ul>
@@ -80,12 +99,12 @@ const Footer = () => {
             <h3 className="fs-medium">Have a Question?</h3>
             <ul>
               <li>
-                <i className="fa fa-map"></i>
-                1 Oliver Street Mexborough  Doncaster S64 9NW
+                <i className="fa fa-map"></i>1 Oliver Street Mexborough
+                Doncaster S64 9NW
               </li>
               <li>
                 <i className="fa fa-phone-alt"></i>
-                +447553544846,
+                +447553544846
               </li>
               <li>
                 <i className="fa fa-paper-plane"></i>
