@@ -60,24 +60,25 @@ const Footer = () => {
           <div className="box link">
             <h3 className="fs-medium">Quick Links</h3>
             <ul>
-              <Link to="/contact">
-                <li className="fs-small">Contact Us</li>
-              </Link>
-
-              <Link to="/payment_policy">
-                <li className="fs-small">Pricing Policy</li>
-              </Link>
-              <Link to="/terms_and_conditions">
+              <Link style={{ color: "black" }} to="/terms_and_conditions">
                 <li className="fs-small">Terms & Conditions</li>
               </Link>
-              <Link to="/privacy">
+
+              <Link style={{ color: "black" }} to="/payment_policy">
+                <li className="fs-small">Payment Policy</li>
+              </Link>
+
+              <Link style={{ color: "black" }} to="/privacy">
                 <li className="fs-small">Privacy</li>
               </Link>
-              <Link to="/cookies">
+              <Link style={{ color: "black" }} to="/cookies">
                 <li className="fs-small">Cookies Policy</li>
               </Link>
-              <Link to="/refund">
+              <Link style={{ color: "black" }} to="/refund">
                 <li className="fs-small">Refund and Cancelation</li>
+              </Link>
+              <Link style={{ color: "black" }} to="/intellectual_property">
+                <li className="fs-small">Intellectual Property Policy </li>
               </Link>
             </ul>
           </div>

@@ -8,6 +8,7 @@ import Privacy from "./landing-page/privacy/Privacy.jsx";
 import Terms from "./landing-page/terms/Terms.jsx";
 import Cookies from "./landing-page/cookies/Cookies.jsx";
 import Refund from "./landing-page/refund/Refund.jsx";
+import Intellect from "./landing-page/intellect/Intellect.jsx";
 // import AboutUsPage from "./AboutUsPage";
 import CourseHome from "./landing-page/allcourses/CourseHome.jsx";
 import About from "./landing-page/about/About.jsx";
@@ -19,6 +20,7 @@ import RecommendedCourses from "./User/RecommendedCourses";
 import FavouriteCourses from "./User/FavouriteCourses";
 import ProfileSetting from "./User/ProfileSetting";
 import ChangePassword from "./User/ChangePassword";
+import Payment from "./landing-page/payment/Payment.jsx";
 // =============Teacher Panels=======---
 import TeacherLogin from "./Teacher/TeacherLogin";
 import TeacherLogout from "./Teacher/TeacherLogOut.js";
@@ -74,6 +76,11 @@ function App() {
         <Route path="/terms_and_conditions" element={<Terms />} />
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/refund" element={<Refund/>} />
+        <Route path="/payment_policy" element={<Payment/>} />
+        <Route path="/intellectual_property" element={<Intellect/>} />
+       
+       
+
         {/* ==========Teacher Panels =====================*/}
         <Route path="/teacher-login" element={<TeacherLogin />} />
         <Route path="/teacher-logout" element={<TeacherLogout />} />
