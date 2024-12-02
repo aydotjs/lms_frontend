@@ -64,7 +64,7 @@ const Footer = () => {
                 <li className="fs-small">Contact Us</li>
               </Link>
 
-              <Link to="/pricing_policy">
+              <Link to="/payment_policy">
                 <li className="fs-small">Pricing Policy</li>
               </Link>
               <Link to="/terms_and_conditions">
