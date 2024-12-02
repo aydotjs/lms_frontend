@@ -4,6 +4,7 @@ import Footer from "./landing-page/common/footer/Footer.jsx";
 import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Switch
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
+import Privacy from "./landing-page/privacy/Privacy.jsx";
 // import AboutUsPage from "./AboutUsPage";
 import CourseHome from "./landing-page/allcourses/CourseHome.jsx";
 import About from "./landing-page/about/About.jsx";
@@ -66,6 +67,7 @@ function App() {
         <Route path="/profile-setting" element={<ProfileSetting />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/student-logout" element={<StudentLogout />} />
+        <Route path="/privacy" element={<Privacy />} />
 
 
         {/* ==========Teacher Panels =====================*/}

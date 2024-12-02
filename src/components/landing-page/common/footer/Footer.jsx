@@ -70,7 +70,9 @@ const Footer = () => {
               <Link to="/terms_and_conditions">
                 <li className="fs-small">Terms & Conditions</li>
               </Link>
-              <li className="fs-small">Privacy</li>
+              <Link to="/privacy">
+                <li className="fs-small">Privacy</li>
+              </Link>
               <li className="fs-small">Feedbacks</li>
             </ul>
           </div>
