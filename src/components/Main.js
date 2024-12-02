@@ -6,6 +6,7 @@ import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
 import Privacy from "./landing-page/privacy/Privacy.jsx";
 import Terms from "./landing-page/terms/Terms.jsx";
+import Cookies from "./landing-page/cookies/Cookies.jsx";
 // import AboutUsPage from "./AboutUsPage";
 import CourseHome from "./landing-page/allcourses/CourseHome.jsx";
 import About from "./landing-page/about/About.jsx";
@@ -70,6 +71,7 @@ function App() {
         <Route path="/student-logout" element={<StudentLogout />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms_and_conditions" element={<Terms />} />
+        <Route path="/cookies" element={<Cookies />} />
 
 
         {/* ==========Teacher Panels =====================*/}

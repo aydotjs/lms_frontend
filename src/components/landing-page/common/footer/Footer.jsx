@@ -64,8 +64,8 @@ const Footer = () => {
                 <li className="fs-small">Contact Us</li>
               </Link>
 
-              <Link to="/pricing">
-                <li className="fs-small">Pricing</li>
+              <Link to="/pricing_policy">
+                <li className="fs-small">Pricing Policy</li>
               </Link>
               <Link to="/terms_and_conditions">
                 <li className="fs-small">Terms & Conditions</li>
@@ -75,6 +75,9 @@ const Footer = () => {
               </Link>
               <Link to="/cookies">
                 <li className="fs-small">Cookies Policy</li>
+              </Link>
+              <Link to="/refund">
+                <li className="fs-small">Refund and Cancelation</li>
               </Link>
             </ul>
           </div>
