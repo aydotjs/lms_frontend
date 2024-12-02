@@ -73,7 +73,9 @@ const Footer = () => {
               <Link to="/privacy">
                 <li className="fs-small">Privacy</li>
               </Link>
-              <li className="fs-small">Feedbacks</li>
+              <Link to="/cookies">
+                <li className="fs-small">Cookies Policy</li>
+              </Link>
             </ul>
           </div>
           <div className="box">

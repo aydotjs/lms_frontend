@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom"; // Avoid aliasing Routes as Sw
 import AboutUsPage from "./AboutUsPage";
 import CourseDetail from "./CourseDetail";
 import Privacy from "./landing-page/privacy/Privacy.jsx";
+import Terms from "./landing-page/terms/Terms.jsx";
 // import AboutUsPage from "./AboutUsPage";
 import CourseHome from "./landing-page/allcourses/CourseHome.jsx";
 import About from "./landing-page/about/About.jsx";
@@ -68,6 +69,7 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/student-logout" element={<StudentLogout />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms_and_conditions" element={<Terms />} />
 
 
         {/* ==========Teacher Panels =====================*/}
