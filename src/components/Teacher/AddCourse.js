@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 export default function AddCourse() {
   // State to manage list of categories for the dropdown
@@ -133,7 +133,7 @@ export default function AddCourse() {
               </div>
 
               <div className="mb-3">
-                <label className="form-label fw-bold">Title</label>
+                <label className="form-label fw-bold">Course Title</label>
                 <input
                   type="text"
                   onChange={handleChange}
