@@ -5,7 +5,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import Back from "../landing-page/common/back/Back";
 // Base URL for the API
-const baseUrl = 'http://127.0.0.1:8000/api/';
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
+
 
 function TeacherDashboard() {
     // State to store dashboard and teacher data
@@ -18,7 +19,7 @@ function TeacherDashboard() {
         // Function to fetch dashboard data
         const fetchDashboardData = async () => {
             try {
-                const response = await axios.get(`${baseUrl}teacher/dashboard/${teacherId}`);
+                const response = await axios.get(`${baseUrl}/teacher/dashboard/${teacherId}`);
                 setDashboardData(response.data);
             } catch (error) {
                 console.error("Error fetching dashboard data:", error);
@@ -33,7 +34,7 @@ function TeacherDashboard() {
         // Function to fetch teacher profile data
         const fetchTeacherData = async () => {
             try {
-                const response = await axios.get(`${baseUrl}teacher/${teacherId}`);
+                const response = await axios.get(`${baseUrl}/teacher/${teacherId}`);
                 setTeacherData(response.data);
             } catch (error) {
                 console.error("Error fetching teacher data:", error);

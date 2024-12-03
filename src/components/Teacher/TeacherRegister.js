@@ -4,7 +4,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Back from "../landing-page/common/back/Back";
 // Define API base URL for teacher registration
-const baseUrl = "http://127.0.0.1:8000/api/teacher/";
+// Define API base URL for teacher registration
+const baseUrl = "https://Ambesten.pythonanywhere.com/api/teacher/";
+
 
 // TeacherRegister component
 export default function TeacherRegister() {

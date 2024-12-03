@@ -3,7 +3,8 @@ import axios from "axios";
 import Back from "../landing-page/common/back/Back";
 import { Link } from "react-router-dom";
 // API base URL
-const baseUrl = "http://127.0.0.1:8000/api";
+
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 function TeacherLogin() {
   // State to manage login form data
