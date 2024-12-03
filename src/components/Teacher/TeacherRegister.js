@@ -3,14 +3,12 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Back from "../landing-page/common/back/Back";
-// Define API base URL for teacher registration
+
 // Define API base URL for teacher registration
 const baseUrl = "https://Ambesten.pythonanywhere.com/api/teacher/";
 
-
 // TeacherRegister component
 export default function TeacherRegister() {
-  // State to hold form data and submission status
   const [teacherData, setTeacherData] = useState({
     full_name: "",
     email: "",
@@ -21,20 +19,15 @@ export default function TeacherRegister() {
     status: "",
   });
 
-  // Handle form input changes
   const handleChange = (event) => {
-    // Update specific input field in the state
     setTeacherData({
       ...teacherData,
       [event.target.name]: event.target.value,
     });
   };
 
-  // Handle form submission
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    
-    // Prepare form data for submission
+    event.preventDefault();
     const teacherFormData = new FormData();
     teacherFormData.append("full_name", teacherData.full_name);
     teacherFormData.append("email", teacherData.email);
@@ -43,13 +36,9 @@ export default function TeacherRegister() {
     teacherFormData.append("mobile_no", teacherData.mobile_no);
     teacherFormData.append("skills", teacherData.skills);
 
-    // Submit form data via axios
     try {
       axios.post(baseUrl, teacherFormData).then((response) => {
-        // Display success toast notification
-        toast.success("Thanks for your registration!");
-
-        // Reset form data and set status to success upon successful submission
+        toast.success("Thanks for your registration!, you can log in now");
         setTeacherData({
           full_name: "",
           email: "",
@@ -59,32 +48,31 @@ export default function TeacherRegister() {
           skills: "",
           status: "success",
         });
+
+        // Redirect to teacher login page after successful registration
+        setTimeout(() => {
+          window.location.href = "/teacher-login";
+        }, 3000); // Add a slight delay for better UX
       });
     } catch (err) {
       console.log(err);
-      // Display error toast notification
       toast.error("Something went wrong!");
-
-      // Set status to error if submission fails
       setTeacherData({ status: "error" });
     }
   };
 
-  // Set document title on component mount
   useEffect(() => {
     document.title = "Teacher Register";
-  }, []); // Empty dependency array ensures this effect runs only once after the component mounts
+  }, []);
 
-  // Redirect if already logged in as a teacher
   const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
   if (teacherLoginStatus === "true") {
     window.location.href = "/teacher-dashboard";
   }
 
-  // Render registration form
   return (
     <div className="container mt-4">
-      <Back/>
+      <Back />
       <ToastContainer position="top-center" />
       <div className="row">
         <div className="col-6 offset-3">
@@ -92,7 +80,6 @@ export default function TeacherRegister() {
             <h5 className="card-header">As a Teacher, you can register here</h5>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
-                {/* Full Name Field */}
                 <div className="mb-3">
                   <label htmlFor="fullName" className="form-label">
                     Full Name
@@ -106,8 +93,6 @@ export default function TeacherRegister() {
                     value={teacherData.full_name}
                   />
                 </div>
-
-                {/* Email Field */}
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     Email
@@ -121,8 +106,6 @@ export default function TeacherRegister() {
                     value={teacherData.email}
                   />
                 </div>
-
-                {/* Password Field */}
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">
                     Password
@@ -136,8 +119,6 @@ export default function TeacherRegister() {
                     value={teacherData.password}
                   />
                 </div>
-
-                {/* Qualification Field */}
                 <div className="mb-3">
                   <label htmlFor="qualification" className="form-label">
                     Qualification
@@ -151,8 +132,6 @@ export default function TeacherRegister() {
                     value={teacherData.qualification}
                   />
                 </div>
-
-                {/* Mobile Number Field */}
                 <div className="mb-3">
                   <label htmlFor="mobileNo" className="form-label">
                     Mobile Number
@@ -166,8 +145,6 @@ export default function TeacherRegister() {
                     value={teacherData.mobile_no}
                   />
                 </div>
-
-                {/* Skills/Language Field */}
                 <div className="mb-3">
                   <label htmlFor="skills" className="form-label">
                     Language
@@ -183,8 +160,6 @@ export default function TeacherRegister() {
                     Igbo, Yoruba, Akan, etc.
                   </div>
                 </div>
-
-                {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
                   type="submit"

@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import axios from "axios";
 import MessageList from "./MessageList";
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 export default function MyTeachers() {
     // Retrieve student and teacher IDs from local storage

@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 export default function MyCourses() {
   const [courseData, setCourseData] = useState([]);
   const studentId = localStorage.getItem("studentId");

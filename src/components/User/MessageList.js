@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const baseUrl = 'http://127.0.0.1:8000/api';
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 function MessageList(props) {
   const [msgData, setMsgData] = useState([]);

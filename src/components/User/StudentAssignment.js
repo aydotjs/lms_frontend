@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Back from "../landing-page/common/back/Back";
 import Swal from "sweetalert2";
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";;
 export default function Assignment() {
   const [assignmentData, setAssignmentData] = useState([]);
   const [assignmentStatus, setAssignmentStatus] = useState("");

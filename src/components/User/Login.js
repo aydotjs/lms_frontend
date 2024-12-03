@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "http://127.0.0.1:8000/api";  // Base URL for API
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";  // Base URL for API
 
 function Login() {
   // State to manage form data and error message
