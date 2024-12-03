@@ -4,7 +4,7 @@ import styles from "../style.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 const HAbout = () => {
   const [courseData, setCourseData] = useState([]);

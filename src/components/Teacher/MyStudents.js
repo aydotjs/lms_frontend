@@ -5,7 +5,7 @@ import axios from "axios"; // Importing axios for making API requests
 import MessageList from "./MessageList"; // Component to display the list of messages
 import Swal from "sweetalert2"; // SweetAlert2 for displaying alerts
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "http://127.0.0.1:8000/api"; // Base URL for API calls
+const baseUrl = "https://Ambesten.pythonanywhere.com/api"; // Base URL for API calls
 
 export default function MyStudents() {
   // State to hold the data of students enrolled with the teacher

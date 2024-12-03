@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"; // Importing React hooks
 import axios from "axios"; // Importing axios for API requests
 import Swal from "sweetalert2"; // Importing SweetAlert2 for notifications
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "http://127.0.0.1:8000/api"; // API base URL for the application
+const baseUrl = "https://Ambesten.pythonanywhere.com/api"; // API base URL for the application
 
 function TeacherProfileSetting() {
   // State for storing teacher profile data and profile image

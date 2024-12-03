@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 // Base URL for API requests
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 // Component for displaying and managing chapters within a specific course
 export default function CourseChapters() {

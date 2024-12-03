@@ -4,7 +4,7 @@ import axios from "axios";
 import TeacherSidebar from "./TeacherSidebar";
 import Back from "../landing-page/common/back/Back";
 // Base URL for the API
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 export default function EnrolledStudents() {
   // State to hold the list of enrolled students

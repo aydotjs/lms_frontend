@@ -5,9 +5,9 @@ import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import Back from "./landing-page/common/back/Back";
 // Base URLs for API and site
-const baseUrl = "http://127.0.0.1:8000/api";
-const siteUrl = "http://127.0.0.1:8000/";
-const stripePromise = loadStripe("pk_test_51QIxQ406TBZSzy23nCJqiBBHXoKyhbwtYCWJoib7ODwIlthRXp1mBrwrFxqRsYEyfSaESVJ7L4wBh28Z6ihaGZh000SDU73dBA");
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
+// const siteUrl = "http://127.0.0.1:8000/";
+// const stripePromise = loadStripe("pk_test_51QIxQ406TBZSzy23nCJqiBBHXoKyhbwtYCWJoib7ODwIlthRXp1mBrwrFxqRsYEyfSaESVJ7L4wBh28Z6ihaGZh000SDU73dBA");
 function CourseDetail() {
   // State for various course-related data
   const [courseData, setCourseData] = useState([]);

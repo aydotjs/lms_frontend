@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify"; // React Toastify for di
 import "react-toastify/dist/ReactToastify.css"; // Importing Toastify styles
 
 // Base URL for the API
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 // Component for adding a new chapter to a course
 export default function AddChapter() {

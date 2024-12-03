@@ -4,7 +4,7 @@ import TeacherSidebar from "./TeacherSidebar";
 import axios from "axios";
 
 
-const baseUrl = "http://127.0.0.1:8000/api"; // Ensure this matches your backend URL
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";// Ensure this matches your backend URL
 
 export default function ShowAssignment() {
     const [assignmentData, setAssignmentData] = useState([]);

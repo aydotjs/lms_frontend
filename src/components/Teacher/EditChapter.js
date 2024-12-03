@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 // Base URL for API requests
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 
 export default function EditChapter() {
   // State to store chapter data
