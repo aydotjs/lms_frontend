@@ -71,107 +71,113 @@ export default function TeacherRegister() {
   }
 
   return (
-    <div className="container mt-4">
-      <Back />
-      <ToastContainer position="top-center" />
-      <div className="row">
-        <div className="col-6 offset-3">
-          <div className="card">
-            <h5 className="card-header">As a Teacher, you can register here</h5>
-            <div className="card-body">
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label htmlFor="fullName" className="form-label">
-                    Full Name
-                  </label>
-                  <input
-                    id="fullName"
-                    onChange={handleChange}
-                    name="full_name"
-                    type="text"
-                    className="form-control"
-                    value={teacherData.full_name}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    onChange={handleChange}
-                    name="email"
-                    type="email"
-                    className="form-control"
-                    value={teacherData.email}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    id="password"
-                    onChange={handleChange}
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    value={teacherData.password}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="qualification" className="form-label">
-                    Qualification
-                  </label>
-                  <input
-                    id="qualification"
-                    onChange={handleChange}
-                    type="text"
-                    name="qualification"
-                    className="form-control"
-                    value={teacherData.qualification}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="mobileNo" className="form-label">
-                    Mobile Number
-                  </label>
-                  <input
-                    id="mobileNo"
-                    onChange={handleChange}
-                    type="number"
-                    name="mobile_no"
-                    className="form-control"
-                    value={teacherData.mobile_no}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="skills" className="form-label">
-                    Language
-                  </label>
-                  <textarea
-                    id="skills"
-                    onChange={handleChange}
-                    name="skills"
-                    className="form-control"
-                    value={teacherData.skills}
-                  ></textarea>
-                  <div id="emailHelp" className="form-text">
-                    Igbo, Yoruba, Akan, etc.
-                  </div>
-                </div>
-                <button
-                  onClick={handleSubmit}
-                  type="submit"
-                  className="btn btn-primary"
-                >
-                  Register
-                </button>
-              </form>
-            </div>
+   <div className="container mt-4">
+  <Back />
+  <ToastContainer position="top-center" />
+  <div className="row">
+    <div className="col-6 offset-3">
+      <div className="card">
+        <h5 className="card-header">As a Teacher, you can register here</h5>
+        <div className="card-body">
+          {/* Add Notice */}
+          <div className="alert alert-info" role="alert">
+            Please note: You must apply and receive approval before registering.
+            If you haven't applied yet, <a href="https://forms.gle/iYS91a8V1odiQ3vC7" className="alert-link">click here to apply</a>.
           </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="fullName" className="form-label">
+                Full Name
+              </label>
+              <input
+                id="fullName"
+                onChange={handleChange}
+                name="full_name"
+                type="text"
+                className="form-control"
+                value={teacherData.full_name}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                id="email"
+                onChange={handleChange}
+                name="email"
+                type="email"
+                className="form-control"
+                value={teacherData.email}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                id="password"
+                onChange={handleChange}
+                name="password"
+                type="password"
+                className="form-control"
+                value={teacherData.password}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="qualification" className="form-label">
+                Qualification
+              </label>
+              <input
+                id="qualification"
+                onChange={handleChange}
+                type="text"
+                name="qualification"
+                className="form-control"
+                value={teacherData.qualification}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="mobileNo" className="form-label">
+                Mobile Number
+              </label>
+              <input
+                id="mobileNo"
+                onChange={handleChange}
+                type="number"
+                name="mobile_no"
+                className="form-control"
+                value={teacherData.mobile_no}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="skills" className="form-label">
+                Language
+              </label>
+              <textarea
+                id="skills"
+                onChange={handleChange}
+                name="skills"
+                className="form-control"
+                value={teacherData.skills}
+              ></textarea>
+              <div id="emailHelp" className="form-text">
+                Igbo, Yoruba, Akan, etc.
+              </div>
+            </div>
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="btn btn-primary"
+            >
+              Register
+            </button>
+          </form>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   );
 }
