@@ -5,16 +5,16 @@ const Awrapper = () => {
   return (
     <>
       <section className="awrapper">
-        <div className={`${styles.container} ${styles.grid}`} style={{border : "2px solid red"}}>
+        <div className={`${styles.container} ${styles.grid}`}>
           {awrapper.map((val) => {
             return (
               <div className={`box ${styles.flex}`}>
-                <div className="img">
+                <div className={`${styles.img}`}>
                   <img src={val.cover} alt="" />
                 </div>
                 <div className="text">
-                  <h1 style={{ fontSize: "1.7rem"}}>{val.data}</h1>
-                  <h3 style={{ fontSize: "1.7rem" }}>{val.title}</h3>
+                  <h1 style={{ fontSize: "1.7rem", fontWeight : 600, }}>{val.data}</h1>
+                  <h3 style={{ fontSize: "1.7rem", fontWeight : 600 }}>{val.title}</h3>
                 </div>
               </div>
             );

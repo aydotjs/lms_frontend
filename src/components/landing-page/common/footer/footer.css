@@ -12,42 +12,12 @@
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 15px;
-
 }
 .newletter .right {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.input-container {
-  display: flex;
-  align-items: center;
-}
-
-.input-with-icon {
-  position: relative;
-  width: 100%;
-}
-
-.input-with-icon input {
-  width: 100%;
-  padding-right: 40px; /* Add space for the icon */
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  font-size: 16px;
-}
-
-.input-with-icon i {
-  position: absolute;
-  right: 10px; /* Position the icon inside the input field */
-  top: 50%;
-  transform: translateY(-50%);
-  color: #1eb2a6; /* Adjust the icon color */
-  cursor: pointer;
-}
-
 .newletter input {
   width: 100%;
   padding: 20px;
@@ -65,16 +35,12 @@ footer {
 }
 footer .container {
   display: grid;
-  grid-template-columns: 3fr 4fr 6fr 8fr 2fr !important;
-  grid-gap: 25px;
-  max-width: 90% !important;
-
+  grid-template-columns: 3fr 2fr 2fr 4fr 3fr;
+  grid-gap: 30px;
 }
 @media screen and (max-width: 768px) {
   footer .container {
     grid-template-columns: repeat(2, 1fr);
-    border: 2px solid red;
-    display: none;
   }
 }
 footer .logo span {
@@ -100,12 +66,11 @@ footer ul li {
 footer .link li::before {
   content: "⟶";
   color: #1eb2a6;
-  margin-right: 3px;
+  margin-right: 5px;
 }
 footer .items {
   margin-bottom: 30px;
 }
-
 footer .items img {
   width: 50px;
   height: 50px;
@@ -123,7 +88,6 @@ footer .items i {
 footer h4 {
   font-weight: 400;
   margin-top: 5px;
-  font-size: 1em;
 }
 footer .last ul li {
   display: flex;
@@ -146,12 +110,3 @@ footer .last i {
 .legal i {
   color: #1eb2a6;
 }
-
-.fs-medium{
-  font-size: 1.3rem !important;
-
-}
-/* .fs-small{
-  font-size: 0.8rem !important;
-  font-weight: bold;
-} */

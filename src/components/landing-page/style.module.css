@@ -12,7 +12,7 @@ body {
 .container {
   max-width: 85%;
   margin: auto;
-  border: 2px solid blue !important;
+  /* border: 2px solid blue !important; */
 }
 .flexSB {
   display: flex;
@@ -124,6 +124,7 @@ p {
 }
 .flex {
   display: flex;
+ 
 }
 .grid2 {
   display: grid;

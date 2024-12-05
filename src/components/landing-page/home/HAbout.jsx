@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import OnlineCourses from "../allcourses/OnlineCourses";
 import styles from "../style.module.css";
 import { Link } from "react-router-dom";
-import "../allcourses/courses.css"
 import axios from "axios";
 
 const baseUrl = "https://Ambesten.pythonanywhere.com/api";
@@ -26,7 +25,7 @@ const HAbout = () => {
   return (
     <section className="homeAbout">
       <div className={`${styles.container} container`}>
-        <div id="heading">
+        <div id={`${styles.heading}`}>
           <h3>our courses</h3>
           <h1>explore our popular online courses</h1>
         </div>

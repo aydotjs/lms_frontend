@@ -8,21 +8,21 @@ const Footer = () => {
   return (
     <>
       <section className={`newletter`}>
-        <div className={`${styles.flexSB} ${styles.container}`}>
-          <div className="left row">
+        <div className={`${styles.flexSB} ${styles.container} container flexSB`}>
+          <div className={`${styles.left} ${styles.row} left row`}>
             <h1>Newsletter - Stay tune and get the latest update</h1>
             <span>
               Join our community of language enthusiasts and learners worldwide
             </span>
           </div>
-          <div className={`${styles.row} right`}>
+          <div className={`${styles.row} ${styles.right}  right`}>
             <input type="text" placeholder="Enter email address" />
             <i className="fa fa-paper-plane"></i>
           </div>
         </div>
       </section>
       <footer>
-        <div className={`${styles.container}  container ${styles.padding}`}>
+        <div className={`${styles.container} ${styles.padding} container padding`}>
           <div className="box logo">
             <h1>AMBESTEN ACADEMY</h1>
             <span>EXCELLENCE IN LANGUAGE EDUCATION</span>
@@ -98,7 +98,7 @@ const Footer = () => {
                     <i className="fa fa-user"></i>
                     <label htmlFor="">{val.type}</label>
                   </span>
-                  <h4>{val.title.slice(0, 40)}...</h4>
+                  <h4 style={{fontSize : "1rem"}}>{val.title.slice(0, 40)}...</h4>
                 </div>
               </div>
             ))}
