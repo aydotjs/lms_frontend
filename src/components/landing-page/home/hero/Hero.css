@@ -34,21 +34,3 @@
     width: 100%;
   }
 }
-.hero .container .row h3, 
-.hero .container .row h1 ,
-.hero .container .row p {
-  /* text-align: left;
-  margin: 0 !important;
-  border: 2px solid red; */
-}
-
-.hero .row{
-
-  width: 55%;
-}
-.hero .container {
-  max-width: 85%; /* Keeps the width restricted */
-  margin-left: 0; /* Aligns the container to the left */
-  padding-left: 2.5rem; /* Adds some spacing from the left edge */
-  
-}
