@@ -24,7 +24,7 @@ import Payment from "./landing-page/payment/Payment.jsx";
 // =============Teacher Panels=======---
 import TeacherLogin from "./Teacher/TeacherLogin";
 import TeacherLogout from "./Teacher/TeacherLogOut.js";
-import TeacherRegister from "./Teacher/TeacherRegister";
+// import TeacherRegister from "./Teacher/TeacherRegister";
 import TeacherDashboard from "./Teacher/TeacherDashBoard";
 import AddCourse from "./Teacher/AddCourse";
 import TeacherProfileSetting from "./Teacher/TeacherProfileSetting";
@@ -84,7 +84,7 @@ function App() {
         {/* ==========Teacher Panels =====================*/}
         <Route path="/teacher-login" element={<TeacherLogin />} />
         <Route path="/teacher-logout" element={<TeacherLogout />} />
-        <Route path="/teacher-register" element={<TeacherRegister />} />
+        {/* <Route path="/teacher-register" element={<TeacherRegister />} /> */}
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="/teacher-profile-setting" element={<TeacherProfileSetting />} />
         <Route path="/add-chapter/:course_id" element={<AddChapter />} />

@@ -64,6 +64,10 @@ function TeacherLogin() {
         <div className="card">
           <h5 className="card-header">Teacher Login</h5>
           <div className="card-body">
+          <div className="alert alert-info" role="alert">
+            Please note: You must apply and receive approval before logging in.
+            If you haven't applied yet, <a href="https://forms.gle/iYS91a8V1odiQ3vC7" className="alert-link">click here to apply</a>.
+          </div>
             {/* Display error message if any */}
             {errorMsg && <p className="text-danger">{errorMsg}</p>}
 
