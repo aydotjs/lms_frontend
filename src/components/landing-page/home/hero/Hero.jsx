@@ -10,7 +10,7 @@ const Hero = () => {
           <div className={`${styles.row} row`}>
             <>
               <div id="heading">
-                <h3 style={{ letterSpacing: "1px", fontWeight: 600 }}>
+                <h3 className="hi" style={{ letterSpacing: "1px", fontWeight: 600 }}>
                   WELCOME TO AMBESTEN
                 </h3>
                 <h1
@@ -26,12 +26,12 @@ const Hero = () => {
               </div>
             </>
             {/* <Heading subtitle='WELCOME TO AMBESTEN' title='Best Online Education Expertise' /> */}
-            <p style={{color : "#1eb2a6", fontWeight : 600}}>
+            <p className="habit" style={{color : "#1eb2a6", fontWeight : 600}}>
               Make language learning a habit. Set aside time each day for
               practice. 5 minutes daily could become a lot
             </p>
             <div className="button" style={{ display : "flex"}}>
-              <button className={styles['primary-btn']} >
+              <button className={styles['primary-btn'] } >
                 GET STARTED NOW <i className="fa fa-long-arrow-alt-right"></i>
               </button>
               <button>

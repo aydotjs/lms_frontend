@@ -25,10 +25,20 @@
   .margin {
     height: 40vh;
   }
+  .habit {
+    display: none;
+  }
+  .button{
+    display: none !important;
+  }
+  .hi{
+    display: none;
+  }
   .hero {
     background-position: right;
     padding-top: 50%;
     height: 80vh;
+    margin-top: 20px;
   }
   .hero .row {
     width: 100%;
