@@ -110,14 +110,14 @@ function TeacherLogin() {
             </form>
 
             {/* Registration Prompt */}
-            <div className="mt-3 text-center">
+            {/* <div className="mt-3 text-center">
               <p>
                 Don’t have an account?{" "}
                 <Link to="/teacher-register" className="text-primary">
                   Register here
                 </Link>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

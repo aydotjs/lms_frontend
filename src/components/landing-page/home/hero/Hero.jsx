@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "../../common/heading/Heading";
 import "./Hero.css";
 import styles from "../../style.module.css"; // For CSS Module styles
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <>
@@ -10,7 +11,10 @@ const Hero = () => {
           <div className={`${styles.row} row`}>
             <>
               <div id="heading">
-                <h3 className="hi" style={{ letterSpacing: "1px", fontWeight: 600 }}>
+                <h3
+                  className="hi"
+                  style={{ letterSpacing: "1px", fontWeight: 600 }}
+                >
                   WELCOME TO AMBESTEN
                 </h3>
                 <h1
@@ -26,22 +30,54 @@ const Hero = () => {
               </div>
             </>
             {/* <Heading subtitle='WELCOME TO AMBESTEN' title='Best Online Education Expertise' /> */}
-            <p className="habit" style={{color : "#1eb2a6", fontWeight : 600}}>
+            <p className="habit" style={{ color: "#1eb2a6", fontWeight: 600 }}>
               Make language learning a habit. Set aside time each day for
               practice. 5 minutes daily could become a lot
             </p>
-            <div className="button" style={{ display : "flex"}}>
-              <button className={styles['primary-btn'] } >
+            <div
+              style={{ display: "flex", position: "relative", zIndex: 10000 }}
+            >
+              <Link
+                to="/student-login"
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#fff",
+                  color: "#1eb2a6",
+                  fontWeight: 600,
+                  position: "relative",
+                  zIndex: "20",
+                  border: "none",
+                  margin: "30px 10px 0 0",
+                  borderRadius: "3px",
+                  cursor: "pointer",
+                  boxShadow: "0 24px 36px -11px rgba(0, 0, 0, 0.09)",
+                  transition: "0.5s",
+                }}
+              >
                 GET STARTED NOW <i className="fa fa-long-arrow-alt-right"></i>
-              </button>
-              <button>
+              </Link>
+              <Link
+                to="/course"
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#fff",
+                  color: "#1eb2a6",
+                  fontWeight: 600,
+                  border: "none",
+                  margin: "30px 10px 0 0",
+                  borderRadius: "3px",
+                  cursor: "pointer",
+                  boxShadow: "0 24px 36px -11px rgba(0, 0, 0, 0.09)",
+                  transition: "0.5s",
+                }}
+              >
                 VIEW COURSE <i className="fa fa-long-arrow-alt-right"></i>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-      <div className={`${styles.margin} margin`}></div>
+      <div className={`${styles.margin} margin`} style={{marginBottom : "24px"}}></div>
     </>
   );
 };

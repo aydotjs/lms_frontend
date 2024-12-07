@@ -4,7 +4,10 @@
     font-weight: 700;
     font-style: normal;
   }
-
+.head{
+  position: relative;
+  z-index: 20;
+}
  
 h1 span {
     font-family: "Poppins", sans-serif;
