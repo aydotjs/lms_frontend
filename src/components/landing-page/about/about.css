@@ -45,6 +45,7 @@
 .aboutHome .item:hover p {
   color: #fff;
 }
+
 /*----------awrapper------------*/
 .awrapper {
   background-image: url("../../../../public/images/awrapper.webp");
@@ -71,6 +72,10 @@
 @media screen and (max-width: 768px) {
   .aboutHome .container {
     flex-direction: column-reverse;
+  }
+  .item{
+    /* border: 2px solid red;
+    width: 80%; */
   }
   .aboutHome .row {
     width: 100%;

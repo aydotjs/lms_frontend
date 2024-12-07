@@ -30,13 +30,11 @@ const Hero = () => {
               </div>
             </>
             {/* <Heading subtitle='WELCOME TO AMBESTEN' title='Best Online Education Expertise' /> */}
-            <p className="habit" style={{ color: "#1eb2a6", fontWeight: 600 }}>
+            <p className="habit" style={{ color: "#fff", fontWeight: 600 }}>
               Make language learning a habit. Set aside time each day for
               practice. 5 minutes daily could become a lot
             </p>
-            <div
-              style={{ display: "flex", position: "relative", zIndex: 10000 }}
-            >
+            <div className="buttons">
               <Link
                 to="/student-login"
                 style={{

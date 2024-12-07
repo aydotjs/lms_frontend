@@ -25,6 +25,10 @@
   .margin {
     height: 40vh;
   }
+  .buttons{
+    display: flex;
+    flex-direction: column;
+  }
   .habit {
     display: none;
   }

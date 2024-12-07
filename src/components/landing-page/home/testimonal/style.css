@@ -46,3 +46,12 @@
   background-color: #fff;
   color: #1eb2a6;
 }
+@media screen and (max-width: 768px) {
+  .customgrid{
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  }
+}

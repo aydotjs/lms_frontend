@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <>
       <section className={`newletter`}>
-        <div className={`${styles.flexSB} ${styles.container} container flexSB`}>
+        <div className={`${styles.flexSB} ${styles.container} container flexSB lite`}>
           <div className={`${styles.left} ${styles.row} left row`}>
             <h1>Newsletter - Stay tune and get the latest update</h1>
             <span>
@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
       </section>
       <footer>
-        <div className={`${styles.container} ${styles.padding} container padding`}>
+        <div className={`${styles.container} ${styles.padding} container padding litegrid`}>
           <div className="box logo">
             <h1>AMBESTEN ACADEMY</h1>
             <span>EXCELLENCE IN LANGUAGE EDUCATION</span>

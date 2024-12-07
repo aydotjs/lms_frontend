@@ -15,7 +15,7 @@ const Hblog = () => {
         <h1 >Recent From Blog</h1>
       </div>
           {/* <Heading subtitle='OUR BLOG' title='Recent From Blog' style = {{border : "2px solid red"}} /> */}
-          <div className={`${styles.grid2}`}>
+          <div className={`${styles.grid2} customgrid`}>
             {blog.slice(0, 3).map((val) => (
               <div className='items shadow'>
                 <div className='img'>

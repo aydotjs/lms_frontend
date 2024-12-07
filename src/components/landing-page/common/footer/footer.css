@@ -40,8 +40,22 @@ footer .container {
 }
 @media screen and (max-width: 768px) {
   footer .container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 80%;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
   }
+  /* .newletter .lite {
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center; 
+    align-items: center; 
+    border: 2px solid red;
+  }
+
+  .newletter .lite .right{
+    width: 100%;
+  } */
+
 }
 footer .logo span {
   color: #1eb2a6;

@@ -15,7 +15,7 @@ const Testimonal = () => {
       </div>
           {/* <Heading subtitle="TESTIMONIAL" title="Our Successful Students" /> */}
 
-          <div className={`content ${styles.grid2}`}>
+          <div className={`content ${styles.grid2} customgrid`}>
             {testimonial.map((val) => {
               console.log(val);
               return (
