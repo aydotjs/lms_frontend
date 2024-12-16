@@ -107,6 +107,9 @@ function Login() {
                 >
                   Login
                 </button>
+                <p className='mt-3'>
+                  <Link to="/student-forgot-password" className="text-danger">Forgot Password?</Link>
+                </p>
               </form>
 
               {/* Registration Link */}

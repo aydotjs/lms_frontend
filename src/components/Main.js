@@ -21,6 +21,7 @@ import FavouriteCourses from "./User/FavouriteCourses";
 import ProfileSetting from "./User/ProfileSetting";
 import ChangePassword from "./User/ChangePassword";
 import Payment from "./landing-page/payment/Payment.jsx";
+import StudentForgotPassword from "./User/StudentForgotPassword.js";
 // =============Teacher Panels=======---
 import TeacherLogin from "./Teacher/TeacherLogin";
 import ForgotPassword from "./Teacher/ForgotPassword.js";
@@ -66,6 +67,7 @@ function App() {
         <Route path="/category/:category_slug" element={<CategoryCourses />} />
         {/* ==========Student Panels =====================*/}
         <Route path="/student-login" element={<Login />} />
+        <Route path="/student-forgot-password" element={<StudentForgotPassword />} />
         <Route path="/student-register" element={<StudentRegister />} />
         <Route path="/student-dashboard" element={<Dashboard />} />
         <Route path="/my-courses" element={<MyCourses />} />
