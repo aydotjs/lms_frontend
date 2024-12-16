@@ -23,8 +23,11 @@ import ChangePassword from "./User/ChangePassword";
 import Payment from "./landing-page/payment/Payment.jsx";
 // =============Teacher Panels=======---
 import TeacherLogin from "./Teacher/TeacherLogin";
+import ForgotPassword from "./Teacher/ForgotPassword.js";
+import VerifyTeacher from "./Teacher/VerifyTeacher.js";
+import VerifyStudent from "./User/VerifyStudent.js";
 import TeacherLogout from "./Teacher/TeacherLogOut.js";
-// import TeacherRegister from "./Teacher/TeacherRegister";
+import TeacherRegister from "./Teacher/TeacherRegister";
 import TeacherDashboard from "./Teacher/TeacherDashBoard";
 import AddCourse from "./Teacher/AddCourse";
 import TeacherProfileSetting from "./Teacher/TeacherProfileSetting";
@@ -61,7 +64,6 @@ function App() {
         
         <Route path="/teacher-detail/:teacher_id" element={<TeacherDetail />} />
         <Route path="/category/:category_slug" element={<CategoryCourses />} />
-
         {/* ==========Student Panels =====================*/}
         <Route path="/student-login" element={<Login />} />
         <Route path="/student-register" element={<StudentRegister />} />
@@ -78,13 +80,15 @@ function App() {
         <Route path="/refund" element={<Refund/>} />
         <Route path="/payment_policy" element={<Payment/>} />
         <Route path="/intellectual_property" element={<Intellect/>} />
-       
+        <Route path="/verify-student/:student_id" element={<VerifyStudent />} />
        
 
         {/* ==========Teacher Panels =====================*/}
         <Route path="/teacher-login" element={<TeacherLogin />} />
+        <Route path="/teacher-forgot-password" element={<ForgotPassword />} />
         <Route path="/teacher-logout" element={<TeacherLogout />} />
-        {/* <Route path="/teacher-register" element={<TeacherRegister />} /> */}
+        <Route path="/teacher-register" element={<TeacherRegister />} />
+        <Route path="/verify-teacher/:teacher_id" element={<VerifyTeacher />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="/teacher-profile-setting" element={<TeacherProfileSetting />} />
         <Route path="/add-chapter/:course_id" element={<AddChapter />} />

@@ -29,6 +29,9 @@ const Header = () => {
               </Link>
             </li>
             <li>
+              {/* <Link to="/teacher-register" onClick={() => setClick(false)}>
+                Teacher
+              </Link> */}
               <Link to="/teacher-login" onClick={() => setClick(false)}>
                 Teacher
               </Link>

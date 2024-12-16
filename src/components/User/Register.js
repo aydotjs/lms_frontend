@@ -5,9 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Back from "../landing-page/common/back/Back";
 // API base URL for student registration
-// const baseUrl = "http://127.0.0.1:8000/api/student/";
-const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
- export default function StudentRegister() {
+const baseUrl = "http://127.0.0.1:8000/api/student/";
+// const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
+export default function StudentRegister() {
   // State to manage form data and submission status
   const [studentData, setStudentData] = useState({
     full_name: "",
@@ -16,6 +16,7 @@ const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
     username: "",
     interested_categories: "",
     status: "",
+    otp_digit: "",
   });
 
   // Handle form input changes to update state
@@ -28,6 +29,7 @@ const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
 
   // Handle form submission
   const handleSubmitForm = () => {
+    const otp_digit = Math.floor(100000 + Math.random() * 900000);
     const studentFormData = new FormData();
 
     // Append form data to FormData object for submission
@@ -35,6 +37,7 @@ const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
     studentFormData.append("email", studentData.email);
     studentFormData.append("password", studentData.password);
     studentFormData.append("username", studentData.username);
+    studentFormData.append("otp_digit", otp_digit);
     studentFormData.append(
       "interested_categories",
       studentData.interested_categories
@@ -44,7 +47,8 @@ const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
       // POST request to submit form data
       axios.post(baseUrl, studentFormData).then((response) => {
         // notification of succesfful registration
-        toast.success("Thank you for registration, now you can login")
+        toast.success("Thank you for registration, a one time password has been sent to your mail, enter the number to veriffy your account")
+        window.location.href = "/verify-student/" + response.data.id;
         // Reset form after successful submission
         setStudentData({
           full_name: "",
@@ -70,7 +74,7 @@ const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
 
   return (
     <div className="container mt-4">
-      <Back/>
+      <Back />
       <ToastContainer position="top-center" />
       <div className="row">
         {/* Display success or error message */}

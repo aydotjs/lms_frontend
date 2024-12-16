@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"; // Importing React hooks
 import axios from "axios"; // Importing axios for API requests
 import Swal from "sweetalert2"; // Importing SweetAlert2 for notifications
 import Back from "../landing-page/common/back/Back";
-const baseUrl = "https://Ambesten.pythonanywhere.com/api"; // API base URL for the application
-
+//const baseUrl = "https://Ambesten.pythonanywhere.com/api"; // API base URL for the application
+const baseUrl = "http://127.0.0.1:8000/api/teacher/";
 function TeacherProfileSetting() {
   // State for storing teacher profile data and profile image
   const [teacherData, setTeacherData] = useState({
@@ -16,6 +16,7 @@ function TeacherProfileSetting() {
     skills: "",
     profile_img: "", // Current profile image URL from the server
     p_img: "", // For file input, to store new profile image
+    login_via_otp : ""
   });
 
   // Get teacherId from local storage to fetch the teacher's data
@@ -34,6 +35,7 @@ function TeacherProfileSetting() {
           skills: res.data.skills || "",
           profile_img: res.data.profile_image || "", // API response for the image URL
           p_img: "", // Empty initially for file input
+          login_via_otp : res.data.login_via_otp
         });
       } catch (error) {
         console.error("Error fetching teacher data:", error.response ? error.response.data : error.message);
@@ -69,6 +71,7 @@ function TeacherProfileSetting() {
     teacherFormData.append("qualification", teacherData.qualification);
     teacherFormData.append("mobile_no", teacherData.mobile_no);
     teacherFormData.append("skills", teacherData.skills);
+    teacherFormData.append("login_via_otp", teacherData.login_via_otp);
 
     // Append profile image if a new one is selected
     if (teacherData.p_img) {
@@ -216,6 +219,22 @@ function TeacherProfileSetting() {
                   <div id="emailHelp" className="form-text">
                     BSc | MSc
                   </div>
+                </div>
+              </div>
+
+              <div className="mb-3 row">
+                <label htmlFor="email" className="col-sm-2 col-form-label">
+                  Login Via OTP
+                </label>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="email"
+                    value={teacherData.login_via_otp || ""} // Ensure value is always controlled
+                    onChange={handleChange}
+                    name="login_via_otp"
+                  />
                 </div>
               </div>
 

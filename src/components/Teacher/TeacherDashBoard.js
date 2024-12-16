@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import Back from "../landing-page/common/back/Back";
 // Base URL for the API
 const baseUrl = "https://Ambesten.pythonanywhere.com/api";
-
+// const baseUrl = "http://127.0.0.1:8000/api"
 
 function TeacherDashboard() {
     // State to store dashboard and teacher data
