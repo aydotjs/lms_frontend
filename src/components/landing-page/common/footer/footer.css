@@ -2,6 +2,7 @@
   background-color: #1eb2a6;
   padding: 50px 0;
   color: #fff;
+  border: 2px solid red;
 }
 .newletter .right,
 .newletter .left {
@@ -44,17 +45,19 @@ footer .container {
     justify-content: center; /* Centers items horizontally */
     align-items: center; /* Centers items vertically */
   }
-  /* .newletter .lite {
-    display: grid;
+  .newletter {
+    display: none;
     grid-template-columns: 80%;
     justify-content: center; 
     align-items: center; 
     border: 2px solid red;
+    text-align: center;
   }
 
   .newletter .lite .right{
     width: 100%;
-  } */
+  }
+
 
 }
 footer .logo span {
