@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // API base URL
-// const baseUrl = "https://Ambesten.pythonanywhere.com/api";
-const baseUrl = "http://127.0.0.1:8000/api";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api";
+// const baseUrl = "http://127.0.0.1:8000/api";
 function VerifyTeacher() {
     const [teacherData, setteacherData] = useState({
         otp_digit: '',
