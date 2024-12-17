@@ -5,8 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Back from "../landing-page/common/back/Back";
 // API base URL for student registration
-const baseUrl = "http://127.0.0.1:8000/api/student/";
-// const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
+// const baseUrl = "http://127.0.0.1:8000/api/student/";
+const baseUrl = "https://Ambesten.pythonanywhere.com/api/student/";
 export default function StudentRegister() {
   // State to manage form data and submission status
   const [studentData, setStudentData] = useState({
