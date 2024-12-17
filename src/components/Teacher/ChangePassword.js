@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import axios from "axios";
 import Back from "../landing-page/common/back/Back";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // API base URL
 // const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 const baseUrl = "http://127.0.0.1:8000/api";
-function ForgotPassword() {
+function TeacherChangeForgottenPassword() {
     const navigate = useNavigate()
     // State to manage login form data
     const [teacherData, setTeacherData] = useState({
-        email: "",
+        password: "",
 
     });
 
+    const {teacher_id} = useParams()
     // State to store error message
     const [errorMsg, setErrorMsg] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
@@ -28,9 +29,9 @@ function ForgotPassword() {
 
     const submitForm = () => {
         const teacherFormData = new FormData();
-        teacherFormData.append('email', teacherData.email)
+        teacherFormData.append('password', teacherData.password)
         try {
-            axios.post(baseUrl + '/teacher-forgot-password/', teacherFormData)
+            axios.post(baseUrl + '/teacher-change-password/'+teacher_id+"/", teacherFormData)
                 .then((res) => {
                     if (res.data.bool === true) {
                         setSuccessMsg(res.data.msg);
@@ -57,21 +58,21 @@ function ForgotPassword() {
             <div className="row">
                 <div className="col-6 offset-3">
                     <div className="card">
-                        <h5 className="card-header">Enter your registered email</h5>
+                        <h5 className="card-header">Enter your new password</h5>
                         <div className="card-body">
                             {successMsg && <p className="text-success">{successMsg}</p>}
                             {errorMsg && <p className="text-danger">{errorMsg}</p>}
                             <div className="mb-3">
-                                <label for="exampleInputEmail1" className="form-label">Email</label>
-                                <input type="email"
+                                <label for="exampleInputEmail1" className="form-label">Password</label>
+                                <input type="password"
                                     value={teacherData.email}
-                                    name="email"
+                                    name="password"
                                     onChange={handleChange}
                                     className="form-control" />
                             </div>
                             <button type="submit"
                                 onClick={submitForm}
-                                className="btn btn-primary">Send</button>
+                                className="btn btn-primary">Change Password</button>
                           
                         </div>
                     </div>
@@ -82,4 +83,4 @@ function ForgotPassword() {
     );
 }
 
-export default ForgotPassword;
+export default TeacherChangeForgottenPassword;

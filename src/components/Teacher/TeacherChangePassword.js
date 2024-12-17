@@ -7,7 +7,7 @@ import Back from "../landing-page/common/back/Back";
 // Base URL for the API
 const baseUrl = "https://Ambesten.pythonanywhere.com/api";;
 
-function ChangePassword() {
+function TeacherChangePasswordPanel() {
     // State to hold the new password input from the teacher
     const [teacherData, setTeacherData] = useState({
         password: ''
@@ -93,4 +93,4 @@ function ChangePassword() {
     );
 }
 
-export default ChangePassword;
+export default TeacherChangePasswordPanel;
