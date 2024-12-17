@@ -30,7 +30,7 @@ function StudentForgotPassword() {
         const studentFormData = new FormData();
         studentFormData.append('email', studentData.email)
         try {
-            axios.post(baseUrl + '/student-forgot-password', studentFormData)
+            axios.post(baseUrl + '/student-forgot-password/', studentFormData)
                 .then((res) => {
                     if (res.data.bool === true) {
                         setSuccessMsg(res.data.msg);

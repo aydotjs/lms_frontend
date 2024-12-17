@@ -6,32 +6,32 @@ import { useNavigate, useParams } from "react-router-dom";
 // API base URL
 const baseUrl = "https://Ambesten.pythonanywhere.com/api";
 // const baseUrl = "http://127.0.0.1:8000/api";
-function TeacherChangeForgottenPassword() {
+function StudentChangeForgottenPassword() {
     const navigate = useNavigate()
     // State to manage login form data
-    const [teacherData, setTeacherData] = useState({
+    const [studentData, setStudentData] = useState({
         password: "",
 
     });
 
-    const {teacher_id} = useParams()
+    const {student_id} = useParams()
     // State to store error message
     const [errorMsg, setErrorMsg] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
 
     // Update form data when input fields change
     const handleChange = (event) => {
-        setTeacherData({
-            ...teacherData,
+        setStudentData({
+            ...studentData,
             [event.target.name]: event.target.value,
         });
     };
 
     const submitForm = () => {
-        const teacherFormData = new FormData();
-        teacherFormData.append('password', teacherData.password)
+        const studentFormData = new FormData();
+        studentFormData.append('password', studentData.password)
         try {
-            axios.post(baseUrl + '/teacher-change-password/'+teacher_id+"/", teacherFormData)
+            axios.post(baseUrl + '/student-change-password/'+student_id+"/", studentFormData)
                 .then((res) => {
                     if (res.data.bool === true) {
                         setSuccessMsg(res.data.msg);
@@ -48,9 +48,9 @@ function TeacherChangeForgottenPassword() {
 
 
     // Redirect to dashboard if teacher is already logged in
-    const teacherLoginStatus = localStorage.getItem("teacherLoginStatus");
-    if (teacherLoginStatus === "true") {
-        window.location.href = "/teacher-dashboard";
+    const studentLoginStatus = localStorage.getItem("studentLoginStatus");
+    if (studentLoginStatus === "true") {
+        window.location.href = "/student-dashboard";
     }
 
     return (
@@ -66,7 +66,7 @@ function TeacherChangeForgottenPassword() {
                             <div className="mb-3">
                                 <label for="exampleInputEmail1" className="form-label">Password</label>
                                 <input type="password"
-                                    value={teacherData.email}
+                                    value={studentData.email}
                                     name="password"
                                     onChange={handleChange}
                                     className="form-control" />
@@ -84,4 +84,4 @@ function TeacherChangeForgottenPassword() {
     );
 }
 
-export default TeacherChangeForgottenPassword;
+export default StudentChangeForgottenPassword;

@@ -33,6 +33,7 @@ import StudentLogout from "./User/StudentLogout.js";
 import VerifyStudent from "./User/VerifyStudent.js";
 import StudentAssignment from "./User/StudentAssignment.js";
 import MyTeachers from "./User/MyTeachers.js";
+import StudentChangeForgottenPassword from "./User/StudentChangeForgottenPassword.js";
 
 // Teacher-related imports
 import TeacherLogin from "./Teacher/TeacherLogin";
@@ -91,6 +92,7 @@ function App() {
         <Route path="/verify-student/:student_id" element={<VerifyStudent />} />
         <Route path="/my-assignments/" element={<StudentAssignment />} />
         <Route path="/my-teachers" element={<MyTeachers />} />
+        <Route path="/student-change-forgotten-password/:student_id" element={<StudentChangeForgottenPassword />} />
 
         {/* ========== Teacher Routes =====================*/}
         <Route path="/teacher-login" element={<TeacherLogin />} />
