@@ -12,9 +12,10 @@
 .blog h1 {
   font-weight: 500;
   font-size: 22px;
-  line-height: 30px;
+  line-height: 1.2;
   margin: 20px 0;
   transition: 0.5s;
+
 }
 .blog h1:hover {
   color: #1eb2a6;
